@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://lee.joramo.com/tags/godoc/index.xml</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Godoc on My New Hugo Site</title>
+    <link>https://leejoramo.github.io/tags/godoc/index.xml</link>
+    <description>Recent content in Godoc on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://lee.joramo.com/tags/godoc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://leejoramo.github.io/tags/godoc/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Sharing Godoc of a WIP Branch</title>
-      <link>http://lee.joramo.com/blog/wip-godoc/</link>
+      <link>https://leejoramo.github.io/wip-godoc/</link>
       <pubDate>Thu, 11 Jun 2015 07:37:00 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/wip-godoc/</guid>
+      <guid>https://leejoramo.github.io/wip-godoc/</guid>
       <description>&lt;p&gt;I had a problem yesterday - I wanted to use the excellent godoc.org to show
 coworkers the godoc for the feature I was working on.  However, the feature was
 on a branch of the main code in Github, and &lt;code&gt;go get&lt;/code&gt; Does Not Work That Way™.

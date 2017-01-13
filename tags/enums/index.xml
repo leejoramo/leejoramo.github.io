@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://lee.joramo.com/tags/enums/index.xml</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Enums on My New Hugo Site</title>
+    <link>https://leejoramo.github.io/tags/enums/index.xml</link>
+    <description>Recent content in Enums on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://lee.joramo.com/tags/enums/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://leejoramo.github.io/tags/enums/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>To Enum or Not To Enum</title>
-      <link>http://lee.joramo.com/blog/enums/</link>
+      <link>https://leejoramo.github.io/enums/</link>
       <pubDate>Wed, 02 Dec 2015 00:00:19 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/enums/</guid>
+      <guid>https://leejoramo.github.io/enums/</guid>
       <description>&lt;p&gt;Enum-like values have come up in my reviews of other people&amp;rsquo;s code a few times, and I&amp;rsquo;d like to nail down what we feel is best practice.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve seen many places what in other languages would be an enum, i.e. a bounded list of known values that encompass every value that should ever exist.&lt;/p&gt;

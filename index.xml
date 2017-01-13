@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My New Hugo Site</title>
-    <link>http://lee.joramo.com/index.xml</link>
+    <link>https://leejoramo.github.io/index.xml</link>
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 18 Oct 2016 22:08:09 -0400</lastBuildDate>
-    <atom:link href="http://lee.joramo.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://leejoramo.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Writing Go Applications with Reusable Logic</title>
-      <link>http://lee.joramo.com/blog/reusable-commands/</link>
+      <link>https://leejoramo.github.io/reusable-commands/</link>
       <pubDate>Tue, 18 Oct 2016 22:08:09 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/reusable-commands/</guid>
+      <guid>https://leejoramo.github.io/reusable-commands/</guid>
       <description>
 
 &lt;p&gt;Writing libraries in Go is a relatively well-covered topic, I think&amp;hellip; but I see
@@ -169,10 +169,10 @@ require more than just go-get (which I&amp;rsquo;ll talk about later).&lt;/p&gt;
     
     <item>
       <title>Vanity Imports with Hugo</title>
-      <link>http://lee.joramo.com/blog/vanity-imports-with-hugo/</link>
+      <link>https://leejoramo.github.io/vanity-imports-with-hugo/</link>
       <pubDate>Sun, 16 Oct 2016 00:01:00 +0000</pubDate>
       
-      <guid>http://lee.joramo.com/blog/vanity-imports-with-hugo/</guid>
+      <guid>https://leejoramo.github.io/vanity-imports-with-hugo/</guid>
       <description>&lt;p&gt;When working on &lt;a href=&#34;https://github.com/natefinch/gorram&#34;&gt;Gorram&lt;/a&gt;, I decided I
 wanted to release it via a vanity import path.  After all, that&amp;rsquo;s half the
 reason I got npf.io in the first place (an idea blatantly stolen from Russ Cox&amp;rsquo;s
@@ -320,29 +320,11 @@ a trivial amount of work.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Deputy</title>
-      <link>http://lee.joramo.com/code/deputy/</link>
-      <pubDate>Thu, 06 Oct 2016 23:00:00 +0000</pubDate>
-      
-      <guid>http://lee.joramo.com/code/deputy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gorram</title>
-      <link>http://lee.joramo.com/code/gorram/</link>
-      <pubDate>Sun, 02 Oct 2016 23:00:00 +0000</pubDate>
-      
-      <guid>http://lee.joramo.com/code/gorram/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>To Enum or Not To Enum</title>
-      <link>http://lee.joramo.com/blog/enums/</link>
+      <link>https://leejoramo.github.io/enums/</link>
       <pubDate>Wed, 02 Dec 2015 00:00:19 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/enums/</guid>
+      <guid>https://leejoramo.github.io/enums/</guid>
       <description>&lt;p&gt;Enum-like values have come up in my reviews of other people&amp;rsquo;s code a few times, and I&amp;rsquo;d like to nail down what we feel is best practice.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve seen many places what in other languages would be an enum, i.e. a bounded list of known values that encompass every value that should ever exist.&lt;/p&gt;
@@ -427,10 +409,10 @@ This now prevents passing in a constant string that looks like it might be right
     
     <item>
       <title>Returning Errors</title>
-      <link>http://lee.joramo.com/blog/errors/</link>
+      <link>https://leejoramo.github.io/errors/</link>
       <pubDate>Sat, 10 Oct 2015 00:00:19 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/errors/</guid>
+      <guid>https://leejoramo.github.io/errors/</guid>
       <description>&lt;p&gt;There are basically two ways to return errors in Go:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (c Config) Save() error {
@@ -538,103 +520,11 @@ more difficult down the road.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Take control of your commands with Deputy</title>
-      <link>http://lee.joramo.com/blog/deputy/</link>
-      <pubDate>Tue, 30 Jun 2015 12:44:29 -0400</pubDate>
-      
-      <guid>http://lee.joramo.com/blog/deputy/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://cloud.githubusercontent.com/assets/3185864/8237448/6bc30102-15bd-11e5-9e87-6423197a73d6.jpg&#34; alt=&#34;deputy-sm&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;sup&gt;&lt;sub&gt;image: creative commons, &amp;copy; &lt;a href=&#34;http://matsurd.deviantart.com/art/Paper53-Deputy-Stubbs-342123485&#34;&gt;MatsuRD&lt;/a&gt;&lt;/sub&gt;&lt;/sup&gt;&lt;/p&gt;
-
-&lt;p&gt;As a part of my work on &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, I have published a
-new package at &lt;a href=&#34;http://github.com/juju/deputy&#34;&gt;http://github.com/juju/deputy&lt;/a&gt;.  I think it&amp;rsquo;ll be of general use
-to a lot of people.&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I want to name a package &amp;quot;lieutenant&amp;quot;, but it&amp;#39;s too hard to spell.&lt;/p&gt;&amp;mdash; Nate Finch (@NateTheFinch) &lt;a href=&#34;https://twitter.com/NateTheFinch/status/610481962311131136&#34;&gt;June 15, 2015&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;True story.  The idea was this package would be a lieutenant commander (get
-it?)&amp;hellip; but I also knew I didn&amp;rsquo;t want to have to try to spell lieutenant
-correctly every time I used the package.  So that&amp;rsquo;s why it&amp;rsquo;s called deputy.
-He&amp;rsquo;s the guy who&amp;rsquo;s not in charge, but does all the work.&lt;/p&gt;
-
-&lt;h3 id=&#34;errors&#34;&gt;Errors&lt;/h3&gt;
-
-&lt;p&gt;At &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, we run a lot of external processes
-using os/exec. However, the default functionality of an exec.Cmd object is kind
-of lacking. The most obvious one is those error returns &amp;ldquo;exit status 1&amp;rdquo;.
-Fantastic.  Have you ever wished you could just have the stderr from the command
-as the error text?  Well, now you can, with deputy.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func main() {
-    d := deputy.Deputy{
-        Errors:    deputy.FromStderr,
-    }
-    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
-    err := d.Run(cmd)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In the above code, if the command run by Deputy exits with a non-zero exit
-status, deputy will capture the text output to stderr and convert that into the
-error text.  &lt;em&gt;e.g.&lt;/em&gt; if the command returned exit status 1 and output &amp;ldquo;Error: No
-such image or container: bar&amp;rdquo; to stderr, then the error&amp;rsquo;s Error() text would
-look like &amp;ldquo;exit status 1: Error: No such image or container: bar&amp;rdquo;.  Bam, the
-errors from commands you run are infinitely more useful.&lt;/p&gt;
-
-&lt;h3 id=&#34;logging&#34;&gt;Logging&lt;/h3&gt;
-
-&lt;p&gt;Another idiom we use is to pipe some of the output from a command to our logs. This can be super useful for debugging purposes.  With deputy, this is again easy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func main() {
-    d := deputy.Deputy{
-        Errors:    deputy.FromStderr,
-        StdoutLog: func(b []byte) { log.Print(string(b)) },
-    }
-    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
-    err := d.Run(cmd)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;rsquo;s it.  Now every line written to stdout by the process will be piped as a
-log message to your log.&lt;/p&gt;
-
-&lt;h3 id=&#34;timeouts&#34;&gt;Timeouts&lt;/h3&gt;
-
-&lt;p&gt;Finally, an idiom we don&amp;rsquo;t use often enough, but should, is to add a timeout to
-command execution.  What happens if you run a command as part of your pipeline
-and that command hangs for 30 seconds, or 30 minutes, or forever?  Do you just
-assume it&amp;rsquo;ll always finish in a reasonable time?  Adding a timeout to running
-commands requires some tricky coding with goroutines, channels, selects, and
-killing the process&amp;hellip; and deputy wraps all that up for you in a simple API:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;func main() {
-    d := deputy.Deputy{
-        Errors:    deputy.FromStderr,
-        StdoutLog: func(b []byte) { log.Print(string(b)) },
-        Timeout:   time.Second * 10,
-    }
-    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
-    err := d.Run(cmd)
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The above code adds a 10 second timeout.  After that time, if the process has
-not finished, it will be killed and an error returned.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it.  Give deputy a spin and let me know what you think.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Testing os/exec.Command</title>
-      <link>http://lee.joramo.com/blog/testing-exec-command/</link>
+      <link>https://leejoramo.github.io/testing-exec-command/</link>
       <pubDate>Fri, 26 Jun 2015 06:41:56 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/testing-exec-command/</guid>
+      <guid>https://leejoramo.github.io/testing-exec-command/</guid>
       <description>&lt;p&gt;In &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, we often have code that needs to run external
 executables.  Testing this code is a nightmare&amp;hellip; because you really don&amp;rsquo;t want
 to run those files on the dev&amp;rsquo;s machine or the CI machine.  But mocking out
@@ -751,10 +641,10 @@ not testing your code at all).&lt;/p&gt;
     
     <item>
       <title>Sharing Godoc of a WIP Branch</title>
-      <link>http://lee.joramo.com/blog/wip-godoc/</link>
+      <link>https://leejoramo.github.io/wip-godoc/</link>
       <pubDate>Thu, 11 Jun 2015 07:37:00 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/wip-godoc/</guid>
+      <guid>https://leejoramo.github.io/wip-godoc/</guid>
       <description>&lt;p&gt;I had a problem yesterday - I wanted to use the excellent godoc.org to show
 coworkers the godoc for the feature I was working on.  However, the feature was
 on a branch of the main code in Github, and &lt;code&gt;go get&lt;/code&gt; Does Not Work That Way™.
@@ -793,20 +683,11 @@ feedback on architecture before I dive into the reeds of the implementation.&lt;
     </item>
     
     <item>
-      <title>Pie</title>
-      <link>http://lee.joramo.com/code/pie/</link>
-      <pubDate>Tue, 02 Jun 2015 17:00:00 +0000</pubDate>
-      
-      <guid>http://lee.joramo.com/code/pie/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Go Plugins are as Easy as Pie</title>
-      <link>http://lee.joramo.com/blog/pie/</link>
+      <link>https://leejoramo.github.io/pie/</link>
       <pubDate>Mon, 25 May 2015 22:44:32 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/pie/</guid>
+      <guid>https://leejoramo.github.io/pie/</guid>
       <description>
 
 &lt;p&gt;When people hear that Go only supports static linking, one of the things they
@@ -868,86 +749,11 @@ in one of your projects and let me know what you think.  Happy eating!&lt;/p&gt;
     </item>
     
     <item>
-      <title>Go Nitpicks</title>
-      <link>http://lee.joramo.com/blog/go-nitpicks/</link>
-      <pubDate>Tue, 28 Oct 2014 06:17:21 -0400</pubDate>
-      
-      <guid>http://lee.joramo.com/blog/go-nitpicks/</guid>
-      <description>
-
-&lt;p&gt;I saw this tweet last night:&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;en&#34;&gt;&lt;p&gt;A code interview I like to ask:&amp;#10;&amp;#10;&amp;quot;What would you change about &amp;lt;your favourite language&amp;gt;?&amp;quot;&amp;#10;&amp;#10;Having nothing to say to that is a big strike.&lt;/p&gt;&amp;mdash; karlseguin (@karlseguin) &lt;a href=&#34;https://twitter.com/karlseguin/status/526860386704695296&#34;&gt;October 27, 2014&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;I figured I&amp;rsquo;d answer it here about Go.  Luckily, Go is a very small language, so there&amp;rsquo;s not a lot of surface area to dislike. However, there&amp;rsquo;s definitely some things I wish were different. Most of these are nitpicks, thus the title.&lt;/p&gt;
-
-&lt;h4 id=&#34;1-bare-returns&#34;&gt;#1 Bare Returns&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;func foo() (i int, err error) {
-    i, err = strconv.ParseInt(&amp;quot;5&amp;quot;) 
-    return // wha??
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For all that Go promotes readable and immediately understandable code, this seems like a ridiculous outlier. The way it works is that if you don&amp;rsquo;t declare what the function is returning, it&amp;rsquo;ll return the values stored in the named return variables.  Which seems logical and handy, until you see a 100 line function with multiple branches and a single bare return at the bottom, with no idea what is actually getting returned.&lt;/p&gt;
-
-&lt;p&gt;To all gophers out there: don&amp;rsquo;t use bare returns.  Ever.&lt;/p&gt;
-
-&lt;h4 id=&#34;2-new&#34;&gt;#2 New&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;a := new(MyStruct)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;New means &amp;ldquo;Create a zero value of the given type and return a pointer to it&amp;rdquo;.  It&amp;rsquo;s sorta like the C++ &lt;code&gt;new&lt;/code&gt;, which is probably why it exists.  The problem is that it&amp;rsquo;s nearly useless.  It&amp;rsquo;s mostly redundant with simply returning the address of a value thusly:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;a := &amp;amp;MyStruct{}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The above is a lot easier to read, it also gives you the ability to populate the value you&amp;rsquo;re constructing (if you wish).  The only time new is &amp;ldquo;useful&amp;rdquo; is if you want to initialize a pointer to a builtin (like a string or an int), because you can&amp;rsquo;t do this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;a := &amp;amp;int
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;but you can do this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;a := new(int)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Of course, you could always just do it in (&lt;em&gt;gasp&lt;/em&gt;) two lines:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;a := 0
-b := &amp;amp;a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To all the gophers out there: don&amp;rsquo;t use new. Always use &amp;amp;Foo{} with structs, maps, and slices. Use the two line version for numbers and strings.&lt;/p&gt;
-
-&lt;h4 id=&#34;3-close&#34;&gt;#3 Close&lt;/h4&gt;
-
-&lt;p&gt;The close built-in function closes a channel. If the channel is already closed, close will panic.  This pisses me off, because most of the time when I call close, I don&amp;rsquo;t actually care if it&amp;rsquo;s already closed.  I just want to ensure that it&amp;rsquo;s closed.  I&amp;rsquo;d much prefer if close returned a boolean that said whether or not it did anything, and then if &lt;strong&gt;I&lt;/strong&gt; choose to panic, I can.  Or, you know, not.&lt;/p&gt;
-
-&lt;h4 id=&#34;4-there-is-no-4&#34;&gt;#4 There is no 4&lt;/h4&gt;
-
-&lt;p&gt;That&amp;rsquo;s basically it.  There&amp;rsquo;s some things I think are necessary evils, like &lt;code&gt;goto&lt;/code&gt; and &lt;code&gt;panic&lt;/code&gt;.  There&amp;rsquo;s some things that are necessary ugliness, like the built-in functions &lt;code&gt;append&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, etc.  I sorta wish &lt;code&gt;x := range foo&lt;/code&gt; returned the value in x and not the index, but I get that it&amp;rsquo;s to be consistent between maps and slices, and returning the value in maps would be odd, I think.&lt;/p&gt;
-
-&lt;p&gt;All these are even below the level of nitpicks, though.  They don&amp;rsquo;t bug me, really.  I understand that everything in programming is a tradeoff, and I think the decisions made for Go were the right ones in these cases.  Sometimes you need goto.  Sometimes you need to panic.  Making those functions built-ins rather than methods on the types means you don&amp;rsquo;t need any methods on the types, which keeps them simpler, and means they&amp;rsquo;re &amp;ldquo;just data&amp;rdquo;.  It also means you don&amp;rsquo;t lose any functionality if you make new named types based on them.&lt;/p&gt;
-
-&lt;p&gt;So that&amp;rsquo;s my list for Go.&lt;/p&gt;
-
-&lt;h4 id=&#34;postscript&#34;&gt;Postscript&lt;/h4&gt;
-
-&lt;p&gt;Someone on the twitter discussion mentioned he couldn&amp;rsquo;t think of anything he disliked about C#, which just about made me spit my coffee across the room.  I programmed in C# for ~9 years, starting out porting some 1.1 code to 2.0, and leaving as 5.0 came out.  The list of features in C# as of 5.0 is gigantic.  Even being a developer writing in it 40+ hours a week for 9 years, there was still stuff I had to look up to remember how it worked.&lt;/p&gt;
-
-&lt;p&gt;I feel like my mastery of Go after a year of side projects was about equivalent to my mastery of C# after 9 years of full time development.  If we assume 1:1 correlation between time to master and size of the language, an order of magnitude sounds about right.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Why Everyone Hates Go</title>
-      <link>http://lee.joramo.com/blog/why-everyone-hates-go/</link>
+      <link>https://leejoramo.github.io/why-everyone-hates-go/</link>
       <pubDate>Tue, 14 Oct 2014 10:46:28 -0400</pubDate>
       
-      <guid>http://lee.joramo.com/blog/why-everyone-hates-go/</guid>
+      <guid>https://leejoramo.github.io/why-everyone-hates-go/</guid>
       <description>&lt;p&gt;Obviously, not &lt;em&gt;everyone&lt;/em&gt; hates Go.  But there was a &lt;a href=&#34;https://www.quora.com/Why-does-Go-seem-to-be-the-most-heavily-
 criticised-among-the-newer-programming-languages?srid=uCiY&amp;amp;share=1&#34;&gt;quora
 question&lt;/a&gt; recently
@@ -1043,180 +849,11 @@ anyone I offended.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Deploy Discourse with Juju in 8 minutes</title>
-      <link>http://lee.joramo.com/blog/deploy-discourse-juju/</link>
-      <pubDate>Wed, 01 Oct 2014 06:31:49 -0400</pubDate>
-      
-      <guid>http://lee.joramo.com/blog/deploy-discourse-juju/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;http://stevefrancia.com/&#34;&gt;Steve Francia&lt;/a&gt; asked me to help him get
-&lt;a href=&#34;https://discourse.org&#34;&gt;Discourse&lt;/a&gt; deployed as a place for people to discuss
-&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, his static site generator (which is what I use to
-build this blog).  If you don&amp;rsquo;t know Discourse, it&amp;rsquo;s pretty amazing forum
-software with community-driven moderation, all the modern features you expect
-(@mentions, SSO integration, deep email integration, realtime async updates, and
-a whole lot more).  What I ended up deploying is now at
-&lt;a href=&#34;http://discuss.gohugo.io&#34;&gt;discuss.gohugo.io&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;d already played around with deploying Discourse about six months ago, so I
-already had an idea of what was involved.  Given that I work on
-&lt;a href=&#34;http://juju.ubuntu.com&#34;&gt;Juju&lt;/a&gt; as my day job, of course I decided to use Juju to
-deploy Discourse for Steve.  This involved writing a Juju &lt;em&gt;charm&lt;/em&gt; which is sort
-of like an install script, but with hooks for updating configuration and hooks
-for interacting with other services. I&amp;rsquo;ll talk about the process of writing the
-charm in a later post, but for now, all you need to know is that it follows the
-official &lt;a href=&#34;https://github.com/discourse/discourse/blob/master/docs/INSTALL-digital-ocean.md&#34;&gt;install guide&lt;/a&gt; for installing Discourse.&lt;/p&gt;
-
-&lt;p&gt;The install guide says that you can install Discourse in 30 minutes.  Following
-it took me a &lt;strong&gt;lot&lt;/strong&gt; longer than that, due to some confusion about what the
-install guide really wanted you to do, and what the install really required.
-But you don&amp;rsquo;t need to know any of that to use Juju to install Discourse, and you
-can get it done in 8 minutes, not 30.  Here&amp;rsquo;s how:&lt;/p&gt;
-
-&lt;p&gt;First, install Juju:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo add-apt-repository -y ppa:juju/stable
-sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install -y juju-core
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, Juju does not yet have a provider for Digital Ocean, so we have to use a
-plugin to get the machine created.  We&amp;rsquo;re in the process of writing a provider
-for Digital Ocean, so soon the plugin won&amp;rsquo;t be necessary.  If you use another
-cloud provider, such as AWS, Azure, HP Cloud, Joyent, or run your own Openstack
-or MAAS, you can easily &lt;a href=&#34;https://juju.ubuntu.com/docs/getting-a
-started.html#configuring&#34;&gt;configure Juju&lt;/a&gt; to use that service, and a couple of these steps will
-not be necessary.  I&amp;rsquo;ll post separate steps for that later.  But for now, let&amp;rsquo;s
-assume you&amp;rsquo;re using Digital Ocean.&lt;/p&gt;
-
-&lt;p&gt;Install the juju &lt;a href=&#34;https://github.com/kapilt/juju-digitalocean&#34;&gt;Digital Ocean plugin&lt;/a&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sudo apt-get install -y python-pip
-pip install -U juju-docean
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Get your Digital Ocean &lt;a href=&#34;https://cloud.digitalocean.com/api_access&#34;&gt;access info&lt;/a&gt;
-and set the client id in an environment variable called DO_CLIENT_ID and the API
-key in an environment variable called DO_API_KEY.&lt;/p&gt;
-
-&lt;p&gt;Juju requires access with an SSH key to the machines, so make sure you have one
-set up in your Digital Ocean account.&lt;/p&gt;
-
-&lt;p&gt;Now, let&amp;rsquo;s create a simple configuration so juju knows where you want to deploy
-your new environment.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;juju init
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Running juju init will create a boilerplate configuration file at
-~/.juju/environments.yaml.  We&amp;rsquo;ll append our digital ocean config at the bottom:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;    digitalocean:
-        type: manual
-        bootstrap-host: null
-        bootstrap-user: root
-&amp;quot; &amp;gt;&amp;gt; ~/.juju/environments.yaml
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that this is yaml, so the spaces at the beginning of each line are
-important.  Copy and paste should do the right thing, though.&lt;/p&gt;
-
-&lt;p&gt;Now we can start the real fun, let&amp;rsquo;s switch to the digitalocean environment we
-just configured, and create the first Juju machine in Digital Ocean:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;juju switch digitalocean
-juju docean bootstrap --constraints=&amp;quot;mem=2g, region=nyc2&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;(obviously replace the region with whatever one you want)&lt;/p&gt;
-
-&lt;p&gt;Now, it&amp;rsquo;ll take about a minute for the machine to come up.&lt;/p&gt;
-
-&lt;p&gt;Discourse &lt;em&gt;requires&lt;/em&gt; email to function, so you need an account at
-&lt;a href=&#34;http://mandrill.com&#34;&gt;mandrill&lt;/a&gt;, &lt;a href=&#34;http://mailgun.com&#34;&gt;mailgun&lt;/a&gt;, etc.  They&amp;rsquo;re free, so
-don&amp;rsquo;t worry.  From that account you need to get some information to properly set
-up Discourse.  You can do this after installing discourse, but it&amp;rsquo;s faster if
-you do it before and give the configuration at deploy time. (changing settings
-later will take a couple minutes while discourse reconfigures itself)&lt;/p&gt;
-
-&lt;p&gt;When you deploy discourse, you&amp;rsquo;re going to give it a configuration file, which
-will look something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;discourse:
-  DISCOURSE_HOSTNAME: discuss.example.com
-  DISCOURSE_DEVELOPER_EMAILS: foo@example.com,bar@example.com
-  DISCOURSE_SMTP_ADDRESS: smtp.mailservice.com
-  DISCOURSE_SMTP_PORT: 587
-  DISCOURSE_SMTP_USER_NAME: postmaster@example.com
-  DISCOURSE_SMTP_PASSWORD: supersecretpassword
-  UNICORN_WORKERS: 3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The first line must be the same as the name of the service you&amp;rsquo;re deploying.  By
-default it&amp;rsquo;s &amp;ldquo;discourse&amp;rdquo;, so you don&amp;rsquo;t need to change it unless you&amp;rsquo;re deploying
-multiple copies of discourse to the same Juju environment.  And remember, this
-is yaml, so those spaces at the beginning of the rest of the lines are
-important.&lt;/p&gt;
-
-&lt;p&gt;The rest should be pretty obvious.  Hostname is the domain name where your site
-will be hosted.  This is important, because discourse will send account
-activation emails, and the links will use that hostname.  Developer emails are
-the email addresses of accounts that should get automatically promoted to admin
-when created.  The rest is email-related stuff from your mail service account.
-Finally, unicorn workers should just stay 3 unless you&amp;rsquo;re deploying to a machine
-with less than 2GB of RAM, in which case set it to 2.&lt;/p&gt;
-
-&lt;p&gt;Ok, so now that you have this file somewhere on disk, we can deploy discourse.
-Don&amp;rsquo;t worry, it&amp;rsquo;s really easy.  Just do this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;juju deploy cs:~natefinch/trusty/discourse --config path/to/configfile --to 0
-juju expose discourse
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;That&amp;rsquo;s it. If you&amp;rsquo;re deploying to a 2GB Digital Ocean droplet, it&amp;rsquo;ll take about
-7 minutes.&lt;/p&gt;
-
-&lt;p&gt;To check on the status of the charm deployment, you can do &lt;code&gt;juju status&lt;/code&gt;, which
-will show, among other things &amp;ldquo;agent-state: pending&amp;rdquo; while the charm is being
-deployed.  Or, if you want to watch the logs roll by, you can do &lt;code&gt;juju debug-
-log&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Eventually juju status will show &lt;code&gt;agent-state: started&lt;/code&gt;.  Now grab the ip
-address listed at &lt;code&gt;public address:&lt;/code&gt; in the same output and drop that into your
-browser.  Bam!  Welcome to Discourse.&lt;/p&gt;
-
-&lt;p&gt;If you ever need to change the configuration you set in the config file above,
-you can do that by editing the file and doing&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;juju set discourse --config=/path/to/config
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or, if you just want to tweak a few values, you can do&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;juju set discourse foo=bar baz=bat ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that every time you call juju set, it&amp;rsquo;ll take a couple minutes for
-Discourse to reconfigure itself, so you don&amp;rsquo;t want to be doing this over and
-over if you can hep it.&lt;/p&gt;
-
-&lt;p&gt;Now you&amp;rsquo;re on your own, and will have to consult the gurus at
-&lt;a href=&#34;discourse.org&#34;&gt;discourse.org&lt;/a&gt; if you have any problems.  But don&amp;rsquo;t worry, since
-you deployed using Juju, which uses their official install instructions, your
-discourse install is just like the ones people deploy manually (albeit with a
-lot less time and trouble).&lt;/p&gt;
-
-&lt;p&gt;Good Luck!&lt;/p&gt;
-
-&lt;p&gt;Please let me know if you find any errors in this page, and I will fix them
-immediately.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Intro to TOML</title>
-      <link>http://lee.joramo.com/blog/intro-to-toml/</link>
+      <link>https://leejoramo.github.io/intro-to-toml/</link>
       <pubDate>Sat, 16 Aug 2014 07:31:51 +0000</pubDate>
       
-      <guid>http://lee.joramo.com/blog/intro-to-toml/</guid>
+      <guid>https://leejoramo.github.io/intro-to-toml/</guid>
       <description>
 
 &lt;p&gt;TOML stands for Tom&amp;rsquo;s Own Minimal Language.  It is a configuration language
@@ -1497,6 +1134,302 @@ works just like the built-in parsers.&lt;/p&gt;
 
 &lt;p&gt;The next time you write an application that needs some configuration, take a
 look at TOML.  I think your users will thank you.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Making It a Series</title>
+      <link>https://leejoramo.github.io/making-it-a-series/</link>
+      <pubDate>Fri, 08 Aug 2014 11:12:44 +0000</pubDate>
+      
+      <guid>https://leejoramo.github.io/making-it-a-series/</guid>
+      <description>&lt;p&gt;I obviously have a lot to talk about with Hugo, so I decided I wanted to make
+this into a series of posts, and have links at the bottom of each post
+automatically populated with the other posts in the series.  This turned out to
+be somewhat of a challenge, but doable with some effort&amp;hellip; hopefully someone
+else can learn from my work.&lt;/p&gt;
+
+&lt;p&gt;This now brings us to &lt;a href=&#34;http://hugo.spf13.com/taxonomies/overview&#34;&gt;Taxonomies&lt;/a&gt;.
+Taxonomies are basically just like tags, except that you can have any number of
+different types of tags.  So you might have &amp;ldquo;Tags&amp;rdquo; as a taxonomy, and thus you
+can give a content tags with values of &amp;ldquo;go&amp;rdquo; and &amp;ldquo;programming&amp;rdquo;.  You can also
+have a taxonomy of &amp;ldquo;series&amp;rdquo; and give content a series of &amp;ldquo;Hugo 101&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;Taxonomy is sort of like relatable metadata to gather multiple pieces of content
+together in a structured way&amp;hellip; it&amp;rsquo;s almost like a minimal relational database.
+Taxonomies are listed in your site&amp;rsquo;s metadata, and consist of a list of keys.
+Each piece of content can specify one or more values for those keys (the Hugo
+documentation calls the values &amp;ldquo;Terms&amp;rdquo;).  The values are completely ad-hoc, and
+don&amp;rsquo;t need to be pre-defined anywhere.  Hugo automatically creates pages where
+you can view all content based on Taxonomies and see how the various values are
+cross-referenced against other content.  This is a way to implement tags on
+posts, or series of posts.&lt;/p&gt;
+
+&lt;p&gt;So, for my example, we add a Taxonomy to my site config called &amp;ldquo;series&amp;rdquo;.  Then
+in this post, the &amp;ldquo;Hugo: Beyond the Defaults&amp;rdquo; post, and the &amp;ldquo;Hugo is Friggin&amp;rsquo;
+Awesome&amp;rdquo; post, I just add &lt;code&gt;series = [&amp;quot;Hugo 101&amp;quot;]&lt;/code&gt;  (note the brackets - the
+values for the taxonomy are actually a list, even if you only have one value).
+Now all these posts are magically related together under a taxonomy called
+&amp;ldquo;series&amp;rdquo;.  And Hugo automatically generates a listing for this taxonomy value
+at &lt;a href=&#34;http://npf.io/series/hugo-101&#34;&gt;/series/hugo-101&lt;/a&gt; (the taxonomy value gets
+url-ized).  Any other series I make will be under a similar directory.&lt;/p&gt;
+
+&lt;p&gt;This is fine and dandy and pretty aweomse out of the box&amp;hellip; but I really want to
+automatically generate a list of posts in the series at the bottom of each post
+in the series.  This is where things get tricky, but that&amp;rsquo;s also where things
+get interesting.&lt;/p&gt;
+
+&lt;p&gt;The examples for &lt;a href=&#34;http://hugo.spf13.com/taxonomies/displaying&#34;&gt;displaying
+Taxonomies&lt;/a&gt; all &amp;ldquo;hard code&amp;rdquo; the
+taxonomy value in the template&amp;hellip; this works great if you know ahead of time
+what value you want to display, like &amp;ldquo;all posts with tag = &amp;lsquo;featured&amp;rsquo;&amp;rdquo;.
+However, it doesn&amp;rsquo;t work if you don&amp;rsquo;t know ahead of time what the taxonomy value
+will be (like the series on the current post).&lt;/p&gt;
+
+&lt;p&gt;This is doable, but it&amp;rsquo;s a little more complicated.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll give you a dump of the relevant portion of my post template and then talk
+about how I got there:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{{ if .Params.series }}
+    {{ $name := index .Params.series 0 }}
+    &amp;lt;hr/&amp;gt;
+	&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot; id=&amp;quot;series&amp;quot;&amp;gt;&amp;lt;/a&amp;gt;This is a post in the 
+	&amp;lt;b&amp;gt;{{$name}}&amp;lt;/b&amp;gt; series.&amp;lt;br/&amp;gt;
+	Other posts in this series:&amp;lt;/p&amp;gt;
+
+    {{ $name := $name | urlize }}
+    {{ $series := index .Site.Taxonomies.series $name }}
+    &amp;lt;ul class=&amp;quot;series&amp;quot;&amp;gt;
+    {{ range $series.Pages }}
+    	&amp;lt;li&amp;gt;{{.Date.Format &amp;quot;Jan 02, 2006&amp;quot;}} -
+    	&amp;lt;a href=&amp;quot;{{.Permalink}}&amp;quot;&amp;gt;{{.LinkTitle}}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    {{end}}
+    &amp;lt;/ul&amp;gt;
+{{end}} 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So we start off defining this part of the template to only be used if the post
+has a series.  Right, sure, move on.&lt;/p&gt;
+
+&lt;p&gt;Now, the tricky part&amp;hellip; the taxonomy values for the current page resides in the
+.Params values, just like any other custom metadata you assign to the page.&lt;/p&gt;
+
+&lt;p&gt;Taxonomy values are always a list (so you can give things multiple tags etc),
+but I know that I&amp;rsquo;ll never give something more than one series, so I can just
+grab the first item from the list.  To do that, I use the index function, which
+is just like calling series[0] and assign it to the $name variable.&lt;/p&gt;
+
+&lt;p&gt;Now another tricky part&amp;hellip; the series in the metadata is in the pretty form you
+put into the metadata, but the list of Taxonomies in .Site.Taxonomies is in the
+urlized form&amp;hellip;  How did I figure that out?  Printf
+debugging.  Hugo&amp;rsquo;s auto-reloading makes it really easy to use the template
+itself to figure out what&amp;rsquo;s going on with the template and the data.&lt;/p&gt;
+
+&lt;p&gt;When I started writing this template, I just put &lt;code&gt;{{$name}}&lt;/code&gt; in my post template
+after the line where I got the name, and I could see it rendered on webpage of
+my post that the name was &amp;ldquo;Hugo 101&amp;rdquo;.  Then I put &lt;code&gt;{{.Site.Taxonomies.series}}&lt;/code&gt;
+and I saw something like &lt;code&gt;map[hugo-101:[{0 0xc20823e000} {0 0xc208048580} {0
+0xc208372000}]]&lt;/code&gt;  which is ugly, but it showed me that the value in the map is
+&amp;ldquo;hugo-101&amp;rdquo;&amp;hellip; and I realized it was using the urlized version, so I used the
+pre-defined hugo function &lt;code&gt;urlize&lt;/code&gt; to convert the pretty series.&lt;/p&gt;
+
+&lt;p&gt;And from there it&amp;rsquo;s just a matter of using &lt;code&gt;index&lt;/code&gt; again, this time to use
+&lt;code&gt;$name&lt;/code&gt; as a key in the map of series&amp;hellip;.  .Site.Taxonomies is a map
+(dictionary) of Taxonomy names (like &amp;ldquo;series&amp;rdquo;) to maps of Taxonomy values (like
+&amp;ldquo;hugo-101&amp;rdquo;) to lists of pages.  So, .Site.Taxonomies.series reutrns a map of
+series names to lists of pages&amp;hellip; index that by the current series names, and
+bam, list of pages.&lt;/p&gt;
+
+&lt;p&gt;And then it&amp;rsquo;s just a matter of iterating over the pages and displaying them
+nicely. And what&amp;rsquo;s great is that this is now all automatic&amp;hellip; all old posts get
+updated with links to the new posts in the series, and any new series I make,
+regardless of the name, will get the nice list of posts at the bottom for that
+series.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo: Beyond the Defaults</title>
+      <link>https://leejoramo.github.io/hugo-beyond-the-defaults/</link>
+      <pubDate>Fri, 08 Aug 2014 10:07:46 +0000</pubDate>
+      
+      <guid>https://leejoramo.github.io/hugo-beyond-the-defaults/</guid>
+      <description>&lt;p&gt;In my last post, I had deployed what is almost the most basic Hugo site
+possible.  The only reason it took more than 10 minutes is because I wanted to
+tweak the theme.  However, there were a few things that immediately annoyed me.&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t like having to type &lt;code&gt;hugo -t hyde&lt;/code&gt; all the time.  Well, turns out
+that&amp;rsquo;s not necessary.  You can just put  &lt;code&gt;theme = &amp;quot;hyde&amp;quot;&lt;/code&gt; in your site
+config, and never need to type it again.  Sweet.  Now to run the local server, I
+can just run &lt;code&gt;hugo server -w&lt;/code&gt;, and for final generation, I can just run &lt;code&gt;hugo&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next is that my posts were under npf.io/post/postname &amp;hellip; which is not the end
+of the world, but I really like seeing the date in post URLs, so that it&amp;rsquo;s easy
+to tell if I&amp;rsquo;m looking at something really, really old.  So, I went about
+looking at how to do that.  Turns out, it&amp;rsquo;s trivial.  Hugo has a feature called
+&lt;a href=&#34;http://hugo.spf13.com/extras/permalinks&#34;&gt;permalinks&lt;/a&gt;, where you can define the
+format of the url for a section (a section is a top level division of your site,
+denoted by a top level folder under content/).  So, all you have to do is, in
+your site&amp;rsquo;s config file, put some config that looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[permalinks]
+    post = &amp;quot;/:year/:month/:filename/&amp;quot;
+    code = &amp;quot;/:filename/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While we&amp;rsquo;re at it, I had been putting my code in the top level content
+directory, because I wanted it available at npf.io/projectname  &amp;hellip;. however
+there&amp;rsquo;s no need to do that, I can put the code under the code directory and just
+give it a permalink to show at the top level of the site.  Bam, awesome, done.&lt;/p&gt;
+
+&lt;p&gt;One note: Don&amp;rsquo;t forget the slash at the end of the permalink.&lt;/p&gt;
+
+&lt;p&gt;But wait, this will move my &amp;ldquo;Hugo is Friggin&amp;rsquo; Awesome&amp;rdquo; post to a different URL,
+and Steve Francia already tweeted about it with the old URL.  I don&amp;rsquo;t want that
+url to send people to a 404 page!
+&lt;a href=&#34;http://hugo.spf13.com/extras/aliases&#34;&gt;Aliases&lt;/a&gt; to the rescue.  Aliases are just
+a way to make redirects from old URLs to new ones.  So I just put &lt;code&gt;aliases =
+[&amp;quot;/post/hugo-is-awesome/&amp;quot;]&lt;/code&gt; in the metadata at the top of that post, and now
+links to there will redirect to the new location.  Awesome.&lt;/p&gt;
+
+&lt;p&gt;Ok, so cool&amp;hellip; except that I don&amp;rsquo;t really want the content for my blog posts
+under content/post/ &amp;hellip; I&amp;rsquo;d prefer them under content/blog, but still be of type
+&amp;ldquo;post&amp;rdquo;.  So let&amp;rsquo;s change that too.  This is pretty easy, just rename the folder
+from post to blog, and then set up an
+&lt;a href=&#34;http://hugo.spf13.com/content/archetypes&#34;&gt;archetype&lt;/a&gt; to default the metadata
+under /blog/ to type = &amp;ldquo;post&amp;rdquo;.  Archetypes are default metadata for a section,
+so in this case, I make a file archetypes/blog.md and add type= &amp;ldquo;post&amp;rdquo; to the
+archetype&amp;rsquo;s metadata, and now all my content created with &lt;code&gt;hugo new
+blog/foo.md&lt;/code&gt; will be prepopulated as type &amp;ldquo;post&amp;rdquo;.  (does it matter if the type
+is post vs. blog?  no.  But it matters to me ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/mlafeldt&#34;&gt;@mlafeldt&lt;/a&gt; on Twitter pointed out my RSS feed was
+wonky&amp;hellip;. wait, I have an RSS feed?  Yes, Hugo &lt;a href=&#34;http://hugo.spf13.com/templates/rss&#34;&gt;has that
+too&lt;/a&gt;.  There are feed XML files
+automatically output for most listing directories&amp;hellip; and the base feed for the
+site is a list of recent content.  So, I looked at what Hugo had made for me
+(index.xml in the root output directory)&amp;hellip; this is not too bad, but I don&amp;rsquo;t
+really like the title, and it&amp;rsquo;s including my code content in the feed as well as
+posts, which I don&amp;rsquo;t really want.  Luckily, this is trivial to fix.  The RSS xml
+file is output using a Go template just like everything else in the output.
+It&amp;rsquo;s trivial to adjust the template so that it only lists content of type
+&amp;ldquo;post&amp;rdquo;, and tweak the feed name, etc.&lt;/p&gt;
+
+&lt;p&gt;I was going to write about how I got the series stuff at the bottom of this
+page, but this post is long enough already, so I&amp;rsquo;ll just make that into its own
+post, as the next post in the series! :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo Is Friggin&#39; Awesome</title>
+      <link>https://leejoramo.github.io/somethingelse/</link>
+      <pubDate>Fri, 01 Aug 2014 06:45:00 +0000</pubDate>
+      
+      <guid>https://leejoramo.github.io/somethingelse/</guid>
+      <description>&lt;p&gt;This blog is powered by &lt;a href=&#34;http://hugo.spf13.com&#34;&gt;Hugo&lt;/a&gt;, a static site generator
+written by Steve Francia (aka spf13).  It is, of course, written in Go.  It is
+pretty similar to &lt;a href=&#34;jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;, in that you write markdown, run a
+little program (hugo) and html pages come out the other end in the form of a
+full static site.  What&amp;rsquo;s different is that Jekyll is written in ruby and is
+relatively slow, and Hugo is written in Go and is super fast&amp;hellip; only taking a
+few milliseconds to render each page.&lt;/p&gt;
+
+&lt;p&gt;Hugo includes a webserver to serve the content, which will regenerate the site
+automatically when you change your content.  Your browser will update with the
+changes immediately, making your development cycle for a site a very tight
+loop.&lt;/p&gt;
+
+&lt;p&gt;The basic premise of Hugo is that your content is organized in a specific way on
+purpose.  Folders of content and the name of the files combine to turn into the
+url at which they are hosted. For example, content/foo/bar/baz.md will be hosted
+at &amp;lt;site&amp;gt;/foo/bar/baz.&lt;/p&gt;
+
+&lt;p&gt;Every content file has a section of metadata at the top that allows you to
+specify information about the content, like the title, date, even arbitrary data
+for your specific site (for example, I have lists of badges that are shown on
+pages for code projects).&lt;/p&gt;
+
+&lt;p&gt;All the data in a content file is just that - data.  Other than markdown
+specifying a rough view of your page, the actual way the content is viewed is
+completely separated from the data.  Views are written in Go&amp;rsquo;s templating
+language, which is quick to pick up and easy to use if you&amp;rsquo;ve used other
+templating languages (or even if, like me, you haven&amp;rsquo;t).  This lets you do
+things like iterate over all the entries in a menu and print them out in a ul/li
+block, or iterate over all the posts in your blog and display them on the main
+page.&lt;/p&gt;
+
+&lt;p&gt;You can learn more about Hugo by going to &lt;a href=&#34;http://hugo.spf13.com&#34;&gt;its site&lt;/a&gt;,
+which, of course, is built using Hugo.&lt;/p&gt;
+
+&lt;p&gt;The static content for this site is hosted on github pages at
+&lt;a href=&#34;https://github.com/natefinch/natefinch.github.io&#34;&gt;https://github.com/natefinch/natefinch.github.io&lt;/a&gt;. But the static content is
+relatively boring&amp;hellip; that&amp;rsquo;s what you&amp;rsquo;re looking at in your browser right now.
+What&amp;rsquo;s interesting is the code behind it.  That lives in a separate repo on
+github at &lt;a href=&#34;https://github.com/natefinch/npf&#34;&gt;https://github.com/natefinch/npf&lt;/a&gt;.  This is where the markdown content
+and templates live.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how I have things set up locally&amp;hellip; all open source code on my machine
+lives in my GOPATH (which is set to my HOME).  So, it&amp;rsquo;s easy to find anything I
+have ever downloaded. Thus, the static site lives at
+$GOPATH/src/github.com/natefinch/natefinch.github.io and the markdown +
+templates lives in $GOPATH/src/github.com/natefinch/npf.  I created a symbolic
+link under npf called public that points to the natefinch.github.io directory.
+This is the directory that hugo outputs the static site to by default&amp;hellip; that
+way Hugo dumps the static content right into the correct directory for me to
+commit and push to github.  I just had to add public to my .gitignore so
+everyone wouldn&amp;rsquo;t get confused.&lt;/p&gt;
+
+&lt;p&gt;Then, all I do is go to the npf directory, and run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo new post/urlofpost.md
+hugo server --buildDrafts --watch -t hyde
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That generates a new content item that&amp;rsquo;ll show up on my site under
+/post/urlofpost.  Then it runs the local webserver so I can watch the content by
+pointing a browser at localhost:1313 on a second monitor as I edit the post in a
+text editor. hyde is the name of the theme I&amp;rsquo;m using, though I have modified
+it.  Note that hugo will mark the content as a draft by default, so you need
+&amp;ndash;buildDrafts for it to get rendered locally, and remember to delete the draft =
+true line in the page&amp;rsquo;s metadata when you&amp;rsquo;re ready to publish, or it won&amp;rsquo;t show
+up on your site.&lt;/p&gt;
+
+&lt;p&gt;When I&amp;rsquo;m satisfied, kill the server, and run&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo -t hyde
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to generate the final site output, switch into the public directory, and&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git commit -am &amp;quot;some new post&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it.  Super easy, super fast, and no muss.  Coming from Blogger, this is
+an amazingly better workflow with no wrestling with the WYSIWYG editor to make
+it display stuff in a reasonable fashion.  Plus I can write posts 100% offline
+and publish them when I get back to civilization.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a lot more to Hugo, and a lot more I want to do with the site, but that
+will come in time and with more posts :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>First Post</title>
+      <link>https://leejoramo.github.io/first/</link>
+      <pubDate>Fri, 01 Aug 2014 06:30:00 +0000</pubDate>
+      
+      <guid>https://leejoramo.github.io/first/</guid>
+      <description>&lt;p&gt;This is the first post of my new blog.  You may (eventually) see old posts
+showing up behind here, those have been pulled in from my personal blog at
+&lt;a href=&#34;http://blog.natefinch.com&#34;&gt;blog.natefinch.com&lt;/a&gt;. I&amp;rsquo;ve decided to split off my
+programming posts so that people who only want to see the coding stuff don&amp;rsquo;t
+have to see my personal posts, and people that only want to see my personal
+stuff don&amp;rsquo;t have to get inundated with programming posts.&lt;/p&gt;
+
+&lt;p&gt;Right now the site is pretty basic, but I will add more features to it, such as post history etc.&lt;/p&gt;
 </description>
     </item>
     

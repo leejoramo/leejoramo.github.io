@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Returning Errors | My New Hugo Site
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://leejoramo.github.io/errors/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="https://leejoramo.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+  <link href="https://leejoramo.github.ioindex.xml" rel="feed" type="application/rss+xml" title="My New Hugo Site" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://leejoramo.github.io">My New Hugo Site</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>Returning Errors</h1>
+      <div class="meta">
+        Oct 10, 2015 &nbsp;
+        
+          #<a href="/tags/go">go</a>&nbsp;
+        
+          #<a href="/tags/golang">golang</a>&nbsp;
+        
+          #<a href="/tags/errors">errors</a>&nbsp;
+        
+          #<a href="/tags/error-handling">error handling</a>&nbsp;
+        
+      </div>
+    </div>
+    <article>
+      <p>There are basically two ways to return errors in Go:</p>
+
+<pre><code class="language-go">func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return err
+	}
+	...
+}
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-go">func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return fmt.Errorf(&quot;can't find default config file: %v&quot;, err)
+	}
+	...
+}
+</code></pre>
+
+<p>The former passes the original error up the stack, but adds no context to it.
+Thus, your saveConfig function may end up printing &ldquo;file not found:
+default.cfg&rdquo; without telling the caller why it was trying to open default.cfg.</p>
+
+<p>The latter allows you to add context to an error, so the above error could
+become &ldquo;can&rsquo;t find default config file: file not found: default.cfg&rdquo;.
+This gives nice context to the error, but unfortunately, it creates an entirely
+new error that only maintains the error string from the original.  This is fine
+for human-facing output, but is useless for error handling code.</p>
+
+<p>If you use the former code, calling code can then use <code>os.IsNotExist()</code>, figure
+out that it was a not found error, and create the file.  Using the latter code,
+the type of the error is now a different type than the one from os.Open, and
+thus will not return true from os.IsNotExist.  Using fmt.Errorf effectively
+masks the original error from calling code (unless you do ugly string parsing -
+please don&rsquo;t).</p>
+
+<p>Sometimes it&rsquo;s good to mask the original error, if you don&rsquo;t want your callers
+depending on what should be an implementation detail (thus effectively making it
+part of your API contract). However, lots of times you may want to give your
+callers the ability to introspect your errors and act on them. This then loses
+the opportunity to add context to the error, and so people calling your code
+have to do some mental gymnastics (and/or look at the implementation) to
+understand what an error really means.</p>
+
+<p>A further problem for both these cases is that when debugging, you lose all
+knowledge of where an error came from.  There&rsquo;s no stack trace, there&rsquo;s not even
+a file and line number of where the error originated.  This can make debugging
+errors fairly difficult, unless you&rsquo;re careful to make your error messages easy
+to grep for.  I can&rsquo;t tell you how often I&rsquo;ve searched for an error formatting
+string, and hoped I was guessing the format correctly.</p>
+
+<p>This is just the way it is in Go, so what&rsquo;s a developer to do?  Why, write an
+errors library that does smarter things of course!  And there are a ton of these
+things out there.  Many add a stack trace at error creation time.  Most wrap an
+original error in some way, so you can add some context while keeping the
+original error for checks like os.IsNotExist. At Canonical, the Juju team wrote
+just such a library (actually we wrote 3 and then had them fight until only one
+was standing), and the result is <a href="https://github.com/juju/errors">https://github.com/juju/errors</a>.</p>
+
+<p>Thus you might return an error this way:</p>
+
+<pre><code class="language-go">func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return errors.Annotatef(err, &quot;can't find default config file&quot;)
+	}
+}
+</code></pre>
+
+<p>This returns a new error created by the errors package which adds the given
+string to the front of the original error&rsquo;s error message (just like
+fmt.Errorf), but you can introspect it using <code>errors.Cause(err)</code> to access the
+original error return by checkDefault.  Thus you can use
+<code>os.IsNotExist(errors.Cause(err))</code> and it&rsquo;ll do the right thing.</p>
+
+<p>However, this and every other special error library suffer from the same problem
+- your library can only understand its own special errors.  And no one else&rsquo;s
+code can understand your errors (because they won&rsquo;t know to use errors.Cause
+before checking the error).  Now you&rsquo;re back to square one - your errors are
+just as opaque to third party code as if they were created by fmt.Errorf.</p>
+
+<p>I don&rsquo;t really have an answer to this problem. It&rsquo;s inherent in the
+functionality (or lack thereof) of the standard Go error type.</p>
+
+<p>Obviously, if you&rsquo;re writing a standalone package for many other people to use,
+don&rsquo;t use a third party error wrapping library.  Your callers are likely not
+going to be using the same library, so they won&rsquo;t get use out of it, and it adds
+unnecessary dependencies to your code.  To decide between returning the original
+error and an annotated error using fmt.Errorf is harder.  It&rsquo;s hard to know when
+the information in the original error might be useful to your caller.  On the
+other hand, the additional context added by fmt.Errorf can often change an
+inscrutable error into an obvious one.</p>
+
+<p>If you&rsquo;re writing an application where you&rsquo;ll be controlling most of the
+packages being written, then an errors package may make sense&hellip; but you still
+run the risk of giving your custom errors to third party code that can&rsquo;t
+understand them.  Plus, any errors library adds some complexity to the code (for
+example, you always have to rememeber to call <code>os.IsNotExist(errors.Cause(err))</code>
+rather than just calling <code>os.InNotExist(err)</code>).</p>
+
+<p>You have to choose one of the three options every time you return an error.
+Choose carefully.  Sometimes you&rsquo;re going to make a choice that makes your life
+more difficult down the road.</p>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://leejoramo.github.io/testing-exec-command/" rel="prev">Testing os/exec.Command</a></span>
+    
+    
+      <span class="next"><a href="https://leejoramo.github.io/enums/" rel="next">To Enum or Not To Enum</a> &rarr;</span>
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

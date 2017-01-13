@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Hugo: Beyond the Defaults | My New Hugo Site
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://leejoramo.github.io/hugo-beyond-the-defaults/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="https://leejoramo.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+  <link href="https://leejoramo.github.ioindex.xml" rel="feed" type="application/rss+xml" title="My New Hugo Site" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://leejoramo.github.io">My New Hugo Site</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>Hugo: Beyond the Defaults</h1>
+      <div class="meta">
+        Aug 8, 2014 &nbsp;
+        
+      </div>
+    </div>
+    <article>
+      <p>In my last post, I had deployed what is almost the most basic Hugo site
+possible.  The only reason it took more than 10 minutes is because I wanted to
+tweak the theme.  However, there were a few things that immediately annoyed me.</p>
+
+<p>I didn&rsquo;t like having to type <code>hugo -t hyde</code> all the time.  Well, turns out
+that&rsquo;s not necessary.  You can just put  <code>theme = &quot;hyde&quot;</code> in your site
+config, and never need to type it again.  Sweet.  Now to run the local server, I
+can just run <code>hugo server -w</code>, and for final generation, I can just run <code>hugo</code>.</p>
+
+<p>Next is that my posts were under npf.io/post/postname &hellip; which is not the end
+of the world, but I really like seeing the date in post URLs, so that it&rsquo;s easy
+to tell if I&rsquo;m looking at something really, really old.  So, I went about
+looking at how to do that.  Turns out, it&rsquo;s trivial.  Hugo has a feature called
+<a href="http://hugo.spf13.com/extras/permalinks">permalinks</a>, where you can define the
+format of the url for a section (a section is a top level division of your site,
+denoted by a top level folder under content/).  So, all you have to do is, in
+your site&rsquo;s config file, put some config that looks like this:</p>
+
+<pre><code>[permalinks]
+    post = &quot;/:year/:month/:filename/&quot;
+    code = &quot;/:filename/&quot;
+</code></pre>
+
+<p>While we&rsquo;re at it, I had been putting my code in the top level content
+directory, because I wanted it available at npf.io/projectname  &hellip;. however
+there&rsquo;s no need to do that, I can put the code under the code directory and just
+give it a permalink to show at the top level of the site.  Bam, awesome, done.</p>
+
+<p>One note: Don&rsquo;t forget the slash at the end of the permalink.</p>
+
+<p>But wait, this will move my &ldquo;Hugo is Friggin&rsquo; Awesome&rdquo; post to a different URL,
+and Steve Francia already tweeted about it with the old URL.  I don&rsquo;t want that
+url to send people to a 404 page!
+<a href="http://hugo.spf13.com/extras/aliases">Aliases</a> to the rescue.  Aliases are just
+a way to make redirects from old URLs to new ones.  So I just put <code>aliases =
+[&quot;/post/hugo-is-awesome/&quot;]</code> in the metadata at the top of that post, and now
+links to there will redirect to the new location.  Awesome.</p>
+
+<p>Ok, so cool&hellip; except that I don&rsquo;t really want the content for my blog posts
+under content/post/ &hellip; I&rsquo;d prefer them under content/blog, but still be of type
+&ldquo;post&rdquo;.  So let&rsquo;s change that too.  This is pretty easy, just rename the folder
+from post to blog, and then set up an
+<a href="http://hugo.spf13.com/content/archetypes">archetype</a> to default the metadata
+under /blog/ to type = &ldquo;post&rdquo;.  Archetypes are default metadata for a section,
+so in this case, I make a file archetypes/blog.md and add type= &ldquo;post&rdquo; to the
+archetype&rsquo;s metadata, and now all my content created with <code>hugo new
+blog/foo.md</code> will be prepopulated as type &ldquo;post&rdquo;.  (does it matter if the type
+is post vs. blog?  no.  But it matters to me ;)</p>
+
+<p><a href="https://twitter.com/mlafeldt">@mlafeldt</a> on Twitter pointed out my RSS feed was
+wonky&hellip;. wait, I have an RSS feed?  Yes, Hugo <a href="http://hugo.spf13.com/templates/rss">has that
+too</a>.  There are feed XML files
+automatically output for most listing directories&hellip; and the base feed for the
+site is a list of recent content.  So, I looked at what Hugo had made for me
+(index.xml in the root output directory)&hellip; this is not too bad, but I don&rsquo;t
+really like the title, and it&rsquo;s including my code content in the feed as well as
+posts, which I don&rsquo;t really want.  Luckily, this is trivial to fix.  The RSS xml
+file is output using a Go template just like everything else in the output.
+It&rsquo;s trivial to adjust the template so that it only lists content of type
+&ldquo;post&rdquo;, and tweak the feed name, etc.</p>
+
+<p>I was going to write about how I got the series stuff at the bottom of this
+page, but this post is long enough already, so I&rsquo;ll just make that into its own
+post, as the next post in the series! :)</p>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://leejoramo.github.io/somethingelse/" rel="prev">Hugo Is Friggin&#39; Awesome</a></span>
+    
+    
+      <span class="next"><a href="https://leejoramo.github.io/making-it-a-series/" rel="next">Making It a Series</a> &rarr;</span>
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+

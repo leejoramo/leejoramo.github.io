@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  
+  <meta charset="UTF-8">
+  <title>
+    Go Plugins are as Easy as Pie | My New Hugo Site
+  </title>
+
+
+  
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1,initial-scale=1">
+
+  
+  <link rel="canonical" href="https://leejoramo.github.io/pie/"/>
+
+  
+  <link rel="stylesheet" href="/css/sanitize.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/highlight_monokai.css">
+  <link rel="stylesheet" href="/css/theme.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  
+  <link href="https://leejoramo.github.ioindex.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+  <link href="https://leejoramo.github.ioindex.xml" rel="feed" type="application/rss+xml" title="My New Hugo Site" />
+
+  
+  
+
+
+</head>
+
+
+
+<body>
+<div class="container">
+
+  
+  <header role="banner">
+    <div class="row gutters">
+      <div id="site-title" class="col span_6">
+        <h1><a href="https://leejoramo.github.io">My New Hugo Site</a></h1>
+        
+      </div>
+      <div id="social" class="col span_6">
+        <ul>
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  
+  <main id="single" role="main">
+    <div class="article-header">
+      <h1>Go Plugins are as Easy as Pie</h1>
+      <div class="meta">
+        May 25, 2015 &nbsp;
+        
+          #<a href="/tags/go">Go</a>&nbsp;
+        
+          #<a href="/tags/golang">golang</a>&nbsp;
+        
+          #<a href="/tags/plugins">plugins</a>&nbsp;
+        
+      </div>
+    </div>
+    <article>
+      
+
+<p>When people hear that Go only supports static linking, one of the things they
+eventually realize is that they can&rsquo;t have traditional plugins via dlls/libs (in
+compiled languages) or scripts (in interpreted languages).  However, that
+doesn&rsquo;t mean that you can&rsquo;t have plugins.  Some people suggest doing &ldquo;compiled-
+in&rdquo; plugins - but to me, that&rsquo;s not a plugin, that&rsquo;s just code.  Some people
+suggest just running sub processes and sending messages via their CLI, but that
+runs into CLI parsing issues and requires runnnig a new process for every
+request.  The last option people think of is using RPC to an external process,
+which may also seem cumbersome, but it doesn&rsquo;t have to be.</p>
+
+<h3 id="serving-up-some-pie">Serving up some pie</h3>
+
+<p>I&rsquo;d like to introduce you to <a href="https://github.com/natefinch/pie">https://github.com/natefinch/pie</a> - this is a Go
+package which contains a toolkit for writing plugins in Go.  It uses processes
+external to the main program as the plugins, and communicates with them via RPC
+over the plugin&rsquo;s stdin and stout.  Having the plugin as an external process can
+actually has several benefits:</p>
+
+<ul>
+<li>If the plugin crashes, it won&rsquo;t crash your process.</li>
+<li>The plugin is not in your process&rsquo; memory space, so it can&rsquo;t do anything nasty.</li>
+<li>The plugin can be written in any language, not just Go.</li>
+</ul>
+
+<p>I think this last point is actually the most valuable.  One of the nicest things
+about Go applications is that they&rsquo;re just copy-and-run.  No one even needs to
+know they were written in Go.  With plugins as external processes, this remains
+true.  People wanting to extend your application can do so in the language of
+their choice, so long as it supports the codec your application has chosen for
+RPC.</p>
+
+<p>The fact that the communication occurs over stdin and stdout means that there is
+no need to worry about negotiating ports, it&rsquo;s easily cross platform compatible,
+and it&rsquo;s very secure.</p>
+
+<h3 id="orthogonality">Orthogonality</h3>
+
+<p>Pie is written to be a very simple set of functions that help you set up
+communication between your process and a plugin process.  Once you make a couple
+calls to pie, you then need to work out your own way to use the RPC connection
+created.  Pie does not attempt to be an all-in-one plugin framework, though you
+could certainly use it as the basis for one.</p>
+
+<h3 id="why-is-it-called-pie">Why is it called pie?</h3>
+
+<p>Because if you pronounce API like &ldquo;a pie&rdquo;, then all this consuming and serving
+of APIs becomes a lot more palatable.  Also, pies are the ultimate pluggable
+interface - depending on what&rsquo;s inside, you can get dinner, dessert, a snack, or
+even breakfast.  Plus, then I get to say that plugins in Go are as easy as&hellip;
+well, you know.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I plan to be using pie in one of my own side projects.  Take it out for a spin
+in one of your projects and let me know what you think.  Happy eating!</p>
+
+      
+      
+      
+    </article>
+    
+
+
+  </main>
+  
+  <nav class="pagination-single">
+    
+      <span class="previous">&larr; <a href="https://leejoramo.github.io/why-everyone-hates-go/" rel="prev">Why Everyone Hates Go</a></span>
+    
+    
+      <span class="next"><a href="https://leejoramo.github.io/wip-godoc/" rel="next">Sharing Godoc of a WIP Branch</a> &rarr;</span>
+    
+  </nav>
+
+
+  
+  <footer role="contentinfo">
+    <div style="text-align:center;">
+      
+      
+    </div>
+  </footer>
+
+
+</div>
+
+<script src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+</body>
+</html>
+
