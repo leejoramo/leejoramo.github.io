@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Code-rsses on My New Hugo Site</title>
+    <link>http://lee.joramo.com/code/index.xml</link>
+    <description>Recent content in Code-rsses on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Oct 2016 23:00:00 +0000</lastBuildDate>
+    <atom:link href="http://lee.joramo.com/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Deputy</title>
+      <link>http://lee.joramo.com/code/deputy/</link>
+      <pubDate>Thu, 06 Oct 2016 23:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/deputy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gorram</title>
+      <link>http://lee.joramo.com/code/gorram/</link>
+      <pubDate>Sun, 02 Oct 2016 23:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/gorram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pie</title>
+      <link>http://lee.joramo.com/code/pie/</link>
+      <pubDate>Tue, 02 Jun 2015 17:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/pie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NPipe</title>
+      <link>http://lee.joramo.com/code/npipe/</link>
+      <pubDate>Fri, 01 Aug 2014 10:15:15 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/npipe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lumberjack</title>
+      <link>http://lee.joramo.com/code/lumberjack/</link>
+      <pubDate>Mon, 28 Jul 2014 11:28:15 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/lumberjack/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

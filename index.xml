@@ -1,0 +1,1504 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://lee.joramo.com/index.xml</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Oct 2016 22:08:09 -0400</lastBuildDate>
+    <atom:link href="http://lee.joramo.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Writing Go Applications with Reusable Logic</title>
+      <link>http://lee.joramo.com/blog/reusable-commands/</link>
+      <pubDate>Tue, 18 Oct 2016 22:08:09 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/reusable-commands/</guid>
+      <description>
+
+&lt;p&gt;Writing libraries in Go is a relatively well-covered topic, I think&amp;hellip; but I see
+a lot fewer posts about writing commands.  When it comes down to it, all Go code
+ends up in a command.  So let&amp;rsquo;s talk about it!  This will be the first in a
+series, since I ended up having a lot more to say than I realized.&lt;/p&gt;
+
+&lt;p&gt;Today I&amp;rsquo;m going to focus on basic project layout, with the aims of optimizing
+for reusability and testability.&lt;/p&gt;
+
+&lt;p&gt;There are three unique bits about commands that influence how I structure my
+code when writing a command rather than a library:&lt;/p&gt;
+
+&lt;h2 id=&#34;package-main&#34;&gt;Package main&lt;/h2&gt;
+
+&lt;p&gt;This is the only package a go program must have.  However, aside from telling
+the go tool to produce a binary, there&amp;rsquo;s one other unique thing about package
+main - no one can import code from it.  That means that any code you put in
+package main can not be used directly by another project, and that makes the OSS
+gods sad.  Since one of the main reasons I write open source code is so that
+other developers may use it, this goes directly against my desires.&lt;/p&gt;
+
+&lt;p&gt;There have been many times when I&amp;rsquo;ve thought &amp;ldquo;I&amp;rsquo;d love to use the logic behind X
+Go binary as a part of my code&amp;rdquo;.  If that logic is in package main, you can&amp;rsquo;t.&lt;/p&gt;
+
+&lt;h2 id=&#34;os-exit&#34;&gt;os.Exit&lt;/h2&gt;
+
+&lt;p&gt;If you care about producing a binary that does what users expect, then you
+should care about what exit code your binary exits with.  The only way to do
+that is to call os.Exit (or call something that calls os.Exit, like log.Fatal).&lt;/p&gt;
+
+&lt;p&gt;However, you can&amp;rsquo;t test a function that calls os.Exit.  Why?  Because calling
+os.Exit during a test &lt;em&gt;exits the test executable&lt;/em&gt;.  This is quite hard to figure
+out if you end up doing it by accident (which I know from personal experience).
+When running tests, no tests actually fail, the tests just exit sooner than they
+should, and you&amp;rsquo;re left scratching your head.&lt;/p&gt;
+
+&lt;p&gt;The easiest thing to do is &lt;em&gt;don&amp;rsquo;t call os.Exit&lt;/em&gt;.  Most of your code shouldn&amp;rsquo;t be
+calling os.Exit anyway&amp;hellip; someone&amp;rsquo;s going to get real mad if they import your
+library and it randomly causes their application to terminate under some
+conditions.&lt;/p&gt;
+
+&lt;p&gt;So, only call os.Exit in exactly one place, as near to the &amp;ldquo;exterior&amp;rdquo; of your
+application as you can get, with minimal entry points.  Speaking of which&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&#34;func-main&#34;&gt;func main()&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s is the one function all go commands must have.  You&amp;rsquo;d think that
+everyone&amp;rsquo;s func main would be different, after all, everyone&amp;rsquo;s application is
+different, right?  Well, it turns out, if you really want to make your code
+testable and reusable, there&amp;rsquo;s really only approximately one right answer to
+&amp;ldquo;what&amp;rsquo;s in your main function?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;In fact, I&amp;rsquo;ll go one step further, I think there&amp;rsquo;s only approximately one right
+answer to &amp;ldquo;what&amp;rsquo;s in your package main?&amp;rdquo; and that&amp;rsquo;s this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// command main documentation here.
+package main
+
+import (
+    &amp;quot;os&amp;quot;
+
+    &amp;quot;github.com/you/proj/cli&amp;quot;
+)
+func main{
+    os.Exit(cli.Run())
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it.  This is approximately the most minimal code you can have in a useful
+package main, thereby wasting no effort on code that others can&amp;rsquo;t reuse.  We
+isolated os.Exit to a single line function that is the very exterior of our
+project, and effectively needs no testing.&lt;/p&gt;
+
+&lt;h2 id=&#34;project-layout&#34;&gt;Project Layout&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s get a look at the total package layout:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/home/you/src/github.com/you/proj $ tree
+.
+├── cli
+│   ├── parse.go
+│   ├── parse_test.go
+│   └── run.go
+├── LICENSE
+├── main.go
+├── README.md
+└── run
+    ├── command.go
+    └── command_test.go
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We know what&amp;rsquo;s in main.go&amp;hellip; and in fact, main.go is the only go file in the
+main package. LICENSE and README.md should be self-explanatory. (Always
+use a license!  Otherwise many people won&amp;rsquo;t be able to use your code.)&lt;/p&gt;
+
+&lt;p&gt;Now we come to the two subdirectories, run and cli.&lt;/p&gt;
+
+&lt;h3 id=&#34;cli&#34;&gt;CLI&lt;/h3&gt;
+
+&lt;p&gt;The cli package contains the command line parsing logic.  This is where you
+define the UI for your binary.  It contains flag parsing, arg parsing, help
+text, etc.&lt;/p&gt;
+
+&lt;p&gt;It also contains the code that returns the exit code to func main (which gets
+sent to os.Exit).  Thus, you can test exit codes returned from those functions,
+instead of trying to test exit codes your binary as a whole produces.&lt;/p&gt;
+
+&lt;h3 id=&#34;run&#34;&gt;Run&lt;/h3&gt;
+
+&lt;p&gt;The run package contains the meat of the logic of your binary.  You should write
+this package as if it were a standalone library.  It should be far removed from
+any thoughts of CLI, flags, etc.  It should take in structured data and return
+errors.  Pretend it might get called by some other library, or a web service, or
+someone else&amp;rsquo;s binary.  Make as few assumptions as possible about how it&amp;rsquo;ll be
+used, just as you would a generic library.&lt;/p&gt;
+
+&lt;p&gt;Now, obviously, larger projects will require more than one directory.  In fact,
+you may want to split out your logic into a separate repo.  This kind of depends
+on how likely you think it&amp;rsquo;ll be that people want to reuse your logic.  If you
+think it&amp;rsquo;s highly likely, I recommend making the logic a separate directory. In
+my mind, a separate directory for the logic shows a stronger committment to
+quaity and stability than some random directory nestled deep in a repo
+somewhere.&lt;/p&gt;
+
+&lt;h2 id=&#34;putting-it-together&#34;&gt;Putting it together&lt;/h2&gt;
+
+&lt;p&gt;The cli package forms a command line frontend for the logic in the run package.
+If someone else comes along, sees your binary, and wants to use the logic behind
+it for a web API, they can just import the run package and use that logic
+directly.  Likewise, if they don&amp;rsquo;t like your CLI options, they can easily write
+their own CLI parser and use it as a frontend to the run package.&lt;/p&gt;
+
+&lt;p&gt;This is what I mean about reusable code.  I never want someone to have to hack
+apart my code to get more use out of it.  And the best way to do that is to
+separate the UI from the logic.  This is the key part.  &lt;strong&gt;Don&amp;rsquo;t let your UI
+(CLI) concepts leak into your logic.&lt;/strong&gt;  This is the best way to keep your logic
+generic, and your UI manageable.&lt;/p&gt;
+
+&lt;h3 id=&#34;larger-projects&#34;&gt;Larger Projects&lt;/h3&gt;
+
+&lt;p&gt;This layout is good for small to medium projects.  There&amp;rsquo;s a single binary that
+is in the root of the repo, so it&amp;rsquo;s easier to go-get than if it&amp;rsquo;s under multiple
+subdirectories.  Larger projects pretty much throw everything out the window.
+They may have multiple binaries, in which case they can&amp;rsquo;t all be in the root of
+the repo.  However, such projects usually also have custom build steps and
+require more than just go-get (which I&amp;rsquo;ll talk about later).&lt;/p&gt;
+
+&lt;p&gt;More to come soon.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vanity Imports with Hugo</title>
+      <link>http://lee.joramo.com/blog/vanity-imports-with-hugo/</link>
+      <pubDate>Sun, 16 Oct 2016 00:01:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/vanity-imports-with-hugo/</guid>
+      <description>&lt;p&gt;When working on &lt;a href=&#34;https://github.com/natefinch/gorram&#34;&gt;Gorram&lt;/a&gt;, I decided I
+wanted to release it via a vanity import path.  After all, that&amp;rsquo;s half the
+reason I got npf.io in the first place (an idea blatantly stolen from Russ Cox&amp;rsquo;s
+rsc.io).&lt;/p&gt;
+
+&lt;p&gt;What is a vanity import path?  It is explained in the go get
+&lt;a href=&#34;https://golang.org/cmd/go/#hdr-Remote_import_paths, though it
+isn&#39;t given that name (or any name, unfortunately&#34;&gt;documentation&lt;/a&gt;.  If you&amp;rsquo;re not hosted on one
+of the well known hosting sites (github, bitbucket, etc), go get has to figure
+out how to get your code. How it does this is fairly ingenious - it performs an
+http GET of the import path (first https then http) and looks for specific meta
+elements in the page&amp;rsquo;s header.  The header elements tells go get what type of
+VCS is being used and what address to use to get the code.&lt;/p&gt;
+
+&lt;p&gt;The great thing about this is that it removes the dependency of your code on any
+one code hosting site. If you want to move your code from github to bitbucket,
+you can do that without breaking anyone.&lt;/p&gt;
+
+&lt;p&gt;So, the first thing you need to host your own vanity imports is something that
+will respond to those GET requests with the right response.  You could do
+something complicated like a special web application running on a VM in the
+cloud, but that costs money and needs maintenance.  Since I already had a Hugo
+website (running for free on github pages), I wanted to see if I could use that.
+It&amp;rsquo;s a slightly more manual process, but the barrier of entry is a lot lower and
+it works on any free static hosting (like github pages).&lt;/p&gt;
+
+&lt;p&gt;So what I want is to have &lt;code&gt;go get npf.io/gorram&lt;/code&gt;, actually download the code
+from &lt;a href=&#34;https://github.com/natefinch/gorram&#34;&gt;https://github.com/natefinch/gorram&lt;/a&gt;.  For that, I need
+&lt;a href=&#34;https://npf.io/gorram&#34;&gt;https://npf.io/gorram&lt;/a&gt; to serve up this meta element:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;npf.io/gorram git https://github.com/natefinch/gorram&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or more generally:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;import-prefix vcs repo-root&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Where import-prefix is a string that matches a prefix of the import statement
+used in your code, vcs is the type of source control used, and repo-root is the
+root of the VCS repo where your code lives.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s important to note here is that these should be set this way for packages
+in subdirectories as well.  So, for npf.io/gorram/run, the meta tag should still
+be as above, since it matches a prefix of the import path, and the root of the
+repo is still github.com/natefinch/gorram.  (We&amp;rsquo;ll get to how to handle
+subdirectories later.)&lt;/p&gt;
+
+&lt;p&gt;You need a page serving that meta tag to live at the exact same place as the import
+statement&amp;hellip; that generally will mean it needs to be in the root of your domain
+(I know that I, personally don&amp;rsquo;t want to see &lt;code&gt;go get npf.io/code/gorram&lt;/code&gt; when I
+could have &lt;code&gt;go get npf.io/gorram&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;The easiest way to do this and keep your code organized is to put all your pages
+for code into a new directory under content called &amp;ldquo;code&amp;rdquo;.  Then you just need
+to set the &amp;ldquo;permalink&amp;rdquo; for the code type in your site&amp;rsquo;s config file thusly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[Permalinks]
+	code = &amp;quot;/:filename/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then your content&amp;rsquo;s filename (minus extension) will be used as its url relative
+to your site&amp;rsquo;s base URL. Following the same example as above, I have
+content/code/gorram.md which will make that page now appear at npf.io/gorram.&lt;/p&gt;
+
+&lt;p&gt;Now, for the content.  I don&amp;rsquo;t actually want to have to populate this page with
+content&amp;hellip; I&amp;rsquo;d rather people just get forwarded on to github, so that&amp;rsquo;s what
+we&amp;rsquo;ll do, by using a refresh header.  So here&amp;rsquo;s our template, that&amp;rsquo;ll live under layouts/code/single.html:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot;&amp;gt;
+  &amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;npf.io{{substr .RelPermalink 0 -1}} git {{.Params.vanity}}&amp;quot;&amp;gt;
+  &amp;lt;meta name=&amp;quot;go-source&amp;quot; content=&amp;quot;npf.io{{substr .RelPermalink 0 -1}} {{.Params.vanity}} {{.Params.vanity}}/tree/master{/dir} {{.Params.vanity}}/blob/master{/dir}/{file}#L{line}&amp;quot;&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url={{.Params.vanity}}&amp;quot;&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will generate a page that will auto-forward anyone who hits it on to your
+github account.  Now, there&amp;rsquo;s one more (optional but recommended) piece - the
+go-source meta header.  This is only relevant to godoc.org, and tells godoc how
+to link to the sourcecode for your package (so links on godoc.org will go
+straight to github and not back to your vanity url, see more details &lt;a href=&#34;https://github.com/golang/gddo/wiki/Source-Code-Links&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Now all you need is to put a value of &lt;code&gt;vanity = https://github.com/you/yourrepo&lt;/code&gt;
+in the frontmatter of the correct page, and the template does the rest. If your
+repo has multiple directories, you&amp;rsquo;ll need a page for each directory (such as
+npf.io/gorram/run).  This would be kind of a drag, making the whole directory
+struture with content docs in each, except there&amp;rsquo;s a trick you can do here to
+make that easier.&lt;/p&gt;
+
+&lt;p&gt;I recently landed a change in Hugo that lets you customize the rendering of
+alias pages.  Alias pages are pages that are mainly used to redirect people from
+an old URL to the new URL of the same content.  But in our case, they can serve
+up the go-import and go-source meta headers for subdirectories of the main code
+document.  To do this, make an alias.html template in the root of your layouts
+directory, and make it look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        {{if .Page.Params.vanity -}}
+        &amp;lt;meta name=&amp;quot;go-import&amp;quot; content=&amp;quot;npf.io{{substr .Page.RelPermalink 0 -1}} git {{.Page.Params.vanity}}&amp;quot;&amp;gt;
+        &amp;lt;meta name=&amp;quot;go-source&amp;quot; content=&amp;quot;npf.io{{substr .Page.RelPermalink 0 -1}} {{.Page.Params.vanity}} {{.Page.Params.vanity}}/tree/master{/dir} {{.Page.Params.vanity}}/blob/master{/dir}/{file}#L{line}&amp;quot;&amp;gt;
+        {{- end}}
+        &amp;lt;title&amp;gt;{{ .Permalink }}&amp;lt;/title&amp;gt;
+        &amp;lt;link rel=&amp;quot;canonical&amp;quot; href=&amp;quot;{{ .Permalink }}&amp;quot;/&amp;gt;
+        &amp;lt;meta http-equiv=&amp;quot;content-type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot; /&amp;gt;
+        &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;quot;0; url={{ .Permalink }}&amp;quot; /&amp;gt;
+    &amp;lt;/head&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Other than the stuff in the if statement, the rest is the default alias page
+that Hugo creates anyway.  The stuff in the if statement is basically the same
+as what&amp;rsquo;s in the code template, just with an extra indirection of specifying
+.Page first.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note that this change to Hugo is in master but not in a release yet.  It&amp;rsquo;ll be
+in 0.18, but for now you&amp;rsquo;ll have to build master to get it.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, to produce pages for subpackages, you can just specify aliases in the front
+matter of the original document with the alias being the import path under the
+domain name:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;aliases = [ &amp;quot;gorram/run&amp;quot;, &amp;quot;gorram/cli&amp;quot; ]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So your entire content only needs to look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = 2016-10-02T23:00:00Z
+title = &amp;quot;Gorram&amp;quot;
+vanity = &amp;quot;https://github.com/natefinch/gorram&amp;quot;
+aliases = [
+    &amp;quot;/gorram/run&amp;quot;,
+    &amp;quot;/gorram/cli&amp;quot;,
+]
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Any time you add a new subdirectory to the package, you&amp;rsquo;ll need to add a new
+alias, and regenerate the site.  This is unfortunately manual, but at least it&amp;rsquo;s
+a trivial amount of work.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. Now go get (and godoc.org) will know how to get your code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deputy</title>
+      <link>http://lee.joramo.com/code/deputy/</link>
+      <pubDate>Thu, 06 Oct 2016 23:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/deputy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gorram</title>
+      <link>http://lee.joramo.com/code/gorram/</link>
+      <pubDate>Sun, 02 Oct 2016 23:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/gorram/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>To Enum or Not To Enum</title>
+      <link>http://lee.joramo.com/blog/enums/</link>
+      <pubDate>Wed, 02 Dec 2015 00:00:19 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/enums/</guid>
+      <description>&lt;p&gt;Enum-like values have come up in my reviews of other people&amp;rsquo;s code a few times, and I&amp;rsquo;d like to nail down what we feel is best practice.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve seen many places what in other languages would be an enum, i.e. a bounded list of known values that encompass every value that should ever exist.&lt;/p&gt;
+
+&lt;p&gt;The code I have been critical of simply calls these values strings, and creates a few well-known values, thusly:
+package tool&lt;/p&gt;
+
+&lt;p&gt;// types of tools
+const (
+    ScrewdriverType = &amp;ldquo;screwdriver&amp;rdquo;
+    HammerType = &amp;ldquo;hammer&amp;rdquo;
+   // &amp;hellip;
+)&lt;/p&gt;
+
+&lt;p&gt;type Tool struct {
+    typ string
+}&lt;/p&gt;
+
+&lt;p&gt;func NewTool(tooltype string) (Tool, error) {
+    switch tooltype{
+        case ScrewdriverType, HammerType:
+            return Tool{typ:tooltype}, nil
+        default:
+            return Tool{}, errors.New(&amp;ldquo;invalid type&amp;rdquo;)
+    }
+}
+The problem with this is that there&amp;rsquo;s nothing stopping you from doing something totally wrong like this:
+name := user.Name()&lt;/p&gt;
+
+&lt;p&gt;// &amp;hellip; some other stuff&lt;/p&gt;
+
+&lt;p&gt;a := NewTool(name)
+That would fail only at runtime, which kind of defeats the purpose of having a compiler.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not sure why we don&amp;rsquo;t at least define the tool type as a named type of string, i.e.
+package tool&lt;/p&gt;
+
+&lt;p&gt;type ToolType string&lt;/p&gt;
+
+&lt;p&gt;const (
+    Screwdriver ToolType = &amp;ldquo;screwdriver&amp;rdquo;
+    Hammer = &amp;ldquo;hammer&amp;rdquo;
+   // &amp;hellip;
+)&lt;/p&gt;
+
+&lt;p&gt;type Tool struct {
+    typ ToolType
+}&lt;/p&gt;
+
+&lt;p&gt;func NewTool(tooltype ToolType) Tool {
+        return Tool{typ:tooltype}
+}
+Note that now we can drop the error checking in NewTool because the compiler does it for us.  The ToolType still works in all ways like a string, so it&amp;rsquo;s trivial to convert for printing, serialization, etc.&lt;/p&gt;
+
+&lt;p&gt;However, this still lets you do something which is wrong but might not always look wrong:
+a := NewTool(&amp;ldquo;drill&amp;rdquo;)
+Because of how Go constants work, this will get converted to a ToolType, even though it&amp;rsquo;s not one of the ones we have defined.&lt;/p&gt;
+
+&lt;p&gt;The final revision, which is the one I&amp;rsquo;d propose, removes even this possibility, by not using a string at all (it also uses a lot less memory and creates less garbage):
+package tool&lt;/p&gt;
+
+&lt;p&gt;type ToolType int&lt;/p&gt;
+
+&lt;p&gt;const (
+    Screwdriver ToolType = iota
+    Hammer
+   // &amp;hellip;
+)&lt;/p&gt;
+
+&lt;p&gt;type Tool struct {
+    typ ToolType
+}&lt;/p&gt;
+
+&lt;p&gt;func NewTool(tooltype ToolType) Tool {
+        return Tool{typ:tooltype}
+}
+This now prevents passing in a constant string that looks like it might be right. You can pass in a constant number, but NewTool(5) is a hell of a lot more obviously wrong than NewTool(&amp;ldquo;drill&amp;rdquo;), IMO.&lt;/p&gt;
+
+&lt;p&gt;The push back I&amp;rsquo;ve heard about this is that then you have to manually write the String() function to make human-readable strings&amp;hellip; but there are code generators that already do this for you in extremely optimized ways (see &lt;a href=&#34;https://github.com/golang/tools/blob/master/cmd/stringer/stringer.go&#34;&gt;https://github.com/golang/tools/blob/master/cmd/stringer/stringer.go&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Returning Errors</title>
+      <link>http://lee.joramo.com/blog/errors/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:19 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/errors/</guid>
+      <description>&lt;p&gt;There are basically two ways to return errors in Go:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return err
+	}
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return fmt.Errorf(&amp;quot;can&#39;t find default config file: %v&amp;quot;, err)
+	}
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The former passes the original error up the stack, but adds no context to it.
+Thus, your saveConfig function may end up printing &amp;ldquo;file not found:
+default.cfg&amp;rdquo; without telling the caller why it was trying to open default.cfg.&lt;/p&gt;
+
+&lt;p&gt;The latter allows you to add context to an error, so the above error could
+become &amp;ldquo;can&amp;rsquo;t find default config file: file not found: default.cfg&amp;rdquo;.
+This gives nice context to the error, but unfortunately, it creates an entirely
+new error that only maintains the error string from the original.  This is fine
+for human-facing output, but is useless for error handling code.&lt;/p&gt;
+
+&lt;p&gt;If you use the former code, calling code can then use &lt;code&gt;os.IsNotExist()&lt;/code&gt;, figure
+out that it was a not found error, and create the file.  Using the latter code,
+the type of the error is now a different type than the one from os.Open, and
+thus will not return true from os.IsNotExist.  Using fmt.Errorf effectively
+masks the original error from calling code (unless you do ugly string parsing -
+please don&amp;rsquo;t).&lt;/p&gt;
+
+&lt;p&gt;Sometimes it&amp;rsquo;s good to mask the original error, if you don&amp;rsquo;t want your callers
+depending on what should be an implementation detail (thus effectively making it
+part of your API contract). However, lots of times you may want to give your
+callers the ability to introspect your errors and act on them. This then loses
+the opportunity to add context to the error, and so people calling your code
+have to do some mental gymnastics (and/or look at the implementation) to
+understand what an error really means.&lt;/p&gt;
+
+&lt;p&gt;A further problem for both these cases is that when debugging, you lose all
+knowledge of where an error came from.  There&amp;rsquo;s no stack trace, there&amp;rsquo;s not even
+a file and line number of where the error originated.  This can make debugging
+errors fairly difficult, unless you&amp;rsquo;re careful to make your error messages easy
+to grep for.  I can&amp;rsquo;t tell you how often I&amp;rsquo;ve searched for an error formatting
+string, and hoped I was guessing the format correctly.&lt;/p&gt;
+
+&lt;p&gt;This is just the way it is in Go, so what&amp;rsquo;s a developer to do?  Why, write an
+errors library that does smarter things of course!  And there are a ton of these
+things out there.  Many add a stack trace at error creation time.  Most wrap an
+original error in some way, so you can add some context while keeping the
+original error for checks like os.IsNotExist. At Canonical, the Juju team wrote
+just such a library (actually we wrote 3 and then had them fight until only one
+was standing), and the result is &lt;a href=&#34;https://github.com/juju/errors&#34;&gt;https://github.com/juju/errors&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thus you might return an error this way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (c Config) Save() error {
+	if err := c.checkDefault(); err != nil {
+		return errors.Annotatef(err, &amp;quot;can&#39;t find default config file&amp;quot;)
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This returns a new error created by the errors package which adds the given
+string to the front of the original error&amp;rsquo;s error message (just like
+fmt.Errorf), but you can introspect it using &lt;code&gt;errors.Cause(err)&lt;/code&gt; to access the
+original error return by checkDefault.  Thus you can use
+&lt;code&gt;os.IsNotExist(errors.Cause(err))&lt;/code&gt; and it&amp;rsquo;ll do the right thing.&lt;/p&gt;
+
+&lt;p&gt;However, this and every other special error library suffer from the same problem
+- your library can only understand its own special errors.  And no one else&amp;rsquo;s
+code can understand your errors (because they won&amp;rsquo;t know to use errors.Cause
+before checking the error).  Now you&amp;rsquo;re back to square one - your errors are
+just as opaque to third party code as if they were created by fmt.Errorf.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t really have an answer to this problem. It&amp;rsquo;s inherent in the
+functionality (or lack thereof) of the standard Go error type.&lt;/p&gt;
+
+&lt;p&gt;Obviously, if you&amp;rsquo;re writing a standalone package for many other people to use,
+don&amp;rsquo;t use a third party error wrapping library.  Your callers are likely not
+going to be using the same library, so they won&amp;rsquo;t get use out of it, and it adds
+unnecessary dependencies to your code.  To decide between returning the original
+error and an annotated error using fmt.Errorf is harder.  It&amp;rsquo;s hard to know when
+the information in the original error might be useful to your caller.  On the
+other hand, the additional context added by fmt.Errorf can often change an
+inscrutable error into an obvious one.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re writing an application where you&amp;rsquo;ll be controlling most of the
+packages being written, then an errors package may make sense&amp;hellip; but you still
+run the risk of giving your custom errors to third party code that can&amp;rsquo;t
+understand them.  Plus, any errors library adds some complexity to the code (for
+example, you always have to rememeber to call &lt;code&gt;os.IsNotExist(errors.Cause(err))&lt;/code&gt;
+rather than just calling &lt;code&gt;os.InNotExist(err)&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;You have to choose one of the three options every time you return an error.
+Choose carefully.  Sometimes you&amp;rsquo;re going to make a choice that makes your life
+more difficult down the road.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Take control of your commands with Deputy</title>
+      <link>http://lee.joramo.com/blog/deputy/</link>
+      <pubDate>Tue, 30 Jun 2015 12:44:29 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/deputy/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://cloud.githubusercontent.com/assets/3185864/8237448/6bc30102-15bd-11e5-9e87-6423197a73d6.jpg&#34; alt=&#34;deputy-sm&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;&lt;sub&gt;image: creative commons, &amp;copy; &lt;a href=&#34;http://matsurd.deviantart.com/art/Paper53-Deputy-Stubbs-342123485&#34;&gt;MatsuRD&lt;/a&gt;&lt;/sub&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;As a part of my work on &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, I have published a
+new package at &lt;a href=&#34;http://github.com/juju/deputy&#34;&gt;http://github.com/juju/deputy&lt;/a&gt;.  I think it&amp;rsquo;ll be of general use
+to a lot of people.&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;I want to name a package &amp;quot;lieutenant&amp;quot;, but it&amp;#39;s too hard to spell.&lt;/p&gt;&amp;mdash; Nate Finch (@NateTheFinch) &lt;a href=&#34;https://twitter.com/NateTheFinch/status/610481962311131136&#34;&gt;June 15, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;True story.  The idea was this package would be a lieutenant commander (get
+it?)&amp;hellip; but I also knew I didn&amp;rsquo;t want to have to try to spell lieutenant
+correctly every time I used the package.  So that&amp;rsquo;s why it&amp;rsquo;s called deputy.
+He&amp;rsquo;s the guy who&amp;rsquo;s not in charge, but does all the work.&lt;/p&gt;
+
+&lt;h3 id=&#34;errors&#34;&gt;Errors&lt;/h3&gt;
+
+&lt;p&gt;At &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, we run a lot of external processes
+using os/exec. However, the default functionality of an exec.Cmd object is kind
+of lacking. The most obvious one is those error returns &amp;ldquo;exit status 1&amp;rdquo;.
+Fantastic.  Have you ever wished you could just have the stderr from the command
+as the error text?  Well, now you can, with deputy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func main() {
+    d := deputy.Deputy{
+        Errors:    deputy.FromStderr,
+    }
+    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
+    err := d.Run(cmd)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the above code, if the command run by Deputy exits with a non-zero exit
+status, deputy will capture the text output to stderr and convert that into the
+error text.  &lt;em&gt;e.g.&lt;/em&gt; if the command returned exit status 1 and output &amp;ldquo;Error: No
+such image or container: bar&amp;rdquo; to stderr, then the error&amp;rsquo;s Error() text would
+look like &amp;ldquo;exit status 1: Error: No such image or container: bar&amp;rdquo;.  Bam, the
+errors from commands you run are infinitely more useful.&lt;/p&gt;
+
+&lt;h3 id=&#34;logging&#34;&gt;Logging&lt;/h3&gt;
+
+&lt;p&gt;Another idiom we use is to pipe some of the output from a command to our logs. This can be super useful for debugging purposes.  With deputy, this is again easy:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func main() {
+    d := deputy.Deputy{
+        Errors:    deputy.FromStderr,
+        StdoutLog: func(b []byte) { log.Print(string(b)) },
+    }
+    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
+    err := d.Run(cmd)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it.  Now every line written to stdout by the process will be piped as a
+log message to your log.&lt;/p&gt;
+
+&lt;h3 id=&#34;timeouts&#34;&gt;Timeouts&lt;/h3&gt;
+
+&lt;p&gt;Finally, an idiom we don&amp;rsquo;t use often enough, but should, is to add a timeout to
+command execution.  What happens if you run a command as part of your pipeline
+and that command hangs for 30 seconds, or 30 minutes, or forever?  Do you just
+assume it&amp;rsquo;ll always finish in a reasonable time?  Adding a timeout to running
+commands requires some tricky coding with goroutines, channels, selects, and
+killing the process&amp;hellip; and deputy wraps all that up for you in a simple API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func main() {
+    d := deputy.Deputy{
+        Errors:    deputy.FromStderr,
+        StdoutLog: func(b []byte) { log.Print(string(b)) },
+        Timeout:   time.Second * 10,
+    }
+    cmd := exec.Command(&amp;quot;foo&amp;quot;, &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;)
+    err := d.Run(cmd)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code adds a 10 second timeout.  After that time, if the process has
+not finished, it will be killed and an error returned.&lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s it.  Give deputy a spin and let me know what you think.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Testing os/exec.Command</title>
+      <link>http://lee.joramo.com/blog/testing-exec-command/</link>
+      <pubDate>Fri, 26 Jun 2015 06:41:56 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/testing-exec-command/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://github.com/juju/juju&#34;&gt;Juju&lt;/a&gt;, we often have code that needs to run external
+executables.  Testing this code is a nightmare&amp;hellip; because you really don&amp;rsquo;t want
+to run those files on the dev&amp;rsquo;s machine or the CI machine.  But mocking out
+os/exec is really hard.  There&amp;rsquo;s no interface to replace, there&amp;rsquo;s no function to
+mock out and replace.  In the end, your code calls the Run method on the
+exec.Cmd struct.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a bunch of bad ways you can mock this out - you can write out scripts to
+disk with the right name and structure their contents to write out the correct
+data to stdout, stderr and return the right return code&amp;hellip; but then you&amp;rsquo;re
+writing platform-specific code in your tests, which means you need a Windows
+version and a Linux version&amp;hellip; It also means you&amp;rsquo;re writing shell scripts or
+Windows batch files or whatever, instead of writing Go.  And we all know that we
+want our tests to be in Go, not shell scripts.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s the answer?  Well, it turns out, if you want to mock out exec.Command,
+the best place to look is in the exec package&amp;rsquo;s tests themselves.  Lo and
+behold, it&amp;rsquo;s right there in the first function of &lt;a href=&#34;https://github.com/golang/go/blob/master/src/os/exec/exec_test.go#L31&#34;&gt;exec_test.go&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func helperCommand(t *testing.T, s ...string) *exec.Cmd {
+    cs := []string{&amp;quot;-test.run=TestHelperProcess&amp;quot;, &amp;quot;--&amp;quot;}
+    cs = append(cs, s...)
+    cmd := exec.Command(os.Args[0], cs...)
+    cmd.Env = []string{&amp;quot;GO_WANT_HELPER_PROCESS=1&amp;quot;}
+    return cmd
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;sub&gt;&lt;sup&gt;(one line elided for clarity) &lt;/sup&gt;&lt;/sub&gt;&lt;/p&gt;
+
+&lt;p&gt;What the heck is that doing?  It&amp;rsquo;s pretty slick, so I&amp;rsquo;ll explain it.&lt;/p&gt;
+
+&lt;p&gt;First off, you have to understand how tests in Go work.  When running &lt;code&gt;go test&lt;/code&gt;,
+the go tool compiles an executable from your code, runs it, and passes it the
+flags you passed to &lt;code&gt;go test&lt;/code&gt;.  It&amp;rsquo;s that executable which actually handles the
+flags and runs the tests.  Thus, while your tests are running, os.Args[0] is the
+name of the test executable.&lt;/p&gt;
+
+&lt;p&gt;This function is making an exec.Command that runs the test executable, and
+passes it the flag to tell the executable just to run a single test.  It then
+terminates the argument list with &lt;code&gt;--&lt;/code&gt; and appends the command and arguments
+that would have been given to exec.Command to run &lt;em&gt;your&lt;/em&gt; command.&lt;/p&gt;
+
+&lt;p&gt;The end result is that when you run the exec.Cmd that is returned, it will run
+the single test from this package called &amp;ldquo;TestHelperProcess&amp;rdquo; and os.Args will
+contain (after the &lt;code&gt;--&lt;/code&gt;) the command and arguments from the original call.&lt;/p&gt;
+
+&lt;p&gt;The environment variable is there so that the test can know to do nothing unless
+that environment variable is set.&lt;/p&gt;
+
+&lt;p&gt;This is awesome for a few reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s all Go code. No more needing to write shell scripts.&lt;/li&gt;
+&lt;li&gt;The code run in the excutable is compiled with the rest of your test code.  No more needing to worry about typos in the strings you&amp;rsquo;re writing to disk.&lt;/li&gt;
+&lt;li&gt;No need to create new files on disk - the executable is already there and runnable, by definition.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, let&amp;rsquo;s use this in a real example to make it more clear.&lt;/p&gt;
+
+&lt;p&gt;In your production code, you can do something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var execCommand = exec.Command
+func RunDocker(container string) ([]byte, error) {
+    cmd := execCommand(&amp;quot;docker&amp;quot;, &amp;quot;run&amp;quot;, &amp;quot;-d&amp;quot;, container)
+    out, err := cmd.CombinedOutput()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Mocking this out in test code is now super easy:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;func fakeExecCommand(command string, args...string) *exec.Cmd {
+    cs := []string{&amp;quot;-test.run=TestHelperProcess&amp;quot;, &amp;quot;--&amp;quot;, command}
+    cs = append(cs, args...)
+    cmd := exec.Command(os.Args[0], cs...)
+    cmd.Env = []string{&amp;quot;GO_WANT_HELPER_PROCESS=1&amp;quot;}
+    return cmd
+}
+
+const dockerRunResult = &amp;quot;foo!&amp;quot;
+func TestRunDocker(t *testing.T) {
+    execCommand = fakeExecCommand
+    defer func(){ execCommand = exec.Command }()
+    out, err := RunDocker(&amp;quot;docker/whalesay&amp;quot;)
+    if err != nil {
+        t.Errorf(&amp;quot;Expected nil error, got %#v&amp;quot;, err)
+    }
+    if string(out) != dockerRunResult {
+        t.Errorf(&amp;quot;Expected %q, got %q&amp;quot;, dockerRunResult, out)
+    }
+}
+
+func TestHelperProcess(t *testing.T){
+    if os.Getenv(&amp;quot;GO_WANT_HELPER_PROCESS&amp;quot;) != &amp;quot;1&amp;quot; {
+        return
+    }
+    // some code here to check arguments perhaps?
+    fmt.Fprintf(os.Stdout, dockerRunResult)
+    os.Exit(0)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, you can do a lot more interesting things. The environment variables
+on the command that fakeExecCommand returns make a nice side channel for telling
+the executable what you want it to do.  I use one to tell the process to exit
+with a non-zero error code, which is great for testing your error handling code.
+You can see how the standard library uses its TestHelperProcess test
+&lt;a href=&#34;https://github.com/golang/go/blob/master/src/os/exec/exec_test.go#L559&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hopefully this will help you avoid writing really gnarly testing code (or even worse,
+not testing your code at all).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sharing Godoc of a WIP Branch</title>
+      <link>http://lee.joramo.com/blog/wip-godoc/</link>
+      <pubDate>Thu, 11 Jun 2015 07:37:00 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/wip-godoc/</guid>
+      <description>&lt;p&gt;I had a problem yesterday - I wanted to use the excellent godoc.org to show
+coworkers the godoc for the feature I was working on.  However, the feature was
+on a branch of the main code in Github, and &lt;code&gt;go get&lt;/code&gt; Does Not Work That Way™.
+So, what to do?  Well, I figured out a hack to make it work.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gopkg.in&#34;&gt;https://gopkg.in&lt;/a&gt; is a super handy service that lets you point &lt;code&gt;go get&lt;/code&gt; at
+branches of your repo named vN (e.g. v0, v1, etc).  It also happens to work on
+tags.  So, we can leverage this to get godoc.org to render the godoc for our WIP
+branch.&lt;/p&gt;
+
+&lt;p&gt;From your WIP branch, simply do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git tag v0
+git push myremote v0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This creates a lightweight tag that only affects your repo (not upstream from
+whence you forked).&lt;/p&gt;
+
+&lt;p&gt;You now can point godoc at your branch by way of gopkg.in:
+&lt;a href=&#34;https://godoc.org/gopkg.in/GithubUser/repo.v0&#34;&gt;https://godoc.org/gopkg.in/GithubUser/repo.v0&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This will tell godoc to &amp;lsquo;go get&amp;rsquo; your code from gopkg.in, and gopkg.in will
+redirect the command to your v0 tag, which is currently on your branch.  Bam,
+now you have godoc for your WIP branch on godoc.org.&lt;/p&gt;
+
+&lt;p&gt;Later, the tag can easily be removed (and reused if needed) thusly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git tag -d v0
+git push myremote :refs/tags/v0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So, there you go, go forth and share your godoc.  I find it&amp;rsquo;s a great way to get
+feedback on architecture before I dive into the reeds of the implementation.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pie</title>
+      <link>http://lee.joramo.com/code/pie/</link>
+      <pubDate>Tue, 02 Jun 2015 17:00:00 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/code/pie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go Plugins are as Easy as Pie</title>
+      <link>http://lee.joramo.com/blog/pie/</link>
+      <pubDate>Mon, 25 May 2015 22:44:32 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/pie/</guid>
+      <description>
+
+&lt;p&gt;When people hear that Go only supports static linking, one of the things they
+eventually realize is that they can&amp;rsquo;t have traditional plugins via dlls/libs (in
+compiled languages) or scripts (in interpreted languages).  However, that
+doesn&amp;rsquo;t mean that you can&amp;rsquo;t have plugins.  Some people suggest doing &amp;ldquo;compiled-
+in&amp;rdquo; plugins - but to me, that&amp;rsquo;s not a plugin, that&amp;rsquo;s just code.  Some people
+suggest just running sub processes and sending messages via their CLI, but that
+runs into CLI parsing issues and requires runnnig a new process for every
+request.  The last option people think of is using RPC to an external process,
+which may also seem cumbersome, but it doesn&amp;rsquo;t have to be.&lt;/p&gt;
+
+&lt;h3 id=&#34;serving-up-some-pie&#34;&gt;Serving up some pie&lt;/h3&gt;
+
+&lt;p&gt;I&amp;rsquo;d like to introduce you to &lt;a href=&#34;https://github.com/natefinch/pie&#34;&gt;https://github.com/natefinch/pie&lt;/a&gt; - this is a Go
+package which contains a toolkit for writing plugins in Go.  It uses processes
+external to the main program as the plugins, and communicates with them via RPC
+over the plugin&amp;rsquo;s stdin and stout.  Having the plugin as an external process can
+actually has several benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;If the plugin crashes, it won&amp;rsquo;t crash your process.&lt;/li&gt;
+&lt;li&gt;The plugin is not in your process&amp;rsquo; memory space, so it can&amp;rsquo;t do anything nasty.&lt;/li&gt;
+&lt;li&gt;The plugin can be written in any language, not just Go.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I think this last point is actually the most valuable.  One of the nicest things
+about Go applications is that they&amp;rsquo;re just copy-and-run.  No one even needs to
+know they were written in Go.  With plugins as external processes, this remains
+true.  People wanting to extend your application can do so in the language of
+their choice, so long as it supports the codec your application has chosen for
+RPC.&lt;/p&gt;
+
+&lt;p&gt;The fact that the communication occurs over stdin and stdout means that there is
+no need to worry about negotiating ports, it&amp;rsquo;s easily cross platform compatible,
+and it&amp;rsquo;s very secure.&lt;/p&gt;
+
+&lt;h3 id=&#34;orthogonality&#34;&gt;Orthogonality&lt;/h3&gt;
+
+&lt;p&gt;Pie is written to be a very simple set of functions that help you set up
+communication between your process and a plugin process.  Once you make a couple
+calls to pie, you then need to work out your own way to use the RPC connection
+created.  Pie does not attempt to be an all-in-one plugin framework, though you
+could certainly use it as the basis for one.&lt;/p&gt;
+
+&lt;h3 id=&#34;why-is-it-called-pie&#34;&gt;Why is it called pie?&lt;/h3&gt;
+
+&lt;p&gt;Because if you pronounce API like &amp;ldquo;a pie&amp;rdquo;, then all this consuming and serving
+of APIs becomes a lot more palatable.  Also, pies are the ultimate pluggable
+interface - depending on what&amp;rsquo;s inside, you can get dinner, dessert, a snack, or
+even breakfast.  Plus, then I get to say that plugins in Go are as easy as&amp;hellip;
+well, you know.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;I plan to be using pie in one of my own side projects.  Take it out for a spin
+in one of your projects and let me know what you think.  Happy eating!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Go Nitpicks</title>
+      <link>http://lee.joramo.com/blog/go-nitpicks/</link>
+      <pubDate>Tue, 28 Oct 2014 06:17:21 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/go-nitpicks/</guid>
+      <description>
+
+&lt;p&gt;I saw this tweet last night:&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;en&#34;&gt;&lt;p&gt;A code interview I like to ask:&amp;#10;&amp;#10;&amp;quot;What would you change about &amp;lt;your favourite language&amp;gt;?&amp;quot;&amp;#10;&amp;#10;Having nothing to say to that is a big strike.&lt;/p&gt;&amp;mdash; karlseguin (@karlseguin) &lt;a href=&#34;https://twitter.com/karlseguin/status/526860386704695296&#34;&gt;October 27, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;I figured I&amp;rsquo;d answer it here about Go.  Luckily, Go is a very small language, so there&amp;rsquo;s not a lot of surface area to dislike. However, there&amp;rsquo;s definitely some things I wish were different. Most of these are nitpicks, thus the title.&lt;/p&gt;
+
+&lt;h4 id=&#34;1-bare-returns&#34;&gt;#1 Bare Returns&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;func foo() (i int, err error) {
+    i, err = strconv.ParseInt(&amp;quot;5&amp;quot;) 
+    return // wha??
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For all that Go promotes readable and immediately understandable code, this seems like a ridiculous outlier. The way it works is that if you don&amp;rsquo;t declare what the function is returning, it&amp;rsquo;ll return the values stored in the named return variables.  Which seems logical and handy, until you see a 100 line function with multiple branches and a single bare return at the bottom, with no idea what is actually getting returned.&lt;/p&gt;
+
+&lt;p&gt;To all gophers out there: don&amp;rsquo;t use bare returns.  Ever.&lt;/p&gt;
+
+&lt;h4 id=&#34;2-new&#34;&gt;#2 New&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;a := new(MyStruct)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;New means &amp;ldquo;Create a zero value of the given type and return a pointer to it&amp;rdquo;.  It&amp;rsquo;s sorta like the C++ &lt;code&gt;new&lt;/code&gt;, which is probably why it exists.  The problem is that it&amp;rsquo;s nearly useless.  It&amp;rsquo;s mostly redundant with simply returning the address of a value thusly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a := &amp;amp;MyStruct{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above is a lot easier to read, it also gives you the ability to populate the value you&amp;rsquo;re constructing (if you wish).  The only time new is &amp;ldquo;useful&amp;rdquo; is if you want to initialize a pointer to a builtin (like a string or an int), because you can&amp;rsquo;t do this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a := &amp;amp;int
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;but you can do this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a := new(int)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, you could always just do it in (&lt;em&gt;gasp&lt;/em&gt;) two lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a := 0
+b := &amp;amp;a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To all the gophers out there: don&amp;rsquo;t use new. Always use &amp;amp;Foo{} with structs, maps, and slices. Use the two line version for numbers and strings.&lt;/p&gt;
+
+&lt;h4 id=&#34;3-close&#34;&gt;#3 Close&lt;/h4&gt;
+
+&lt;p&gt;The close built-in function closes a channel. If the channel is already closed, close will panic.  This pisses me off, because most of the time when I call close, I don&amp;rsquo;t actually care if it&amp;rsquo;s already closed.  I just want to ensure that it&amp;rsquo;s closed.  I&amp;rsquo;d much prefer if close returned a boolean that said whether or not it did anything, and then if &lt;strong&gt;I&lt;/strong&gt; choose to panic, I can.  Or, you know, not.&lt;/p&gt;
+
+&lt;h4 id=&#34;4-there-is-no-4&#34;&gt;#4 There is no 4&lt;/h4&gt;
+
+&lt;p&gt;That&amp;rsquo;s basically it.  There&amp;rsquo;s some things I think are necessary evils, like &lt;code&gt;goto&lt;/code&gt; and &lt;code&gt;panic&lt;/code&gt;.  There&amp;rsquo;s some things that are necessary ugliness, like the built-in functions &lt;code&gt;append&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, etc.  I sorta wish &lt;code&gt;x := range foo&lt;/code&gt; returned the value in x and not the index, but I get that it&amp;rsquo;s to be consistent between maps and slices, and returning the value in maps would be odd, I think.&lt;/p&gt;
+
+&lt;p&gt;All these are even below the level of nitpicks, though.  They don&amp;rsquo;t bug me, really.  I understand that everything in programming is a tradeoff, and I think the decisions made for Go were the right ones in these cases.  Sometimes you need goto.  Sometimes you need to panic.  Making those functions built-ins rather than methods on the types means you don&amp;rsquo;t need any methods on the types, which keeps them simpler, and means they&amp;rsquo;re &amp;ldquo;just data&amp;rdquo;.  It also means you don&amp;rsquo;t lose any functionality if you make new named types based on them.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s my list for Go.&lt;/p&gt;
+
+&lt;h4 id=&#34;postscript&#34;&gt;Postscript&lt;/h4&gt;
+
+&lt;p&gt;Someone on the twitter discussion mentioned he couldn&amp;rsquo;t think of anything he disliked about C#, which just about made me spit my coffee across the room.  I programmed in C# for ~9 years, starting out porting some 1.1 code to 2.0, and leaving as 5.0 came out.  The list of features in C# as of 5.0 is gigantic.  Even being a developer writing in it 40+ hours a week for 9 years, there was still stuff I had to look up to remember how it worked.&lt;/p&gt;
+
+&lt;p&gt;I feel like my mastery of Go after a year of side projects was about equivalent to my mastery of C# after 9 years of full time development.  If we assume 1:1 correlation between time to master and size of the language, an order of magnitude sounds about right.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Why Everyone Hates Go</title>
+      <link>http://lee.joramo.com/blog/why-everyone-hates-go/</link>
+      <pubDate>Tue, 14 Oct 2014 10:46:28 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/why-everyone-hates-go/</guid>
+      <description>&lt;p&gt;Obviously, not &lt;em&gt;everyone&lt;/em&gt; hates Go.  But there was a &lt;a href=&#34;https://www.quora.com/Why-does-Go-seem-to-be-the-most-heavily-
+criticised-among-the-newer-programming-languages?srid=uCiY&amp;amp;share=1&#34;&gt;quora
+question&lt;/a&gt; recently
+about why everyone criticizes Go so much. (sorry, I don&amp;rsquo;t normally post links to
+Quora, but it was the motivator for this post) Even before I saw the answers to
+the question, I knew what they&amp;rsquo;d consist of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go is a language stuck in the 70&amp;rsquo;s.&lt;/li&gt;
+&lt;li&gt;Go ignores 40 years of programming language research.&lt;/li&gt;
+&lt;li&gt;Go is a language for blue collar (mediocre) developers.&lt;/li&gt;
+&lt;li&gt;Gophers are ok with working in Java 1.0.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Unfortunately, the answers to the questions were more concerned with explaining
+why Go is &amp;ldquo;bad&amp;rdquo;, rather than why this gets under so many people&amp;rsquo;s skin.&lt;/p&gt;
+
+&lt;p&gt;When reading the answers I had a eureka moment, and I realized why it is. So
+here&amp;rsquo;s my answer to the same question. This is why Go is so heavily criticized,
+not why Go is &amp;ldquo;bad&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s two awesome posts that inform my answer: Paul Graham&amp;rsquo;s
+&lt;a href=&#34;http://www.paulgraham.com/identity.html&#34;&gt;post&lt;/a&gt; about keeping your identity
+small, and Kathy Sierra&amp;rsquo;s &lt;a href=&#34;http://seriouspony.com/trouble-at-the-koolaid-
+point&#34;&gt;post&lt;/a&gt; about the Koolaid point. I encourage you to read those two posts, as
+they&amp;rsquo;re both very informative.  I hesitate to compare the horrific things that
+happen to women online with the pedantry of flamewars about programming
+languages, but the Koolaid Point is such a valid metaphor that I wanted to link
+to the article.&lt;/p&gt;
+
+&lt;p&gt;Paul says&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;people can never have a fruitful argument about
+something that&amp;rsquo;s part of their identity&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;i.e.&lt;/em&gt; the subject hits too close to home,
+and their response becomes emotional rather than logical.&lt;/p&gt;
+
+&lt;p&gt;Kathy says&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;the hate wasn’t so much about the product/brand but that &lt;em&gt;other people were falling for it&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;em&gt;i.e.&lt;/em&gt; they&amp;rsquo;d drunk the kool-aid.&lt;/p&gt;
+
+&lt;p&gt;Go is the only recent language that takes the aforementioned 40 years of
+programming language research and tosses it out the window. Other new languages
+at least try to keep up with the Jones - Clojure, Scala, Rust - all try to
+incorporate &amp;ldquo;modern programming theory&amp;rdquo; into their design. Go actively tries
+not to. There is no pattern matching, there&amp;rsquo;s no borrowing, there&amp;rsquo;s no pure
+functional programming, there&amp;rsquo;s no immutable variables, there&amp;rsquo;s no option types,
+there&amp;rsquo;s no exceptions, there&amp;rsquo;s no classes, there&amp;rsquo;s no generics&amp;hellip;. there&amp;rsquo;s a lot
+Go doesn&amp;rsquo;t have. And in the beginning this was enough to merely earn it scorn.
+Even I am guilty of this. When I first heard about Go, I thought &amp;ldquo;What? No
+exceptions? Pass.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;But then something happened - people started &lt;em&gt;using&lt;/em&gt; it. And liking it. And
+building big projects with it. This is the Koolaid-point - where people have
+started to drink the Koolaid and get fooled into thinking Go is a good
+language. And this is where the scorn turns into derision and attacks on the
+character of the people using it.&lt;/p&gt;
+
+&lt;p&gt;The most vocal Go detractors are those developers who write in ML-derived
+languages (Haskell, Rust, Scala, &lt;em&gt;et al&lt;/em&gt;) who have tied their preferred
+programming language into their identity. The mere existence of Go says
+&amp;ldquo;your views on what makes a good programming language are wrong&amp;rdquo;. And the more
+people that use and like Go, the more strongly they feel that they&amp;rsquo;re being told
+their choice of programming language - and therefore their identity - is wrong.&lt;/p&gt;
+
+&lt;p&gt;Note that basically no one in the Go community actually says this. But the Go
+philosophy of simplicity and pragmatism above all else is the polar opposite of
+what those languages espouse (in which complexity in the language is ok because
+it enforces correctness in the code). This is insulting to the people who tie
+their identity to that language. Whenever a post on Go makes it to the front
+page of Hacker News, it is an affront to everything they hold dear, and so you
+get comments like Go developers are stuck in the 70&amp;rsquo;s, or is only for blue-collar devs.&lt;/p&gt;
+
+&lt;p&gt;So, this is why I think people are so much more vocal about their dislike of Go:
+because it challenges their identity, and other people are falling for it. This
+is also why these posts so often mention Google and how the language would have
+died without them. Google is now the koolaid dispenser. The fact that they
+are otherwise generally thought of as a very talented pool of developers means
+that it is simultaneously more outrageous that they are fooling people and more
+insulting that their language flies in the face of ML-derived languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt;  I removed the &amp;ldquo;panties in a bunch&amp;rdquo; comment, since I was (correctly)
+scolded for being sexist, not to mention unprofessional.  My apologies to
+anyone I offended.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Deploy Discourse with Juju in 8 minutes</title>
+      <link>http://lee.joramo.com/blog/deploy-discourse-juju/</link>
+      <pubDate>Wed, 01 Oct 2014 06:31:49 -0400</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/deploy-discourse-juju/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://stevefrancia.com/&#34;&gt;Steve Francia&lt;/a&gt; asked me to help him get
+&lt;a href=&#34;https://discourse.org&#34;&gt;Discourse&lt;/a&gt; deployed as a place for people to discuss
+&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, his static site generator (which is what I use to
+build this blog).  If you don&amp;rsquo;t know Discourse, it&amp;rsquo;s pretty amazing forum
+software with community-driven moderation, all the modern features you expect
+(@mentions, SSO integration, deep email integration, realtime async updates, and
+a whole lot more).  What I ended up deploying is now at
+&lt;a href=&#34;http://discuss.gohugo.io&#34;&gt;discuss.gohugo.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;d already played around with deploying Discourse about six months ago, so I
+already had an idea of what was involved.  Given that I work on
+&lt;a href=&#34;http://juju.ubuntu.com&#34;&gt;Juju&lt;/a&gt; as my day job, of course I decided to use Juju to
+deploy Discourse for Steve.  This involved writing a Juju &lt;em&gt;charm&lt;/em&gt; which is sort
+of like an install script, but with hooks for updating configuration and hooks
+for interacting with other services. I&amp;rsquo;ll talk about the process of writing the
+charm in a later post, but for now, all you need to know is that it follows the
+official &lt;a href=&#34;https://github.com/discourse/discourse/blob/master/docs/INSTALL-digital-ocean.md&#34;&gt;install guide&lt;/a&gt; for installing Discourse.&lt;/p&gt;
+
+&lt;p&gt;The install guide says that you can install Discourse in 30 minutes.  Following
+it took me a &lt;strong&gt;lot&lt;/strong&gt; longer than that, due to some confusion about what the
+install guide really wanted you to do, and what the install really required.
+But you don&amp;rsquo;t need to know any of that to use Juju to install Discourse, and you
+can get it done in 8 minutes, not 30.  Here&amp;rsquo;s how:&lt;/p&gt;
+
+&lt;p&gt;First, install Juju:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo add-apt-repository -y ppa:juju/stable
+sudo apt-get update &amp;amp;&amp;amp; sudo apt-get install -y juju-core
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, Juju does not yet have a provider for Digital Ocean, so we have to use a
+plugin to get the machine created.  We&amp;rsquo;re in the process of writing a provider
+for Digital Ocean, so soon the plugin won&amp;rsquo;t be necessary.  If you use another
+cloud provider, such as AWS, Azure, HP Cloud, Joyent, or run your own Openstack
+or MAAS, you can easily &lt;a href=&#34;https://juju.ubuntu.com/docs/getting-a
+started.html#configuring&#34;&gt;configure Juju&lt;/a&gt; to use that service, and a couple of these steps will
+not be necessary.  I&amp;rsquo;ll post separate steps for that later.  But for now, let&amp;rsquo;s
+assume you&amp;rsquo;re using Digital Ocean.&lt;/p&gt;
+
+&lt;p&gt;Install the juju &lt;a href=&#34;https://github.com/kapilt/juju-digitalocean&#34;&gt;Digital Ocean plugin&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install -y python-pip
+pip install -U juju-docean
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Get your Digital Ocean &lt;a href=&#34;https://cloud.digitalocean.com/api_access&#34;&gt;access info&lt;/a&gt;
+and set the client id in an environment variable called DO_CLIENT_ID and the API
+key in an environment variable called DO_API_KEY.&lt;/p&gt;
+
+&lt;p&gt;Juju requires access with an SSH key to the machines, so make sure you have one
+set up in your Digital Ocean account.&lt;/p&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s create a simple configuration so juju knows where you want to deploy
+your new environment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;juju init
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Running juju init will create a boilerplate configuration file at
+~/.juju/environments.yaml.  We&amp;rsquo;ll append our digital ocean config at the bottom:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;    digitalocean:
+        type: manual
+        bootstrap-host: null
+        bootstrap-user: root
+&amp;quot; &amp;gt;&amp;gt; ~/.juju/environments.yaml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that this is yaml, so the spaces at the beginning of each line are
+important.  Copy and paste should do the right thing, though.&lt;/p&gt;
+
+&lt;p&gt;Now we can start the real fun, let&amp;rsquo;s switch to the digitalocean environment we
+just configured, and create the first Juju machine in Digital Ocean:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;juju switch digitalocean
+juju docean bootstrap --constraints=&amp;quot;mem=2g, region=nyc2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(obviously replace the region with whatever one you want)&lt;/p&gt;
+
+&lt;p&gt;Now, it&amp;rsquo;ll take about a minute for the machine to come up.&lt;/p&gt;
+
+&lt;p&gt;Discourse &lt;em&gt;requires&lt;/em&gt; email to function, so you need an account at
+&lt;a href=&#34;http://mandrill.com&#34;&gt;mandrill&lt;/a&gt;, &lt;a href=&#34;http://mailgun.com&#34;&gt;mailgun&lt;/a&gt;, etc.  They&amp;rsquo;re free, so
+don&amp;rsquo;t worry.  From that account you need to get some information to properly set
+up Discourse.  You can do this after installing discourse, but it&amp;rsquo;s faster if
+you do it before and give the configuration at deploy time. (changing settings
+later will take a couple minutes while discourse reconfigures itself)&lt;/p&gt;
+
+&lt;p&gt;When you deploy discourse, you&amp;rsquo;re going to give it a configuration file, which
+will look something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;discourse:
+  DISCOURSE_HOSTNAME: discuss.example.com
+  DISCOURSE_DEVELOPER_EMAILS: foo@example.com,bar@example.com
+  DISCOURSE_SMTP_ADDRESS: smtp.mailservice.com
+  DISCOURSE_SMTP_PORT: 587
+  DISCOURSE_SMTP_USER_NAME: postmaster@example.com
+  DISCOURSE_SMTP_PASSWORD: supersecretpassword
+  UNICORN_WORKERS: 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first line must be the same as the name of the service you&amp;rsquo;re deploying.  By
+default it&amp;rsquo;s &amp;ldquo;discourse&amp;rdquo;, so you don&amp;rsquo;t need to change it unless you&amp;rsquo;re deploying
+multiple copies of discourse to the same Juju environment.  And remember, this
+is yaml, so those spaces at the beginning of the rest of the lines are
+important.&lt;/p&gt;
+
+&lt;p&gt;The rest should be pretty obvious.  Hostname is the domain name where your site
+will be hosted.  This is important, because discourse will send account
+activation emails, and the links will use that hostname.  Developer emails are
+the email addresses of accounts that should get automatically promoted to admin
+when created.  The rest is email-related stuff from your mail service account.
+Finally, unicorn workers should just stay 3 unless you&amp;rsquo;re deploying to a machine
+with less than 2GB of RAM, in which case set it to 2.&lt;/p&gt;
+
+&lt;p&gt;Ok, so now that you have this file somewhere on disk, we can deploy discourse.
+Don&amp;rsquo;t worry, it&amp;rsquo;s really easy.  Just do this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;juju deploy cs:~natefinch/trusty/discourse --config path/to/configfile --to 0
+juju expose discourse
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That&amp;rsquo;s it. If you&amp;rsquo;re deploying to a 2GB Digital Ocean droplet, it&amp;rsquo;ll take about
+7 minutes.&lt;/p&gt;
+
+&lt;p&gt;To check on the status of the charm deployment, you can do &lt;code&gt;juju status&lt;/code&gt;, which
+will show, among other things &amp;ldquo;agent-state: pending&amp;rdquo; while the charm is being
+deployed.  Or, if you want to watch the logs roll by, you can do &lt;code&gt;juju debug-
+log&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Eventually juju status will show &lt;code&gt;agent-state: started&lt;/code&gt;.  Now grab the ip
+address listed at &lt;code&gt;public address:&lt;/code&gt; in the same output and drop that into your
+browser.  Bam!  Welcome to Discourse.&lt;/p&gt;
+
+&lt;p&gt;If you ever need to change the configuration you set in the config file above,
+you can do that by editing the file and doing&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;juju set discourse --config=/path/to/config
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, if you just want to tweak a few values, you can do&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;juju set discourse foo=bar baz=bat ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that every time you call juju set, it&amp;rsquo;ll take a couple minutes for
+Discourse to reconfigure itself, so you don&amp;rsquo;t want to be doing this over and
+over if you can hep it.&lt;/p&gt;
+
+&lt;p&gt;Now you&amp;rsquo;re on your own, and will have to consult the gurus at
+&lt;a href=&#34;discourse.org&#34;&gt;discourse.org&lt;/a&gt; if you have any problems.  But don&amp;rsquo;t worry, since
+you deployed using Juju, which uses their official install instructions, your
+discourse install is just like the ones people deploy manually (albeit with a
+lot less time and trouble).&lt;/p&gt;
+
+&lt;p&gt;Good Luck!&lt;/p&gt;
+
+&lt;p&gt;Please let me know if you find any errors in this page, and I will fix them
+immediately.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Intro to TOML</title>
+      <link>http://lee.joramo.com/blog/intro-to-toml/</link>
+      <pubDate>Sat, 16 Aug 2014 07:31:51 +0000</pubDate>
+      
+      <guid>http://lee.joramo.com/blog/intro-to-toml/</guid>
+      <description>
+
+&lt;p&gt;TOML stands for Tom&amp;rsquo;s Own Minimal Language.  It is a configuration language
+vaguely similar to YAML or property lists, but far, far better.  But before we
+get into it in detail, let&amp;rsquo;s look back at what came before.&lt;/p&gt;
+
+&lt;h3 id=&#34;long-ago-in-a-galaxy-far-far-away&#34;&gt;Long Ago, In A Galaxy Far, Far Away&lt;/h3&gt;
+
+&lt;p&gt;Since the beginning of computing, people have needed a way to configure
+their software.  On Linux, this generally is done in text files.  For simple
+configurations, good old foo = bar works pretty well.  One setting per line,
+name on the left, value on the right, separated by an equals.  Great.  But when
+your configuration gets more complicated, this quickly breaks down.  What if you
+need a value that is more than one line?  How do you indicate a value should be
+parsed as a number instead of a string?  How do you namespace related
+configuration values so you don&amp;rsquo;t need ridiculously long names to prevent
+collisions?&lt;/p&gt;
+
+&lt;h3 id=&#34;the-dark-ages&#34;&gt;The Dark Ages&lt;/h3&gt;
+
+&lt;p&gt;In the 90&amp;rsquo;s, we used XML.  And it sucked.  XML is verbose, it&amp;rsquo;s hard for humans
+to read and write, and it still doesn&amp;rsquo;t solve a lot of the problems above (like
+how to specify the type of a value).  In addition, the XML spec is huge,
+processing is very complicated, and all the extra features invite abuse and
+overcomplication.&lt;/p&gt;
+
+&lt;h3 id=&#34;enlightenment&#34;&gt;Enlightenment&lt;/h3&gt;
+
+&lt;p&gt;In the mid 2000&amp;rsquo;s, JSON came to popularity as a data exchange format, and it was
+so much better than XML.  It had real types, it was easy for programs to
+process, and you didn&amp;rsquo;t have to write a spec on what values should get processed
+in what way (well, mostly).  It was sigificantly less verbose than XML.  But it
+is a format intended for computers to read and write, not humans.  It is a pain
+to write by hand, and even pretty-printed, it can be hard to read and the
+compact data format turns into a nested mess of curly braces.  Also, JSON is not
+without its problems&amp;hellip; for example, there&amp;rsquo;s no date type, there&amp;rsquo;s no support
+for comments, and all numbers are floats.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-false-start&#34;&gt;A False Start&lt;/h3&gt;
+
+&lt;p&gt;YAML came to popularity some time after JSON as a more human-readable format,
+and its &lt;code&gt;key: value&lt;/code&gt; syntax and pretty indentation is definitely a lot easier on
+the eyes than JSON&amp;rsquo;s nested curly-braces.  However, YAML trades ease of reading
+for difficulty in writing.  Indentation as delimiters is fraught with error&amp;hellip;
+figuring out how to get multiple lines of data into any random value is an
+exercise in googling and trial &amp;amp; error.&lt;/p&gt;
+
+&lt;p&gt;The YAML spec is also ridiculously long.  100% compatible parsers are very
+difficult to write.  Writing YAML by hand is a ridden with landmines of corner
+cases where your choice of names or values happens to hit a reserved word or
+special marker.  It does support comments, though.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-savior&#34;&gt;The Savior&lt;/h3&gt;
+
+&lt;p&gt;On February 23, 2013, Tom Preston-Werner (former CEO of GitHub) made his first
+commit to &lt;a href=&#34;https://github.com/toml-lang/toml&#34;&gt;https://github.com/toml-lang/toml&lt;/a&gt;.  TOML stands for Tom&amp;rsquo;s Obvious,
+Minimal Language.  It is a language designed for configuring software.  Finally.&lt;/p&gt;
+
+&lt;p&gt;TOML takes inspiration from all of the above (well, except XML) and even gets
+some of its syntax from Microsoft&amp;rsquo;s INI files.  It is easy to write by hand and
+easy to read.  The spec is short and understandable by mere humans, and it&amp;rsquo;s
+fairly easy for computers to parse.  It supports comments, has first class
+dates, and supports both integers and floats.  It is generally insensitive to
+whitespace, without requiring a ton of delimiters.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s dive in.&lt;/p&gt;
+
+&lt;h3 id=&#34;the-basics&#34;&gt;The Basics&lt;/h3&gt;
+
+&lt;p&gt;The basic form is key = value&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# Comments start with hash
+foo = &amp;quot;strings are in quotes and are always UTF8 with escape codes: \n \u00E9&amp;quot;
+
+bar = &amp;quot;&amp;quot;&amp;quot;multi-line strings
+use three quotes&amp;quot;&amp;quot;&amp;quot;
+
+baz = &#39;literal\strings\use\single\quotes&#39;
+
+bat = &#39;&#39;&#39;multiline\literals\use
+three\quotes&#39;&#39;&#39;
+
+int = 5 # integers are just numbers
+float = 5.0 # floats have a decimal point with numbers on both sides
+
+date = 2006-05-27T07:32:00Z # dates are ISO 8601 full zulu form
+
+bool = true # good old true and false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One cool point:  If the first line of a multiline string (either literal or not)
+is a line return, it will be trimmed.  So you can make your big blocks of text
+start on the line after the name of the value and not need to worry about the
+extraneous newline at the beginning of your text:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;preabmle = &amp;quot;&amp;quot;&amp;quot;
+We the people of the United States, in order to form a more perfect union,
+establish justice, insure domestic tranquility, provide for the common defense,
+promote the general welfare, and secure the blessings of liberty to ourselves
+and our posterity, do ordain and establish this Constitution for the United
+States of America.&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;lists&#34;&gt;Lists&lt;/h3&gt;
+
+&lt;p&gt;Lists (arrays) are signified with brackets and delimited with commas.  Only
+primitives are allowed in this form, though you may have nested lists.  The
+format is forgiving, ignoring whitespace and newlines, and yes, the last comma
+is optional (thank you!):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;foo = [ &amp;quot;bar&amp;quot;, &amp;quot;baz&amp;quot;
+        &amp;quot;bat&amp;quot;
+]
+
+nums = [ 1, 2, ]
+
+nested = [[ &amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;], [1, 2]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I love that the format is forgiving of whitespace and that last comma.  I like
+that the arrays are all of a single type, but allowing mixed types of sub-arrays
+bugs the heck out of me.&lt;/p&gt;
+
+&lt;h3 id=&#34;now-we-get-crazy&#34;&gt;Now we get crazy&lt;/h3&gt;
+
+&lt;p&gt;What&amp;rsquo;s left?  In JSON there are objects, in YAML there are associative arrays&amp;hellip;
+in common parlance they are maps or dictionaries or hash tables.  Named
+collections of key/value pairs.&lt;/p&gt;
+
+&lt;p&gt;In TOML they are called tables and look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# some config above
+[table_name]
+foo = 1
+bar = 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Foo and bar are keys in the table called table_name.  Tables have to be at the
+end of the config file. Why?  because there&amp;rsquo;s no end delimiter.  All keys under
+a table declaration are associated with that table, until a new table is
+declared or the end of the file.  So declaring two tables looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# some config above
+[table1]
+foo = 1
+bar = 2
+
+[table2]
+	foo = 1
+	baz = 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The declaration of table2 defines where table1 ends.  Note that you can indent
+the values if you want, or not.  TOML doesn&amp;rsquo;t care.&lt;/p&gt;
+
+&lt;p&gt;If you want nested tables, you can do that, too.  It looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[table1]
+	foo = &amp;quot;bar&amp;quot;
+
+[table1.nested_table]
+	baz = &amp;quot;bat&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;nested_table&lt;/code&gt; is defined as a value in &lt;code&gt;table1&lt;/code&gt; because its name starts with
+&lt;code&gt;table1.&lt;/code&gt;.  Again, the table goes until the next table definition, so &lt;code&gt;baz=&amp;quot;bat&amp;quot;&lt;/code&gt;
+is a value in &lt;code&gt;table1.nested_table&lt;/code&gt;.  You can indent the nested table to make it
+more obvious, but again, all whitespace is optional:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[table1]
+	foo = &amp;quot;bar&amp;quot;
+
+	[table1.nested_table]
+		baz = &amp;quot;bat&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is equivalent to the JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{ 
+	&amp;quot;table1&amp;quot; : {
+		&amp;quot;foo&amp;quot; : &amp;quot;bar&amp;quot;,
+		&amp;quot;nested_table&amp;quot; : {
+			&amp;quot;baz&amp;quot; : &amp;quot;bat&amp;quot;
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Having to retype the parent table name for each sub-table is kind of annoying,
+but I do like that it is very explicit.  It also means that ordering and
+indenting and delimiters don&amp;rsquo;t matter.  You don&amp;rsquo;t have to declare parent tables
+if they&amp;rsquo;re empty, so you can do something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[foo.bar.baz]
+bat = &amp;quot;hi&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which is the equivalent to this JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+	&amp;quot;foo&amp;quot; : {
+		&amp;quot;bar&amp;quot; : {
+			&amp;quot;baz&amp;quot; : {
+				&amp;quot;bat&amp;quot; : &amp;quot;hi&amp;quot;
+			}
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;last-but-not-least&#34;&gt;Last but not least&lt;/h3&gt;
+
+&lt;p&gt;The last thing is arrays of tables, which are declared with double brackets
+thusly:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[[comments]]
+author = &amp;quot;Nate&amp;quot;
+text = &amp;quot;Great Article!&amp;quot;
+
+[[comments]]
+author = &amp;quot;Anonymous&amp;quot;
+text = &amp;quot;Love it!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is equivalent to the JSON:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+	&amp;quot;comments&amp;quot; : [
+		{
+			&amp;quot;author&amp;quot; : &amp;quot;Nate&amp;quot;,
+			&amp;quot;text&amp;quot; : Great Article!&amp;quot;
+		},
+		{
+			&amp;quot;author&amp;quot; : &amp;quot;Anonymous&amp;quot;,
+			&amp;quot;text&amp;quot; : Love It!&amp;quot;
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Arrays of tables inside another table get combined in the way you&amp;rsquo;d expect, like
+[[table1.array]].&lt;/p&gt;
+
+&lt;p&gt;TOML is very permissive here. Because all tables have very explicitly defined
+parentage, the order they&amp;rsquo;re defined in doesn&amp;rsquo;t matter. You can have tables (and
+entries in an array of tables) in whatever order you want.  This is totally
+acceptable:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[[comments]]
+author = &amp;quot;Anonymous&amp;quot;
+text = &amp;quot;Love it!&amp;quot;
+
+[foo.bar.baz]
+bat = &amp;quot;hi&amp;quot;
+
+[foo.bar]
+howdy = &amp;quot;neighbor&amp;quot;
+
+[[comments]]
+author = &amp;quot;Anonymous&amp;quot;
+text = &amp;quot;Love it!&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, it generally makes sense to actually order things in a more organized
+fashion, but it&amp;rsquo;s nice that you can&amp;rsquo;t shoot yourself in the foot if you reorder
+things &amp;ldquo;incorrectly&amp;rdquo;.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;That&amp;rsquo;s TOML.  It&amp;rsquo;s pretty awesome.&lt;/p&gt;
+
+&lt;p&gt;There&amp;rsquo;s a &lt;a href=&#34;https://github.com/toml-lang/toml#implementations&#34;&gt;list of parsers&lt;/a&gt;
+on the TOML page on github for pretty much whatever language you want.  I
+recommend &lt;a href=&#34;http://github.com/BurntSushi/toml&#34;&gt;BurntSushi&lt;/a&gt;&amp;rsquo;s for Go, since it
+works just like the built-in parsers.&lt;/p&gt;
+
+&lt;p&gt;It is now my default configuration language for all the applications I write.&lt;/p&gt;
+
+&lt;p&gt;The next time you write an application that needs some configuration, take a
+look at TOML.  I think your users will thank you.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

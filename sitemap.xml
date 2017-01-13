@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://lee.joramo.com/</loc>
+    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/reusable-commands/</loc>
+    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/vanity-imports-with-hugo/</loc>
+    <lastmod>2016-10-16T00:01:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/code/deputy/</loc>
+    <lastmod>2016-10-06T23:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/code/gorram/</loc>
+    <lastmod>2016-10-02T23:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/enums/</loc>
+    <lastmod>2015-12-02T00:00:19-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/errors/</loc>
+    <lastmod>2015-10-10T00:00:19-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/deputy/</loc>
+    <lastmod>2015-06-30T12:44:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/testing-exec-command/</loc>
+    <lastmod>2015-06-26T06:41:56-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/wip-godoc/</loc>
+    <lastmod>2015-06-11T07:37:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/code/pie/</loc>
+    <lastmod>2015-06-02T17:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/pie/</loc>
+    <lastmod>2015-05-25T22:44:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/go-nitpicks/</loc>
+    <lastmod>2014-10-28T06:17:21-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/why-everyone-hates-go/</loc>
+    <lastmod>2014-10-14T10:46:28-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/deploy-discourse-juju/</loc>
+    <lastmod>2014-10-01T06:31:49-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/intro-to-toml/</loc>
+    <lastmod>2014-08-16T07:31:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/desc/series-hugo101/</loc>
+    <lastmod>2014-08-12T11:09:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/making-it-a-series/</loc>
+    <lastmod>2014-08-08T11:12:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/hugo-beyond-the-defaults/</loc>
+    <lastmod>2014-08-08T10:07:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/code/npipe/</loc>
+    <lastmod>2014-08-01T10:15:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/somethingelse/</loc>
+    <lastmod>2014-08-01T06:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/first/</loc>
+    <lastmod>2014-08-01T06:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/code/lumberjack/</loc>
+    <lastmod>2014-07-28T11:28:15+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/about/</loc>
+    <lastmod>2014-07-28T11:14:25+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/ci-for-windows-go-packages-with-appveyor/</loc>
+    <lastmod>2014-07-09T17:43:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/intro-to-boltdb-painless-performant-persistence/</loc>
+    <lastmod>2014-07-07T08:25:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/autogenerate-docs-with-this-one-dumb-trick/</loc>
+    <lastmod>2014-06-17T05:59:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/diffing-go-with-beyond-compare/</loc>
+    <lastmod>2014-05-14T13:09:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/intro-to-go-interfaces/</loc>
+    <lastmod>2014-05-13T07:08:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/mocking-functions-in-go/</loc>
+    <lastmod>2014-04-10T11:35:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/effective-godoc/</loc>
+    <lastmod>2014-04-01T06:43:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/unused-variables-in-go/</loc>
+    <lastmod>2014-03-28T16:13:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/go-and-github/</loc>
+    <lastmod>2014-03-21T06:29:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/go-tips-for-newbie-gophers/</loc>
+    <lastmod>2014-03-15T09:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/working-at-canonical/</loc>
+    <lastmod>2013-11-10T16:14:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/60-days-with-ubuntu/</loc>
+    <lastmod>2013-09-28T08:03:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/statically-typed-generic-data-structures-in-go/</loc>
+    <lastmod>2013-04-17T08:01:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/go-is-for-open-source/</loc>
+    <lastmod>2013-01-29T07:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/what-i-love-about-go/</loc>
+    <lastmod>2013-01-25T08:49:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/gocog/</loc>
+    <lastmod>2013-01-25T08:33:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://lee.joramo.com/blog/go-win-stuff/</loc>
+    <lastmod>2012-11-16T11:01:00+00:00</lastmod>
+  </url>
+  
+</urlset>
