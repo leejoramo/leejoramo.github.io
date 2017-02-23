@@ -2,144 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://leejoramo.github.io/reusable-commands/</loc>
-    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
+    <loc>http://lee.joramo.com/post/newworld/</loc>
+    <lastmod>2017-01-06T14:59:02-07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://leejoramo.github.io/vanity-imports-with-hugo/</loc>
-    <lastmod>2016-10-16T00:01:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/enums/</loc>
-    <lastmod>2015-12-02T00:00:19-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/errors/</loc>
-    <lastmod>2015-10-10T00:00:19-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/testing-exec-command/</loc>
-    <lastmod>2015-06-26T06:41:56-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/wip-godoc/</loc>
-    <lastmod>2015-06-11T07:37:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/pie/</loc>
-    <lastmod>2015-05-25T22:44:32-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/why-everyone-hates-go/</loc>
-    <lastmod>2014-10-14T10:46:28-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/intro-to-toml/</loc>
-    <lastmod>2014-08-16T07:31:51+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/making-it-a-series/</loc>
-    <lastmod>2014-08-08T11:12:44+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/hugo-beyond-the-defaults/</loc>
-    <lastmod>2014-08-08T10:07:46+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/somethingelse/</loc>
-    <lastmod>2014-08-01T06:45:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/first/</loc>
-    <lastmod>2014-08-01T06:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/enums/</loc>
-    <lastmod>2015-12-02T00:00:19-04:00</lastmod>
+    <loc>http://lee.joramo.com/</loc>
+    <lastmod>2017-01-06T14:59:02-07:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://leejoramo.github.io/tags/error-handling/</loc>
-    <lastmod>2015-10-10T00:00:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/errors/</loc>
-    <lastmod>2015-10-10T00:00:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/executables/</loc>
-    <lastmod>2015-06-26T06:41:56-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/go/</loc>
-    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/godoc/</loc>
-    <lastmod>2015-06-11T07:37:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/golang/</loc>
-    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/hugo/</loc>
-    <lastmod>2016-10-16T00:01:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/</loc>
-    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/plugins/</loc>
-    <lastmod>2015-05-25T22:44:32-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/programming/</loc>
-    <lastmod>2016-10-18T22:08:09-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://leejoramo.github.io/tags/testing/</loc>
-    <lastmod>2015-06-26T06:41:56-04:00</lastmod>
+    <loc>http://lee.joramo.com/post/</loc>
+    <lastmod>2017-01-06T14:59:02-07:00</lastmod>
     <priority>0</priority>
   </url>
   
