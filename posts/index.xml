@@ -106,7 +106,7 @@ foo(&#34;bar&#34;); // Won&#39;t have smart quotes or auto ACR...
 &lt;/div&gt;
 
 &lt;div class=&#34;F  wide&#34;&gt;
-&lt;p&gt;![Apple&amp;rsquo;s clothing line.][image-4]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://i.imgur.com/hv6i8GR.jpg&#34; alt=&#34;Apple&#39;s clothing line.&#34; /&gt;&lt;/p&gt;
 
 &lt;div class=&#34;F  wide&#34;&gt;
 &lt;p&gt;![Apple&amp;rsquo;s clothing line.][image-5]&lt;/p&gt;
@@ -115,9 +115,9 @@ foo(&#34;bar&#34;); // Won&#39;t have smart quotes or auto ACR...
 
 &lt;h2 id=&#34;what-about-other&#34;&gt;What about other?&lt;/h2&gt;
 
-&lt;p&gt;I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed][6]. While I was in the mood for XML I added a [site map][7] to each blog and a [robots.txt][8] file so Google can index your posts easily.&lt;/p&gt;
+&lt;p&gt;I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is &lt;a href=&#34;https://leejoramo.github.io/feed.rss&#34;&gt;my feed&lt;/a&gt;. While I was in the mood for XML I added a &lt;a href=&#34;https://leejoramo.github.io/sitemap.xml&#34;&gt;site map&lt;/a&gt; to each blog and a &lt;a href=&#34;https://leejoramo.github.io/robots.txt&#34;&gt;robots.txt&lt;/a&gt; file so Google can index your posts easily.&lt;/p&gt;
 
-&lt;p&gt;I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is [my feed][9].&lt;/p&gt;
+&lt;p&gt;I just added RSS feeds to each blog. A link to your feed is in the footer of your blog. Here is &lt;a href=&#34;https://leejoramo.github.io/feed.rss&#34;&gt;my feed&lt;/a&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;While I was in the mood for XML I added a file so Google can index your posts easily. Here is while I was in the mood for XML I added to each blog and file so Google can index your posts easily.&lt;/p&gt;
@@ -136,26 +136,6 @@ foo(&#34;bar&#34;); // Won&#39;t have smart quotes or auto ACR...
 &lt;/div&gt;
 
 &lt;p&gt;You can pass an options object to influence the type of color it produces. The options object accepts the following properties. Controls the hue of the generated color. You can pass a string representing a color name: &lt;code&gt;red&lt;/code&gt;, &lt;code&gt;orange&lt;/code&gt;, &lt;code&gt;yellow&lt;/code&gt;, &lt;code&gt;green&lt;/code&gt;, &lt;code&gt;blue&lt;/code&gt;, &lt;code&gt;purple&lt;/code&gt;, &lt;code&gt;pink&lt;/code&gt; and &lt;code&gt;monochrome&lt;/code&gt; are currently supported.&lt;/p&gt;
-
-&lt;p&gt;```javascript
-// Returns a hex code for an attractive color
-randomColor();&lt;/p&gt;
-
-&lt;p&gt;// Returns an array of ten green colors
-randomColor(
-   count: 10,
-   hue: &amp;lsquo;green&amp;rsquo;
-&lt;div class=&#34;F  margin left&#34;&gt;
-&lt;p&gt;);&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;// Returns a hex code for a light blue
-randomColor(&lt;/p&gt;
-
-&lt;p&gt;luminosity: &amp;lsquo;dark&amp;rsquo;,
-   hue: &amp;lsquo;blue&amp;rsquo;
-&lt;div class=&#34;F  margin left&#34;&gt;
-&lt;p&gt;);
-```&lt;/p&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;to-do&#34;&gt;To do&lt;/h3&gt;
 
@@ -227,10 +207,6 @@ $$&lt;/p&gt;
 &lt;p&gt;Thank you Twitter and your emoji project. Also, I made the descenders on links more pretty – look how they don’t overlap with the underline. The emoji extractor ignores some unicode characters, like these ones and the ones before those ones.&lt;/p&gt;
 
 &lt;p&gt;How about vimeo embeds? While I was in the mood for XML I added a site map to each blog and a text file so Google can index your posts easily. Does ~~struck~~ out text actually get struck out? Looks like it &lt;strong&gt;does&lt;/strong&gt;. Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, &amp;ldquo;School Days&amp;rdquo; was dope.&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 </description>
