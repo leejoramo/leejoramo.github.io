@@ -27,9 +27,9 @@
       <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/02/05/markdown-block-formats/</guid>
-      <description>Layout &amp;amp; typography ::: margin left :::
-abc
-Grand Junction – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even $ x^2 $ work with $ x f(x) = 2x^2 + 2/3 $ accents like ÀÊØ. A possessive acronym like CNN&amp;rsquo;s opinion works as well. What about the FCC! The so called (BBC).</description>
+      <description>Layout &amp;amp; typography ::: margin left
+ book  :::
+Grand Junction – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even $ x^2 $ work with $ x f(x) = 2x^2 + 2/3 $ accents like ÀÊØ. A possessive acronym like CNN&amp;rsquo;s opinion works as well. What about the FCC!</description>
     </item>
     
     <item>
