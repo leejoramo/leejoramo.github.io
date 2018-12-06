@@ -628,10 +628,6 @@ a.tag {
       
         <a href="/archives/">Archives</a>
       
-        <a href="/contact/">Contact</a>
-      
-        <a href="/about/">About</a>
-      
         <a href="/">Home</a>
       
 
@@ -653,6 +649,9 @@ a.tag {
 
 
   
+
+
+
 
 
 
@@ -783,7 +782,7 @@ I want to able to use Code Fences; however, my approach has some conflicts. Stil
 Shortcodes are not processed by .RawContent or markdownify. While we are intentionally avoiding the common uses of Hugo&rsquo;s shortcodes, this approach prevents you from using them in content for any reason. For my use cases, I don&rsquo;t see this as an issue. I however, I would prefer to not disable Shortcodes entirely.</p></li>
 
 <li><p>The regular expressions in Go are a little limited. It does not
-recognize start of line ^ and end of line $ so I am using \n to look for line
+recognize start of line ^ and end of line<b>so I am using \n to look for line</b>
 breaks. There is no support for Negative lookahead, which makes it difficult
 to catch cases such as escape codes. Some of this maybe my lack of knowledge
 of the Go language.</p></li>
