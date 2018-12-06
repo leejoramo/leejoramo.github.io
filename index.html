@@ -653,12 +653,14 @@ a.tag {
 				<a class="small date left margin" href="/1/01/01/">January 0001</a>
 				<h1 id="layout-typography">   <a class="small permalink" href="/1/01/01/">#</a></h1>
 				
+	
 
 
 
 
 
-
+	
+	
 
 
 
@@ -687,10 +689,11 @@ a.tag {
 
 <h3 id="house-made-granola-with-local-honey">house made granola with local honey</h3>
 
-<p><b>milk — 5.25</b>
-<b>yogurt — 6.5</b>
-<b>yogurt and fresh seasonal fruit — 8.5</b>
-<b>milk and yogurt options are :d: or :v:</b></p>
+<pre><code>$ milk — 5.25
+$ yogurt — 6.5
+$ yogurt and fresh seasonal fruit — 8.5
+$ milk and yogurt options are :d: or :v:
+</code></pre>
 
 <h3 id="aardvark-toasts">aardvark toasts</h3>
 
@@ -908,12 +911,14 @@ v)</p>
 				<a class="small date left margin" href="/2017/02/05/markdown-block-formats/">February 2017</a>
 				<h1 id="layout-typography"> Markdown Block Formats  <a class="small permalink" href="/2017/02/05/markdown-block-formats/">#</a></h1>
 				
+	
 
 
 
 
 
-
+	
+	
 
 
 
@@ -952,7 +957,7 @@ v)</p>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicings elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
 
-<p><b>my price is $19</b></p>
+<p>$ my price is $19</p>
 
 <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -1212,12 +1217,14 @@ $$</p>
 				<a class="small date left margin" href="/2017/03/29/how-i-extended-markdown-for-hugo/">March 2017</a>
 				<h1 id="layout-typography"> How I Extended Markdown for Hugo  <a class="small permalink" href="/2017/03/29/how-i-extended-markdown-for-hugo/">#</a></h1>
 				
+	
 
 
 
 
 
-
+	
+	
 
 
 
@@ -1345,7 +1352,7 @@ I want to able to use Code Fences; however, my approach has some conflicts. Stil
 Shortcodes are not processed by .RawContent or markdownify. While we are intentionally avoiding the common uses of Hugo&rsquo;s shortcodes, this approach prevents you from using them in content for any reason. For my use cases, I don&rsquo;t see this as an issue. I however, I would prefer to not disable Shortcodes entirely.</p></li>
 
 <li><p>The regular expressions in Go are a little limited. It does not
-recognize start of line ^ and end of line<b>so I am using \n to look for line</b>
+recognize start of line ^ and end of line $ so I am using \n to look for line
 breaks. There is no support for Negative lookahead, which makes it difficult
 to catch cases such as escape codes. Some of this maybe my lack of knowledge
 of the Go language.</p></li>
