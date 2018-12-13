@@ -3,22 +3,88 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/2017/03/29/how-i-extended-markdown-for-hugo/</loc>
-    <lastmod>2017-03-29T13:01:00+00:00</lastmod>
+    <loc>/menus/menu/</loc>
+    <lastmod>2018-12-13T06:28:25-07:00</lastmod>
   </url>
   
   <url>
-    <loc>/2017/02/05/markdown-block-formats/</loc>
+    <loc>/events/2018/song-and-dance-show/</loc>
+    <lastmod>2018-12-07T16:25:46-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/events/foodmenus/</loc>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/menu/</loc>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/location-hours/</loc>
+    <lastmod>2018-03-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/events/23/</loc>
+    <lastmod>2018-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/23/</loc>
+    <lastmod>2018-03-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/22/</loc>
+    <lastmod>2018-03-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/21/</loc>
+    <lastmod>2018-03-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/19/</loc>
+    <lastmod>2018-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/15/</loc>
+    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/14/</loc>
+    <lastmod>2018-03-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/journal/2018/03/13/</loc>
+    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/formatsnew/</loc>
     <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/1/01/01/</loc>
+    <loc>/about/menu/</loc>
+    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/archives/</loc>
-    <lastmod>2017-03-29T13:01:00+00:00</lastmod>
+    <loc>/about/</loc>
+    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -28,19 +94,74 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2017-03-29T13:01:00+00:00</lastmod>
+    <loc>/events/</loc>
+    <lastmod>2018-12-07T16:25:46-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/foods/</loc>
+    <lastmod>2018-12-13T06:28:25-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/journal/</loc>
+    <lastmod>2018-03-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/journal/</loc>
+    <lastmod>2018-03-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/categories/menu/</loc>
+    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/menus/</loc>
+    <lastmod>2018-12-13T06:28:25-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2018-03-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/screencast/</loc>
+    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/season6/</loc>
-    <lastmod>2017-03-29T13:01:00+00:00</lastmod>
+    <lastmod>2017-02-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/sharepoint/</loc>
+    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
+    <lastmod>2018-12-13T06:28:25-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/webpresence/</loc>
+    <lastmod>2018-03-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

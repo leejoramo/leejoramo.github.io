@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-	<meta name="generator" content="Hugo 0.50" />
+	<meta name="generator" content="Hugo 0.31.1" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="HandheldFriendly" content="True">
@@ -13,42 +13,42 @@
     <meta property="og:type" content="website">
     <meta name="twitter:title" property="og:title" itemprop="title name" content="      
       
-        Lee&#39;s Blog
+        Copeka Coffee
       ">
- <meta name="description" content="Lee&#39;s Blog">
- <meta name="twitter:description" property="og:description" itemprop="description" content="Lee&#39;s Blog">
+ <meta name="description" content="Copeka Coffee - in retro Grand Junction, Colorado">
+ <meta name="twitter:description" property="og:description" itemprop="description" content="Copeka Coffee - in retro Grand Junction, Colorado">
     <base href="">
    
 
     <title>
       
       
-        Lee&#39;s Blog
+        Copeka Coffee
       
     </title>
     <link rel="canonical" href="/">
 
     <style>
-body {
-  font: 17px / 24px; 
-  font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-rendering: optimizeLegibility;
-  font-variant-ligatures: common-ligatures;
-  font-feature-settings: "liga";
-  -moz-osx-font-smoothing: grayscale;
-  -moz-font-feature-settings: “liga” on;
-  color: #111111;
-  word-wrap: break-word;
-  background-color: rgb(254, 254, 250);
-  background: linear-gradient(to right, #d0d03a 1%,#ffffff 1.5%);
-  padding: 0 1.5%;
-}
+	body {
+    font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(93, 206, 189);
+    font: 17px / 24px; 
+    color: rgb(76, 53, 32);
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+    font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: “liga” on;
+    word-wrap: break-word;
+
+	}
 
 .clear {width: 100%;clear: both;float: none;display: block;height: 0}
 
 .small,
 .caption {font-size: 13px;
-  font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;color: #999;font-weight: 500;}
+  font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #999;font-weight: 500;}
 
 .caption {
   line-height: 18px;
@@ -72,10 +72,15 @@ div {
   position: relative;
 }
 
+#header {
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: transparent;
+}
 .header {margin-top: 48px;margin-bottom: 72px}
 .main {max-width: 60%;min-width: 600px}
 .container {max-width: 1000px}
-.entry {margin: 72px 0 120px}
+.entry {margin: 1em 0 4em 0}
 
 .section .entry{margin: 5px 0 5px}
 
@@ -93,28 +98,33 @@ div {
 .margin img,
 .column img {margin-top: 6px}
 
-.margin p {font-style: italic;font-family: "Avenir Next", "Avenir", Georgia;font-size: 0.9em;margin-top: 0}
+.margin p {
+  font-style: italic;
+  font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  margin-top: 0}
 
 .left.margin {
-  left: -29.3333%;
+  left: -31%;
   padding-right: 30px;
   text-align: right;
 }
 
 .right.margin {
-  right: -29.3333%;
+  right: -31%;
   padding-left: 30px;
 }
 
 .wide {
-  width: 158.6666667%;
-  margin-left: -29.3333333%;
+  width: 162%;
+  margin-left: -31%;
   overflow: auto;  
 }
 
-.wide.left, .wide.right {width: 129.3333333%;float: none;}
-.wide.left {margin: 0 0 0 -29.3333333%}
-.wide.right {margin: 0 -29.3333333% 0 0}
+.wide.left, .wide.right {width: 131%;float: none;}
+.wide.left {margin: 0 0 0 -31%}
+.wide.right {margin: 0 -31% 0 0}
+
 
 .column {
   box-sizing: border-box;
@@ -141,10 +151,45 @@ div {
 .column h2,
 .column h3 {margin-bottom: -12px}
 
+.list-2-columns ul {
+	column-count: 2;
+	column-width: auto;
+	column-gap: .5em;
+}
+
+.list-2-columns li {
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid;
+}
+
+ 
+
+.commaList ul  {
+  display: block;
+  list-style: none;
+  line-height: 1.25em;
+  margin-left: 0;
+  padding-top: .5em;
+}
+
+.commaList ul  li {
+  display: inline;
+  padding-right: .25em;
+}
+
+.commaList ul  li:after {
+  content: ", ";
+}
+
+ .commaList ul  li:last-child:after {
+    content: "";
+}
+
  
 
 p, li {
-  font-family: "Avenir Next", "Avenir", Georgia, serif;
+  font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   margin: 24px 0;
 }
@@ -159,7 +204,7 @@ h2, h3, h4, h5, h6 {
   font-size: 17px;
   font-weight: 600;
   line-height: 24px;
-  margin: 48px 0 24px}
+  margin: 1em 0 .25em 0;}
 
 h1 a, h2 a, h3 a, h4 a, h5, h6 a {
   color: rgb(35, 35, 35);
@@ -186,7 +231,11 @@ b, strong {
 
  
 
-big {color: #000;font-size: 32px;font-family: "Avenir Next", "Avenir", Georgia;line-height: 48px;display: block;}
+big {
+  color: #000;font-size: 32px;
+  font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 48px;
+  display: block;}
 
 
 .text-danger {
@@ -207,11 +256,7 @@ big {color: #000;font-size: 32px;font-family: "Avenir Next", "Avenir", Georgia;l
 a {
   color: #004984;  
   text-decoration: none;
-  text-shadow: .03em 0 #fff, -.03em 0 #fff, 0 .03em #fff, 0 -.03em #fff, .06em 0 #fff, -.06em 0 #fff, .09em 0 #fff, -.09em 0 #fff, .12em 0 #fff, -.12em 0 #fff, 0 0.03em #fff, 0 -.03em #fff, 0 .06em #fff, 0 -.06em #fff, 0 .08em #fff, 0 -.08em #fff;
-  background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient(#004984, #004984);
-  background-size: 0 0,0 0,0.07em 0.07em;
-  background-repeat: no-repeat, no-repeat, repeat-x;
-  background-position: 0% 90%, 100% 90%, 0% 95%;
+
 }
 
 a:hover {
@@ -361,7 +406,7 @@ iframe {width: 100%;}
 }
 
 
-#logo img {position: absolute;width: 48px;top: 0px;left: -62px;}
+#logo img {position: absolute;width: 200px;top: -40px;left: -220px;}
 
 #logo:hover {color: #555}
 #logo img:hover {opacity: 0.8}
@@ -371,7 +416,17 @@ iframe {width: 100%;}
 
  
 .nav {line-height: 20px;padding-bottom: 4px}
-.nav a {margin-right: 6px;font-size: 14px;background: none;text-shadow: none;}
+.nav a {
+	margin-right: 6px;
+	font-size: 14px;
+	background: none;
+	text-shadow: none; 
+	border-bottom: none;
+  background-image: none;
+  background-size: none;
+  background-repeat: none;
+  background-position: none;
+}
 
 a.feed,
 a.search {
@@ -402,7 +457,7 @@ input#search {
   box-sizing: border-box;
   margin: .33em .66em 2em -1em;
   border: 1px solid #A1ADB6;
-  font-family: "Avenir Next", "Avenir", "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: Futura, "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 input#search:focus {
@@ -481,6 +536,28 @@ input#search:focus {
   margin-bottom: 3px
 }
 
+ul#tags {
+  list-style-type: none; 
+  margin-left: 0;
+}
+
+ul#tags li {
+  float: left;
+  
+}
+
+ul#tags li a {
+  text-decoration-line: none;
+  border-bottom: none;
+  margin-right: .5em;
+  color: rgba(0,0,0,0.6);
+  background-image: none;
+  background-size: none;
+  background-repeat: none;
+  background-position: none;
+}
+
+
 a.tag {
   padding-left: 1.33em;
   margin-right: 1em;
@@ -531,89 +608,362 @@ a.tag {
 }
 
 
- 
 
-.highlight code, .highlight pre{color:#fdce93;background-color:#3f3f3f}
-.highlight .hll{background-color:#222}
-.highlight .c{color:#7f9f7f}
-.highlight .err{color:#e37170;background-color:#3d3535}
-.highlight .g{color:#7f9f7f}
-.highlight .k{color:#f0dfaf}
-.highlight .l{color:#ccc}
-.highlight .n{color:#dcdccc}
-.highlight .o{color:#f0efd0}
-.highlight .x{color:#ccc}
-.highlight .p{color:#41706f}
-.highlight .cm{color:#7f9f7f}
-.highlight .cp{color:#7f9f7f}
-.highlight .c1{color:#7f9f7f}
-.highlight .cs{color:#cd0000;font-weight:bold}
-.highlight .gd{color:#cd0000}
-.highlight .ge{color:#ccc;font-style:italic}
-.highlight .gr{color:red}
-.highlight .gh{color:#dcdccc;font-weight:bold}
-.highlight .gi{color:#00cd00}
-.highlight .go{color:gray}
-.highlight .gp{color:#dcdccc;font-weight:bold}
-.highlight .gs{color:#ccc;font-weight:bold}
-.highlight .gu{color:purple;font-weight:bold}
-.highlight .gt{color:#0040D0}
-.highlight .kc{color:#dca3a3}
-.highlight .kd{color:#ffff86}
-.highlight .kn{color:#dfaf8f;font-weight:bold}
-.highlight .kp{color:#cdcf99}
-.highlight .kr{color:#cdcd00}
-.highlight .kt{color:#00cd00}
-.highlight .ld{color:#cc9393}
-.highlight .m{color:#8cd0d3}
-.highlight .s{color:#cc9393}
-.highlight .na{color:#9ac39f}
-.highlight .nb{color:#efef8f}
-.highlight .nc{color:#efef8f}
-.highlight .no{color:#ccc}
-.highlight .nd{color:#ccc}
-.highlight .ni{color:#c28182}
-.highlight .ne{color:#c3bf9f;font-weight:bold}
-.highlight .nf{color:#efef8f}
-.highlight .nl{color:#ccc}
-.highlight .nn{color:#8fbede}
-.highlight .nx{color:#ccc}
-.highlight .py{color:#ccc}
-.highlight .nt{color:#9ac39f}
-.highlight .nv{color:#dcdccc}
-.highlight .ow{color:#f0efd0}
-.highlight .w{color:#ccc}
-.highlight .mf{color:#8cd0d3}
-.highlight .mh{color:#8cd0d3}
-.highlight .mi{color:#8cd0d3}
-.highlight .mo{color:#8cd0d3}
-.highlight .sb{color:#cc9393}
-.highlight .sc{color:#cc9393}
-.highlight .sd{color:#cc9393}
-.highlight .s2{color:#cc9393}
-.highlight .se{color:#cc9393}
-.highlight .sh{color:#cc9393}
-.highlight .si{color:#cc9393}
-.highlight .sx{color:#cc9393}
-.highlight .sr{color:#cc9393}
-.highlight .s1{color:#cc9393}
-.highlight .ss{color:#cc9393}
-.highlight .bp{color:#efef8f}
-.highlight .vc{color:#efef8f}
-.highlight .vg{color:#dcdccc}
-.highlight .vi{color:#ffffc7}
-.highlight .il{color:#8cd0d3}
 
 
 </style>
+<style>
 
+
+	zz#header {
+		text-align: center;
+		font-size: 1.2rem;
+	}
+
+	zz#header a:link,
+	zz#header a:visited {
+		color: white;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		opacity: .90;
+	}
+	zz#header a:hover {
+		border-bottom: 1px solid white;
+		opacity: .40;
+	}
+
+	.hide-text {
+		display: block;
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		height: 0;
+	}
+
+	zz.logo {
+	 
+
+		margin: 1em auto;
+	}
+
+	.logo img {
+		width: 70%;
+		max-width: 400px;
+		min-width: 6em;
+		height: 180px;
+	}
+
+	.social {
+		border-radius: .5em;
+		display: block;
+		max-width: 650px;
+		margin: .5em auto .25em auto;
+		font-size: 1.2rem;
+	}
+
+	.social a {
+		margin: .25em .25em .25em .25em;
+		color: white;
+		border-radius: .5em;
+		padding: .5em .75em;
+		text-decoration: none;
+		
+		display: inline-block;
+	}
+
+	.social a:hover {
+		opacity: .6;
+	}
+
+	.colorfacebook {
+		background-color: #3b5998;
+	}
+
+	.coloryelp {
+		background-color: #bd1f1f;
+	}
+
+	.colorhappycow {
+		background-color: #8a2091;
+	}
+
+	.colorinstagram {
+		background-color: #4c5fd7;
+	}
+
+	.colorgoogle {
+		background-color: #4285f4;
+	}
+   
+	zz#content-wrapper,
+  .container {
+		max-width: 700px;
+		margin: 2em auto 0 auto;
+		padding: 0 0 0 0;	
+		background-color: rgba(255, 255, 255, 0.2);		
+		border-radius: 1em;
+	}
+
+	zz#content,
+  .container .main {
+		max-width: 700px;
+		margin: 0 auto 2em auto;
+		padding: 1em 2em 1em 2em;
+		background-color: white;
+		border-radius: 1em;
+		font-size: 1rem;
+	}
+
+	zz.menuItem {
+		page-break-inside: avoid;
+	}
+  
+	zz.menuitem.boxed, 
+  .main .boxed {
+		border: 1px solid black;
+		padding: 1em 1em;
+		margin: 1em -1em 1em -1em;
+		page-break-inside: avoid;
+	}
+	xx.menuItem h3,
+	xx.menuItem h4,
+  .main h3,
+  .main h4 {
+		
+		margin-bottom: .25em;
+	}
+	xx.menuItem.boxed h3,
+	xx.menuItem.boxed h4,
+  .main .boxed h3,
+  .main .boxed h4 {
+		margin-top: 0;
+	}
+
+  
+	zz.menuItem p,
+  .main p {
+		margin: 0 0;
+	}
+
+  
+	zz.menuItem .price,
+	zz.menuHours,
+  span.price {
+		display: inline-block;
+		float: right;
+		font-weight: 400;
+		margin-right: -0em;
+	}
+
+
+
+	.boxed span.price {
+		margin-right: 0;
+	}
+
+	.priceList ul {
+		text-align: right;
+		clear: both;
+		font-style: italic;
+		list-style-type: none !important;
+		margin: 0 2em 0 2em;
+	}
+
+	.menuOptions .price {
+		display: inline-block;
+		float: none;
+		font-style: normal;
+		min-width: 1em;
+
+	}
+
+	.diet {
+		display: inline-block;
+		border-radius: .75em;
+		padding: 0 .25em;
+		color: rgb(128, 128, 128);
+		background: white;
+		border: 1px solid rgb(128, 128, 128);
+		font-size: .75rem;
+		font-style: italic;
+		min-width: 1em;
+		min-height: 1em;
+		text-align: center;
+	}
+
+	.menuChoiceList {
+		padding-left: 0;
+	}
+
+	.menuChoiceList li {
+		display: inline-block;
+		width: 44%;
+		list-style: none;
+	}
+    
+	.printLink {
+		text-align: right;
+		margin-right: -2em;
+	}
+	.main a:link,
+	.main a:visited {
+		color: rgb(93, 206, 189);
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+	}
+	.main a:hover {
+		border-bottom: 1px solid rgb(93, 206, 189);
+		opacity: .70;
+	}
+
+
+	hr {
+		margin-top: 3.5em;
+		margin-bottom: 2.5em;
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+
+	.jumplist {
+		margin: 0 0 0 0;
+		list-style-type: none;
+		padding: .25em 1em .25em 1em;
+		font-size: 1rem;
+		-webkit-margin-after: 0;
+
+	}
+	.jumplist li {
+		display: inline-block;
+		color: white;
+		text-align: center;
+
+		margin: 0 1em 0 .5em ;
+	}
+	.jumplist li:first-child {
+		text-align: left;
+	}
+	.jumplist li:last-child {
+		text-align: right;
+	}
+	.jumplist li a:link,
+	.jumplist li a:visited {
+		color: white;
+		font-weight: ;
+		text-decoration: none;
+	}
+	.jumplist li a:hover {
+		opacity: .5;
+	}
+
+@media print { 
+
+	    hr {
+			page-break-before: always;
+            margin: 0 0 0 0;
+			padding: 0 0 0 0;
+			height: 1px; 
+
+		}
+		body {
+			background-color: white;
+		}
+		#header {
+			max-width: 524px;
+			margin: 0 auto 0 auto;
+			clear: both;
+			text-align: right;
+			height: 5em;
+		}
+		#content {
+			font-size: .65rem;
+		}
+		#content-wrapper {
+			max-width: 550px;
+			margin: 0 auto 0 auto;
+			padding: 0 0 0 0;	
+			background-color: rgba(255, 255, 255, 1);		
+			border-radius: 0;
+		}		
+		.noPrint {
+			display: none;
+		}
+		.logo {
+			min-width: 25%;
+			width: 25%;
+			height: 90px;
+			max-height: 90px;
+			margin: 0 0 0 0; 
+			float: left;
+			x-border: 1px solid black;
+			text-align: left;
+		}
+		.logo img {
+			width: 100%;
+			display: block;
+			float: left;
+			height: 100px;
+			
+			min-width: auto;
+			max-width: auto;
+		}
+		.locationHours {
+			display: inline-block;
+			width: 60%;
+			font-size: .65rem;
+		}
+}
+.clear {
+	clear: both;
+ 	width: 100%;
+	float:none;
+}
+ @media only screen and (max-device-width: 700px )  { 
+	 body {
+
+	 }
+	 #header {
+		 font-size: 1rem;
+	 }
+	.logo img {
+		height: 300px;
+	}
+	.social {
+		width: 96%;
+		max-width: 100%;
+	}
+	.menuHours {
+		display: inline-block;
+		font-size: 2rem;
+		margin-bottom: .5em;
+	}
+	#content-wrapper {
+		max-width: 98%;
+		width: 98%;
+		font-size: 2rem;		
+	}
+	#content {
+
+	    max-width: 100%;
+		x-width: 100%;
+		padding: 1em 3em 1em .75em;
+	}
+	h2 {
+		padding-bottom: 1em;
+	}
+}
+
+</style>
 
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Lee&#39;s Blog" />
+      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Copeka Coffee" />
     
 
+
+
+    
   </head>
 
 
@@ -621,37 +971,74 @@ a.tag {
   <body>
       
 
-<div class="container header">
-  <div class="main">
-    <a id="logo" href="/">
-      <img class="avatar rounded" src="/images/lee-avatar-256-low.jpg" alt="__name__'s avatar" />
+<div id="header" class="container header">
+ 
+  
+
+  <h1 class="logo">
+    <img src="/images/CopekaCoffee_Logo.svg" alt="Copeka Coffee Logo">
+    <span class="hide-text noPrint">Copeka Coffee</span>
+  </h1>
+  <div class="locationHours">
+    <p>
+      <b>Hours: 6:30am - 6pm Daily</b>
+    </p>
+    <p><a href="tel:970.628.0878">970.628.0878</a><br>
+      1012 N. 5th Street<br> 
+      Grand Junction, Colorado 81501
+    </p>
+  </div>
+  <div class="clear"></div>
+  <p class="social noPrint">
+    <a class="coloryelp" href="https://www.yelp.com/biz/copeka-coffee-grand-junction?osq=Copeka+Coffee">yelp</a>
+    <a class="colorhappycow" href="https://www.happycow.net/reviews/copeka-coffee-grand-junction-111003">happy cow</a>
+  
+    <a class="colorfacebook" href="https://www.facebook.com/copekacoffee/">facebook</a>
+    <a class="colorinstagram" href="https://www.instagram.com/copeka_coffee/">instagram</a>
+    <a class="colorgoogle" href="https://goo.gl/maps/yDmXxJGMEYv">google</a>
+  </p>
+  
+
+  
+
+</div>
+
+<div class="container"> 
+
+<div class="noprint">
+  <ul class="jumplist noprint">
       
-    </a>
-    <div class="nav">
+        <li><a href="/about/">About</a></li>
       
-        <a href="/archives/">Archives</a>
+        <li><a href="/location-hours/">Location &amp; Hours</a></li>
       
-        <a href="/">Home</a>
+        <li><a href="/menu/">Menus</a></li>
+      
+        <li><a href="/journal/">Journal</a></li>
+      
+        <li><a href="/receipes/">Receipes</a></li>
+      
+        <li><a href="/order/">Order</a></li>
       
 
-      <div class="right">
+
         
         
-        
-        <a class="feed" href="/index.xml" title="RSS feed for Lee&#39;s Blog">Feed</a>
-        
-      </div>
-    </div>
+        <li class="right"><a class="feed" href="/index.xml" title="RSS feed for Copeka Coffee">Feed</a></li>
+         
+
+    </ul>
+
+   
   </div>
-</div>
 
 <div class="container">
   <div class="main">
         <div>
           
           	<div class="entry">
-				<a class="small date left margin" href="/1/01/01/">January 0001</a>
-				<h1 id="layout-typography">   <a class="small permalink" href="/1/01/01/">#</a></h1>
+				<a class="small date left margin" href="/menus/menu/">December 2018</a>
+				<h1 id="layout-typography"> Menu  <a class="small permalink" href="/menus/menu/">#</a></h1>
 				
 	
 
@@ -659,8 +1046,16 @@ a.tag {
 
 
 
+
+
+
+
+
+
+
+
+
 	
-	
 
 
 
@@ -681,223 +1076,229 @@ a.tag {
 
 
 
-<h2 id="coffee-house-menu-i-u-6-30am-6pm-u-i">Coffee House Menu <i><u>6:30am–6pm</u></i></h2>
 
-<h3 id="fresh-pastries-made-daily-i-u-various-prices-u-i">fresh pastries made daily <i><u>various prices</u></i></h3>
 
-<p>ask your barista for today&rsquo;s selection (mostly :v:) (:gf: options)</p>
 
-<h3 id="house-made-granola-with-local-honey">house made granola with local honey</h3>
 
-<p><ul class='prices'><li>milk — 5.25</li>
-<li>yogurt — 6.5 hens</li>
-<li>hello - 2.3 hens</li>
-<li>yogurt and fresh seasonal fruit — 8.5 hens</li>
-<li>Chickens rules hens</li>
-<li>milk and yogurt options are :d: or :v:</li></ul></p>
 
-<h3 id="aardvark-toasts">aardvark toasts</h3>
 
-<p>all of our toasts are served on our house made aardvark bread, a seedy rustic loaf of legend. (:gf: option available)</p>
 
-<h2 id="buttered-toast-i-u-3-u-i">buttered toast <i><u>3</u></i></h2>
 
-<p>choose organic butter or vegan butter</p>
 
-<h2 id="buttered-cinnamon-toast-i-u-3-5-u-i">buttered cinnamon toast <i><u>3.5</u></i></h2>
 
-<p>choice of butter, dusting of organic cinnamon sugar</p>
 
-<h2 id="tahini-and-local-honey-i-u-4-5-u-i">tahini and local honey <i><u>4.5</u></i></h2>
 
-<p>single-sourced ethiopian sesame tahini, local honey drizzle</p>
 
-<div class='wide' >
 
-<p>]# you–do–you toast <i><u>6.5</u></i>
-choice of avocado smash or our house-made ricotta (:d: or :v:)</p>
 
-<p>choice of up to four toppings</p>
 
-<p>chia seeds
-house-made feta :d:
-chickpeas
-house-made ricotta (:d: or :v:)
-fresh tomatoes
-sun-dried tomatoes
-fresh onion
-avocado smash :v:
-pesto :v:
-toasted sunflower seeds
-cilantro</p>
+
+
+
+<h2 id="fresh-pastries-made-daily-md-span-class-price-various-prices-md-span-end">fresh pastries made daily <span class='price' >various prices</MD_span_END></h2>
+
+<p>ask your barista for today&rsquo;s selection (mostly <i class='diet vegan'>v</i>) (<i class='diet gutenFree'>gf</i> options)</p>
+
+<h2 id="house-made-granola-with-local-honey">house made granola with local honey</h2>
+
+<div class='priceList' >
+
+<ul>
+<li>milk — 5.25</li>
+<li>yogurt — 6.5</li>
+<li>hello — 2.3</li>
+<li>yogurt and fresh seasonal fruit — 8.5</li>
+<li>milk and yogurt options are <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i></li>
+</ul>
 
 </div>
 
-<p>Curated Toasts</p>
+<h2 id="aardvark-toasts">aardvark toasts</h2>
 
-<p>the cheap trick
-7.5</p>
+<p>all of our toasts are served on our house made aardvark bread, a seedy rustic loaf of legend. (<i class='diet gutenFree'>gf</i> option available)</p>
+
+<h3 id="buttered-toast-md-span-class-price-3-md-span-end">buttered toast <span class='price' >3</MD_span_END></h3>
+
+<p>choose organic butter or vegan butter</p>
+
+<h3 id="buttered-cinnamon-toast-md-span-class-price-3-5-md-span-end">buttered cinnamon toast <span class='price' >3.5</MD_span_END></h3>
+
+<p>choice of butter, dusting of organic cinnamon sugar</p>
+
+<h3 id="tahini-and-local-honey-md-span-class-price-4-5-md-span-end">tahini and local honey <span class='price' >4.5</MD_span_END></h3>
+
+<p>single-sourced ethiopian sesame tahini, local honey drizzle</p>
+
+<div class='boxed' >
+
+<h3 id="you-do-you-toast-md-span-class-price-6-5-md-span-end">you–do–you toast <span class='price' >6.5</MD_span_END></h3>
+
+<p>choice of avocado smash or our house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
+
+<p>choice of up to four toppings</p>
+
+<ul>
+<li>chia seeds</li>
+<li>house-made feta <i class='diet dairy'>d</i></li>
+<li>chickpeas</li>
+<li>house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</li>
+<li>fresh tomatoes</li>
+<li>sun-dried tomatoess</li>
+<li>fresh onion</li>
+<li>avocado smash <i class='diet vegan'>v</i></li>
+<li>pesto <i class='diet vegan'>v</i></li>
+<li>toasted sunflower seeds</li>
+<li>cilantro
+:::</li>
+</ul>
+
+<h2 id="curated-toasts">Curated Toasts</h2>
+
+<h3 id="the-cheap-trick-md-span-class-price-7-5-md-span-end">the cheap trick <span class='price' >7.5</MD_span_END></h3>
 
 <p>avocado smash, chia seeds, pesto, fresh tomato, suns-dried tomatoes, dash of cheap trick (aka truffle salt), our house-made
-ricotta (
-d or
-v)</p>
+ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
 
-<p>add a small salad –
-4</p>
+<div class='priceList' >
 
-<p>love to damascus
-7.5</p>
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h3 id="love-to-damascus-md-span-class-price-7-5-md-span-end">love to damascus <span class='price' >7.5</MD_span_END></h3>
 
 <p>while the origin of hummus is contested, the introduction of lemons (essential to the recipe) is well known to belong to
 damascus. — house made hummus, fresh tomatoes, capers, onion, preserved lemons, house-made feta (dairy) or vegan
 house-made ricotta, cilantro</p>
 
-<p>add a small salad –
-4</p>
+<div class='priceList' >
 
-<p>charmed, i&rsquo;m sure
-7.5</p>
+<ul>
+<li>add a small salad – 4</li>
+</ul>
 
-<p>our house-made ricotta (
-d or
-v), fresh strawberries, toasted almonds, choose local honey or rosemary-lavender syrup drizzle</p>
+</div>
 
-<p>add a small salad –
-4</p>
+<h3 id="charmed-i-m-sure-md-span-class-price-7-5-md-span-end">charmed, i&rsquo;m sure <span class='price' >7.5</MD_span_END></h3>
 
-<p>oasis
-7.5</p>
+<p>our house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>), fresh strawberries, toasted almonds, choose local honey or rosemary-lavender syrup drizzle</p>
+
+<div class='priceList' >
+
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h3 id="oasis-md-span-class-price-7-5-md-span-end">oasis <span class='price' >7.5</MD_span_END></h3>
 
 <p>single-sourced ethiopian sesame tahini, local honey, fresh banana coins, toasted almonds, fresh mint</p>
 
-<p>add a small salad –
-4</p>
+<div class='priceList' >
 
-<p>Salads
-hey jude salad
-10</p>
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h2 id="salads">Salads</h2>
+
+<h3 id="hey-jude-salad-md-span-class-price-10-md-span-end">hey jude salad <span class='price' >10</MD_span_END></h3>
 
 <p>fresh spicy arugula, avocado, chia seeds, fresh strawberries, red onion, roasted sunflower seeds, dash of cheap trick
-(truffle salt) side of rosemary lavender vinaigrette</p>
+(truffle salt) side of rosemary lavender vinaigrette <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
 
-<p>v
-gf</p>
+<div class='priceList' >
 
-<p>add house-made feta
-d or ricotta
-v</p>
+<ul>
+<li>add house-made feta <i class='diet dairy'>d</i> or ricotta <i class='diet vegan'>v</i> — 2</li>
+</ul>
 
-<p>—
-2</p>
+</div>
 
-<p>flower child salad
-10</p>
+<h3 id="flower-child-salad-md-span-class-price-10-md-span-end">flower child salad <span class='price' >10</MD_span_END></h3>
 
 <p>bed of organic mixed greens, fresh tomato, marigolds, crisp cucumber, chickpeas, roasted sunflower seeds, preserved lemons.
-side of tahini</p>
+side of tahini <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
 
-<p>v
-gf</p>
+<div class='priceList' >
 
-<p>add house-made feta
-d or ricotta
-v</p>
+<ul>
+<li>add house-made feta <i class='diet dairy'>d</i> or ricotta <i class='diet vegan'>v</i> — 2</li>
+<li>add falafel <i class='diet vegan'>v</i> — 4</li>
+</ul>
 
-<p>—
-2</p>
+</div>
 
-<p>add falafel
-v —
-4</p>
+<h2 id="soups">Soups</h2>
 
-<p>Soups
-curated soup
-8</p>
+<h3 id="curated-soup-md-span-class-price-8-md-span-end">curated soup <span class='price' >8</MD_span_END></h3>
 
-<p>our roasted tomato soup, sprinkled with fresh chopped herbs from the garden and a dollop of our house-made ricotta (
-d
-or
-v
-)
-gf</p>
+<p>our roasted tomato soup, sprinkled with fresh chopped herbs from the garden and a dollop of our house-made ricotta ( <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i> ) <i class='diet gutenFree'>gf</i></p>
 
-<p>add a slice of aardvark bread with butter (
-d
-or
-v
-) —
-1.5</p>
+<div class='priceList' >
 
-<p>community soup
-pay what you will</p>
+<ul>
+<li>add a slice of aardvark bread with butter ( <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i> ) — 1.5</li>
+</ul>
 
-<p>sometimes the best things in life are simple. lightly sautéed onions, garlic, ripe roasted tomatoes, good broth, sprinkle
-of
-herbs de provence, and a good dash of copeka love</p>
+</div>
 
-<p>v
-gf</p>
+<h3 id="community-soup-md-span-class-price-pay-what-you-will-md-span-end">community soup <span class='price' >pay what you will</MD_span_END></h3>
 
-<p>Copeka&rsquo;s Big Cheese
-11am–2pm Monday — Friday</p>
+<p>sometimes the best things in life are simple. lightly sautéed onions, garlic, ripe roasted tomatoes, good broth, sprinkle of
+herbs de provence, and a good dash of copeka love <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
+
+<h2 id="copeka-s-big-cheese-md-span-class-price-11am-2pm-monday-friday-md-span-end">Copeka&rsquo;s Big Cheese <span class='price' >11am–2pm Monday — Friday</MD_span_END></h2>
 
 <p>(In a little truck)
       (Technically not a truck)</p>
 
 <p>Keep watch as we expand our days of operation and opening for evening events!</p>
 
-<p>Grilled Cheese Sandwiches</p>
+<h3 id="grilled-cheese-sandwiches">Grilled Cheese Sandwiches</h3>
 
-<p>for one extra buck, make your sandwich gf or v
-give us two bucks and get gf and v</p>
+<p>for one extra buck, make your sandwich <i class='diet gutenFree'>gf</i> or <i class='diet vegan'>v</i> give us two bucks and get <i class='diet gutenFree'>gf</i> and <i class='diet vegan'>v</i></p>
 
-<p>the basic
-5.5</p>
+<h3 id="the-basic-md-span-class-price-5-5-md-span-end">the basic <span class='price' >5.5</MD_span_END></h3>
 
 <p>muenster, american cheese &amp; cheddar cheese</p>
 
-<p>the basic greengo
-7.25</p>
+<h3 id="the-basic-greengo-md-span-class-price-7-25-md-span-end">the basic greengo <span class='price' >7.25</MD_span_END></h3>
 
 <p>the basic plus green chilies.</p>
 
-<p>the smash
-7.50</p>
+<h3 id="the-smash-md-span-class-price-7-50-md-span-end">the smash <span class='price' >7.50</MD_span_END></h3>
 
 <p>the basic plus green chilies, tomato, smashed BBQ chips</p>
 
-<p>dem beans
-7.5</p>
+<h3 id="dem-beans-md-span-class-price-7-5-md-span-end">dem beans <span class='price' >7.5</MD_span_END></h3>
 
 <p>cheddar, pepper jack, american cheese, red onion and baked beans</p>
 
-<p>get figgy with it
-8.5</p>
+<h3 id="get-figgy-with-it-md-span-class-price-8-5-md-span-end">get figgy with it <span class='price' >8.5</MD_span_END></h3>
 
 <p>brie, muenster, fig jam and arugula - yum!</p>
 
-<p>cloud girl
-8.5</p>
+<h3 id="cloud-girl-md-span-class-price-8-5-md-span-end">cloud girl <span class='price' >8.5</MD_span_END></h3>
 
 <p>brie, muenster, fruit and local honey dizzle</p>
 
-<p>tomato soup
-4</p>
+<h3 id="tomato-soup-md-span-class-price-4-md-span-end">tomato soup <span class='price' >4</MD_span_END></h3>
 
 <p>dunk your sandwich in our house made soup</p>
 
-<p>bag-of-chips
-1.5</p>
+<h3 id="bag-of-chips-md-span-class-price-1-5-md-span-end">bag-of-chips <span class='price' >1.5</MD_span_END></h3>
 
-<p>copeka cookies
-2.5</p>
+<h3 id="copeka-cookies-md-span-class-price-2-5-md-span-end">copeka cookies <span class='price' >2.5</MD_span_END></h3>
 
-<p>copeka&rsquo;s classic cookie, ready to accompany your sandwich (d or
-v)</p>
+<p>copeka&rsquo;s classic cookie, ready to accompany your sandwich (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
 
-<p>sodas or lacroix waters
-1.5</p>
+<h3 id="sodas-or-lacroix-waters-md-span-class-price-1-5-md-span-end">sodas or lacroix waters <span class='price' >1.5</MD_span_END></h3>
 
 
 
@@ -909,8 +1310,8 @@ v)</p>
 			<hr>
           
           	<div class="entry">
-				<a class="small date left margin" href="/2017/02/05/markdown-block-formats/">February 2017</a>
-				<h1 id="layout-typography"> Markdown Block Formats  <a class="small permalink" href="/2017/02/05/markdown-block-formats/">#</a></h1>
+				<a class="small date left margin" href="/events/2018/song-and-dance-show/">December 2018</a>
+				<h1 id="layout-typography"> song and dance show  <a class="small permalink" href="/events/2018/song-and-dance-show/">#</a></h1>
 				
 	
 
@@ -918,8 +1319,1263 @@ v)</p>
 
 
 
+
+
+
+
+
+
+
+
+
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+the chickens were happy
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/events/foodmenus/">March 2018</a>
+				<h1 id="layout-typography"> Copeka&#39;s Menu - Espresso - Chia - Food -  Bakery - Beer, Wine &amp; Cocktails  <a class="small permalink" href="/events/foodmenus/">#</a></h1>
+				
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="drinks">Drinks</h2>
+
+<p>Americano
+Au Lait
+Breve
+Cappuccino
+Chai
+Cold Brew
+Cortado
+Cuban
+Drip
+Espresso
+Golden Latte
+Hot Chocolate
+LaCroix
+Latte
+Mocha
+Pour Over
+Shakerato
+Steamer
+Tea
+Vanilla Latte</p>
+
+<h2 id="cocktails-beer-wine">Cocktails, Beer &amp; Wine</h2>
+
+<p>Boozerato Cocktail
+Chai Toddy Cocktail</p>
+
+<h2 id="food">Food</h2>
+
+<p>Aardvark Toast
+Burrito Basic
+Burrito Kicked
+Fritatta
+Soup/Chili
+Soup/Chili</p>
+
+<p>#Bakery</p>
+
+<h3 id="daily">Daily</h3>
+
+<p>Copeka Cookies
+Cinnamon Roll
+Baked Oatmeal
+Scones
+Charley’s Cookies
+Unicon Horns
+Granola</p>
+
+<h3 id="regular">Regular</h3>
+
+<p>Paleo Pop Tarts</p>
+
+<h2 id="alcohol">Alcohol</h2>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/menu/">March 2018</a>
+				<h1 id="layout-typography"> Copeka&#39;s Menu - Espresso - Chia - Food -  Bakery - Beer, Wine &amp; Cocktails  <a class="small permalink" href="/menu/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>::: column two commaList</p>
+
+<h2 id="drinks">Drinks</h2>
+
+<ul>
+<li>Americano</li>
+<li>Au Lait</li>
+<li>Breve</li>
+<li>Cappuccino</li>
+<li>Chai</li>
+<li>Cold Brew</li>
+<li>Cortado</li>
+<li>Cuban</li>
+<li>Drip</li>
+<li>Espresso</li>
+<li>Golden Latte</li>
+<li>Hot Chocolate</li>
+<li>LaCroix</li>
+<li>Latte</li>
+<li>Mocha</li>
+<li>Pour Over</li>
+<li>Shakerato</li>
+<li>Steamer</li>
+<li>Tea</li>
+<li>Vanilla Latte</li>
+</ul>
+
+<h2 id="cocktails-beer-wine">Cocktails, Beer &amp; Wine</h2>
+
+<ul>
+<li>Boozerato Cocktail</li>
+<li>Chai Toddy Cocktail</li>
+</ul>
+
+</div>
+
+<p>::: column two commaList</p>
+
+<h2 id="food">Food</h2>
+
+<ul>
+<li>Aardvark Toast</li>
+<li>Burrito Basic</li>
+<li>Burrito Kicked</li>
+<li>Fritatta</li>
+<li>Soup/Chili</li>
+<li>Soup/Chili</li>
+</ul>
+
+<h2 id="bakery-items">Bakery Items</h2>
+
+<ul>
+<li>Copeka Cookies</li>
+<li>Cinnamon Roll</li>
+<li>Baked Oatmeal</li>
+<li>Scones</li>
+<li>Charley’s Cookies</li>
+<li>Unicon Horns</li>
+<li>Granola</li>
+</ul>
+
+<h2 id="irregular-offerings">Irregular Offerings</h2>
+
+<ul>
+<li>Paleo Pop Tarts</li>
+</ul>
+
+</div>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/location-hours/">March 2018</a>
+				<h1 id="layout-typography"> Location &amp; Hours  <a class="small permalink" href="/location-hours/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="copeka-coffee">Copeka Coffee</h2>
+
+<p>Open Daily: 6:30am - 8pm<br />
+Open Late: For Events<br />
+Closed: Thanksgiving &amp; Christmas Day</p>
+
+<p>1012 N. 5th St<br />
+Grand Junction, CO 81501<br />
+970.628.0878</p>
+
+<h2 id="copeka-big-cheese-truck">Copeka Big Cheese Truck</h2>
+
+<p>Open Monday - Friday: 10:30am - 2pm
+Other Hours for Events</p>
+
+<p>Located next to Copeka Coffee along 5th Street</p>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/events/23/">March 2018</a>
+				<h1 id="layout-typography"> Friday, March 23, 2018  <a class="small permalink" href="/events/23/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To-Do</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Follow up on floor plan migration with Cece and Larrry. See Larry&rsquo;s emails</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> create migration list of forms and content from SharePoint</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Test Staff Absence Report with other Managers and Wendy</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Tech Mart tests</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> SQL</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Javascript</label></li>
+</ul>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/projects/23/">March 2018</a>
+				<h1 id="layout-typography"> Friday, March 23, 2018  <a class="small permalink" href="/projects/23/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To-Do</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Follow up on floor plan migration with Cece and Larrry. See Larry&rsquo;s emails</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> create migration list of forms and content from SharePoint</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Test Staff Absence Report with other Managers and Wendy</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Tech Mart tests</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> SQL</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> Javascript</label></li>
+</ul>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/22/">March 2018</a>
+				<h1 id="layout-typography"> Thursday, March 22, 2018  <a class="small permalink" href="/journal/2018/03/22/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="evaluate-webform-options">Evaluate webform options</h2>
+
+<p>Layout is the big issue with web form editoring software. I have already evaluated Google Forms and Web Presence. Today I evaluated a long list of</p>
+
+<h2 id="web-presence-calendar">Web Presence Calendar</h2>
+
+<h3 id="ical-subscriptions">iCal subscriptions.</h3>
+
+<p>Checked into the issue of why the Staff intranet is not allowing iCal subscriptions</p>
+
+<blockquote>
+<p>Rob Snodgrass+−</p>
+
+<p>Hello, how may I help?10:53 AM</p>
+
+<p>A couple of weeks ago, I chatted about
+iCal feeds on appearing on the calendars of our Staff website. They worked on the schools sites. <a href="https://staff.d51schools.org/my_teams/tech_team/incident_management/?portalId=5224309&amp;pageId=8711629&amp;objectId.181321=8711631&amp;contextId.181321=8711630&amp;parentId.181321=8711631&amp;action.181321=subscribeToICalAndRssFeeds&amp;objectType.181321=workspace_calendar&amp;CalendarName=Calendar&amp;PageName=Incident+Management">Incident Calendar Subscriptions</a>
+A ticket was going to be filed on this.10:54 AM</p>
+
+<p>I see a calendar case that was opened by Larry Hudson
+But you didn&rsquo;t get a case number for this at the time of the initial chat?10:57 AM</p>
+
+<p>no10:58 AM</p>
+
+<p>I see the calendar issue with Larry, what is the issue?10:59 AM</p>
+
+<p>If you go to to the link I sent above, you will only see the option to subscribe via RSS, there is no section for iCal11:01 AM</p>
+
+<p>That is correct, at this time our calendars cannot produce an iCal link.11:02 AM</p>
+
+<p>It is a feature that may be added in the future, but it doesn&rsquo;t right now
+*but doesn&rsquo;t create one right now 11:03 AM</p>
+
+<p>But it is described in your documents. AND is available on our school sites. Just not the staff site. Here is one of our schools11:06 AM</p>
+
+<p><a href="webcal://gjhs.d51schools.org/ICalendarHandler?calendarId=77703">gjhs iCal Feed</a>11:06 AM</p>
+
+<p>I am not sure why it is not available on the staff site, I hadn&rsquo;t seen that they were available at all, Let me get a case started for you, one sec.11:08 AM
+that was the actual feed link. here is the page on which it is listed11:08 AM
+<a href="http://gjhs.d51schools.org/calendar/?portalId=77627&amp;pageId=77648&amp;objectId.12329=77703&amp;contextId.12329=77702&amp;parentId.12329=77703&amp;action.12329=subscribeToICalAndRssFeeds&amp;objectType.12329=workspace_calendar&amp;CalendarName=Calendar&amp;PageName=Calendar">gjhs Calendar Subscriptions</a> 11:08 AM</p>
+
+<p>I have case 508411 to see why the calendars on the staff site are not equipped with iCal options11:12 AM
+I added a new calendar to the page, it too would show an iCal link for it11:13 AM
+Once a Tier 2 can take a look at the calendar on the site, they will look to resolve it and email you to confirm once they have it fixed.11:13 AM</p>
+</blockquote>
+
+<p>Later they responded:</p>
+
+<blockquote>
+<p>Case #508411: iCal not available for staff site</p>
+
+<p>In order to have the ICAL option show on your intranet site, you have to make the calendar public so other calendars can use the ical.</p>
+
+<p>In order to do this while making the page/intranet wevsite still require a login, you can go to the security tab on the calendar itself and add guest with only browse permissions to the calender. I have went ahead and updated this for you and it has enabled the ICAL function.</p>
+</blockquote>
+
+<h3 id="email-alerts">email alerts</h3>
+
+<p>Larry had entered the TechTeam&rsquo;s group email into the Incident calendars Alert. However, while this sent to the group, it did so under Larry&rsquo;s name. I am investigating options to send to a group.</p>
+
+<h2 id="present-techmart-migration-options-to-wendy-joy">Present TechMart migration options to Wendy Joy</h2>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/21/">March 2018</a>
+				<h1 id="layout-typography"> Wednesday, March 21, 2018  <a class="small permalink" href="/journal/2018/03/21/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="worked-with-toby-on-ssis">Worked with Toby on SSIS</h2>
+
+<h2 id="finished-work-on-tech-mark-migration-tests">Finished Work on Tech Mark migration tests</h2>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/19/">March 2018</a>
+				<h1 id="layout-typography"> Monday, March 19, 2018  <a class="small permalink" href="/journal/2018/03/19/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="t-sql-fundamentals">T-SQL Fundamentals</h2>
+
+<ul>
+<li>Read Chapter 5 &ldquo;Table Expressions&rdquo; and worked through first 4 questions</li>
+</ul>
+
+<h2 id="reviewed-content-on-sharepoint">Reviewed content on SharePoint</h2>
+
+<ul>
+<li>Created migration notes document</li>
+</ul>
+
+<h2 id="techmart">TechMart</h2>
+
+<ul>
+<li>started to create Computer order form on Google Forms</li>
+</ul>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/15/">March 2018</a>
+				<h1 id="layout-typography"> Thursday, March 15, 2018  <a class="small permalink" href="/journal/2018/03/15/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="web-presence-webcast-notes">Web Presence webcast Notes</h2>
+
+<ul>
+<li>Messenger App - collects current parent contact info</li>
+<li>new calendar coming</li>
+<li>301 redirects
+
+<ul>
+<li>maintian old links</li>
+<li>works in WP with moved content automatically</li>
+<li>can be used for clean short links</li>
+</ul></li>
+<li>custom apps
+
+<ul>
+<li>includes calendars &amp; news for specific school</li>
+<li>great control of what is in news feeds</li>
+<li>more and more statistics
+
+<ul>
+<li>stats for channel subscriptions</li>
+</ul></li>
+</ul></li>
+<li>Safe Arrival
+
+<ul>
+<li>parents can report in advance</li>
+<li>communcations through the app</li>
+</ul></li>
+<li>Communicate module
+
+<ul>
+<li>quicktip</li>
+<li>safety related</li>
+<li>anonymous reporting tool</li>
+<li>free</li>
+</ul></li>
+</ul>
+
+<p>Followed up with Mary and BJ about which parts of Web Presence and Communicate we use and how it interfaces with Synergy.</p>
+
+<h2 id="absence-report-testing">Absence Report Testing</h2>
+
+<p>Jenann was able to process the reports that I submitted. I discussed the system with Wendy Joy, and she thought that it would work fine. She can go and easily view the submitted reports and download to Excel. She does not need to be included in the workflow.</p>
+
+<h2 id="tech-mart">Tech Mart</h2>
+
+<p>Discussed with Wendy about the tradeoffs between Google Forms and Web Presence. Neither of them seem to meet her needs.</p>
+
+<h2 id="evaluate-ispring-free-cam-screencasting-software">Evaluate iSpring Free Cam Screencasting software</h2>
+
+<p>&ldquo;iSpring Free Cam&rdquo; is a good and simple Windows screencast software.</p>
+
+<p>Pros:</p>
+
+<ul>
+<li>Simple and easy to use</li>
+<li>Focused on creating screencasts wtihout other extra features</li>
+<li>Highlights mouse position and clicks.</li>
+<li>The price is free. This appears to be a teaser for iSprings other
+products to create educational presentations.</li>
+</ul>
+
+<p>Cons:</p>
+
+<ul>
+<li>Exports only WMV files</li>
+<li>Commercial freeware.</li>
+</ul>
+
+<p>The biggest issue is only creating WMV files. Fortunately Windows 10 Movie Maker can easily convert WMV&rsquo;s to MP4s.</p>
+
+<h2 id="create-screencast-for-staff-absence-report">Create Screencast for Staff Absence Report</h2>
+
+<p><a href="https://staff.d51schools.org/cms/One.aspx?portalId=5224309&amp;pageId=9095791">Staff Absence Report : How-To Video</a></p>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/14/">March 2018</a>
+				<h1 id="layout-typography"> Wednesday, March 14, 2018  <a class="small permalink" href="/journal/2018/03/14/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="staff-meeting">Staff meeting</h2>
+
+<h2 id="review-google-drive-transition">Review Google Drive transition</h2>
+
+<p>with Larry, Jenann</p>
+
+<h2 id="review-tech-mart-options">Review Tech Mart Options</h2>
+
+<p>Larry and I looked at the options for the Tech Mart ordering system using either Web Presence or Google Forms:</p>
+
+<h3 id="web-presence">Web Presence</h3>
+
+<p>While Presence has a web based GUI to build web forms, it is rather difficult to use for anything beyond very simple forms. It is possible to build very complex</p>
+
+<h3 id="google">Google</h3>
+
+<p>Easy to create forms, with minimal workflow</p>
+
+<h3 id="marked-share-point-files-as-old">Marked Share Point files as old</h3>
+
+<p>put a link to Google</p>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/journal/2018/03/13/">March 2018</a>
+				<h1 id="layout-typography"> Tuesday, March 13, 2018  <a class="small permalink" href="/journal/2018/03/13/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="migrated-share-point-files-to-google">Migrated Share Point Files to Google</h2>
+
+<p>Migrated the following folders from Share Point to the Google Team Drive:</p>
+
+<ul>
+<li>Technology Operations Support</li>
+<li>Processes</li>
+<li>Operating Stats</li>
+</ul>
+
+<p>This should complete the file move. We still need to disable/restrict/delete the file access on Sharepoint.</p>
+
+<h2 id="created-how-to-section-for-tech-staff-on-web-presence">Created How-To Section for Tech Staff on Web Presence.</h2>
+
+<p><a href="https://staff.d51schools.org/my_teams/tech_team/how-to/">https://staff.d51schools.org/my_teams/tech_team/how-to/</a></p>
+
+<h2 id="screen-cast-for-incident-management">Screen cast for Incident Management</h2>
+
+<p>I created a short screencast to show how to create Incident Management Alerts on Web Presence.</p>
+
+<p><a href="https://staff.d51schools.org/my_teams/tech_team/how-to/incident_management_alerts_how_to_video/">https://staff.d51schools.org/my_teams/tech_team/how-to/incident_management_alerts_how_to_video/</a></p>
+
+<h2 id="web-presence-video">Web Presence Video</h2>
+
+<p>I chatted with Web Presence support about not being able to add MP4 HTML 5 <code>&lt;video&gt;</code> to pages. The GUI based editor only supports using Flash video for uploaded video and the insertion of external video such as YouTube and Vimeo.</p>
+
+<p>We can upload MP4 videos to the Web Presence Media Library, but it is placed in the page via Flash embed tags. We can get it to work by manually inserting the following HTML</p>
+
+<pre><code>    &lt;video controls=&quot;&quot; width=&quot;800&quot;&gt;
+    &lt;source src=&quot;/UserFiles/Servers/Server_5224225/Media/VideoFileName.mp4&quot;&gt;
+    Your browser does not support the video tag.
+    &lt;/video&gt;
+</code></pre>
+
+<h2 id="evaluated-screencast-software">Evaluated Screencast software</h2>
+
+<p>I have tried two screencasting software and found them lacking:</p>
+
+<ul>
+<li><p>Microsoft&rsquo;s Windows 10 has a built in screen cast feature. This is mostly for integration wtih X-Box, and does not provide many tools beyond just grabbing the screen. (No mouse clicks, Keyboard strokes, editing, resizing, etc.). Created the &ldquo;Vacation Request&rdquo; screencast with this.</p></li>
+
+<li><p>ActivePressenter: this is geared to the creation of interactive online classes. For this main task it looks very nice, but it is rather difficult to use for simplier screen captures. Created the Incident Management with this.</p></li>
+</ul>
+
+<p>I have used two macOS apps extensively, ScreenFlow and IShowU both of which are very nice at creating screencasts. Still looking for something similar on windows.</p>
+
+<h2 id="created-staff-absence-report-workflow">Created Staff Absence Report &amp; Workflow</h2>
+
+<p>I buitlt the Staff Absence Report and its associated Workflow</p>
+
+<h2 id="the-form">The Form</h2>
+
+<p><a href="https://staff.d51schools.org/form/One.aspx?objectId=8947515&amp;contextId=5224303&amp;action=fill">https://staff.d51schools.org/form/One.aspx?objectId=8947515&amp;contextId=5224303&amp;action=fill</a></p>
+
+<p>The form copies the old form Share Point. Larry pointed me to some of his work adding on other forms to automatically calculate the totals using Javascript. I improved upon his work so that the total is updated everytime a field value is changed. I will update Larry on this.</p>
+
+<h2 id="the-workflow">The Workflow</h2>
+
+<p><a href="https://staff.d51schools.org/workflow/One.aspx?objectId=8997219&amp;contextId=5921885&amp;parentId=5923330">https://staff.d51schools.org/workflow/One.aspx?objectId=8997219&amp;contextId=5921885&amp;parentId=5923330</a></p>
+
+<p>Larry had created a workflow for the Vacation Requests (which I guess we are not using due to that fact that we are using the Calendar to handle this). The Vacation workflow was exactly the same workflow I needed for the Absence report. Only a few changes in wording were needed. I found that there is NO way to copy a workflow in Web Presence (and I did chat with their tech support). Therefore I had to rebuild by hand the entire workflow.</p>
+
+<h2 id="still-need-to-test-and-review">Still need to test and review</h2>
+
+<p>I have build the form and workflow, but need to do testing and review that it is a full replacement for the Share Point version.</p>
+
+
+
+
+
+
+
+			</div>
+			<hr>
+          
+          	<div class="entry">
+				<a class="small date left margin" href="/about/formatsnew/">February 2017</a>
+				<h1 id="layout-typography"> Markdown Block Formats  <a class="small permalink" href="/about/formatsnew/">#</a></h1>
+				
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -950,7 +2606,7 @@ v)</p>
 
 </div>
 
-<p>Grand Junction – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even <code>$ x^2 $</code> work with <code>$ x f(x) = 2x^2 + 2/3 $</code> accents like ÀÊØ. A possessive <a href="/">acronym</a> like CNN&rsquo;s opinion works as well. What about the FCC! The so called (BBC). Also I automatically convert three <i><u>the cost is $7</u></i> TEST! dots to an ellipsis&hellip; « Hello » there should have non-breaking spaces between the punctuation and the word&hellip;</p>
+<p>Grand Junction – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even <code>$ x^2 $</code> work with <code>$ x f(x) = 2x^2 + 2/3 $</code> accents like ÀÊØ. A possessive <a href="/">acronym</a> like CNN&rsquo;s opinion works as well. What about the FCC! The so called (BBC). Also I automatically convert three <span class='price' >the cost is $7</MD_span_END> TEST! dots to an ellipsis&hellip; < Hello > there should have non-breaking spaces between the punctuation and the word&hellip;</p>
 
 <div class='mathFormat'>$$x f(x) = 2x^2 + 2/3 x$$</div>
 
@@ -958,7 +2614,14 @@ v)</p>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicings elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
 
-<p>$ my price is $19</p>
+<div class='priceList' >
+
+<ul>
+<li>my price is $19</li>
+<li>your price $19</li>
+</ul>
+
+</div>
 
 <p>exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
@@ -978,7 +2641,7 @@ v)</p>
 <span class="n">c</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">b</span>
 <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
   <span class="n">foobar</span><span class="p">(</span><span class="n">abc</span><span class="p">)</span>
-  <span class="n">news</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;x&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span></code></pre></div>
+  <span class="n">news</span> <span class="o">=</span> <span class="p">{</span><span class="sa"></span><span class="s2">&#34;x&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span></code></pre></div>
 <p>While I was in the mood for XML I added a site map to each blog and a text file so Google can index your posts easily. Does out text actually get struck out? Looks like it does. Hello is a designer and writer. Recent work has touched on a range of topics, including the relationship of movement and interaction, the history of visual identity and branding in the arts, and the future of the museum in the digital age. His essay on the rise of graphic design MFA programs, &ldquo;School Days&rdquo; was dope?</p>
 
 <div class='margin right' >
@@ -1215,8 +2878,8 @@ $$</p>
 			<hr>
           
           	<div class="entry">
-				<a class="small date left margin" href="/2017/03/29/how-i-extended-markdown-for-hugo/">March 2017</a>
-				<h1 id="layout-typography"> How I Extended Markdown for Hugo  <a class="small permalink" href="/2017/03/29/how-i-extended-markdown-for-hugo/">#</a></h1>
+				<a class="small date left margin" href="/about/menu/">February 2017</a>
+				<h1 id="layout-typography"> Menus  <a class="small permalink" href="/about/menu/">#</a></h1>
 				
 	
 
@@ -1224,8 +2887,16 @@ $$</p>
 
 
 
+
+
+
+
+
+
+
+
+
 	
-	
 
 
 
@@ -1246,201 +2917,231 @@ $$</p>
 
 
 
-<p>I extended Markdown beyond what is provided by Hugo&rsquo;s various standard rendering options. My requirements were:</p>
 
-<ul>
-<li>Be Markdown-flavored. Use generic Hugo with <strong>No Shortcodes</strong></li>
-<li>Automatically increment Heading Levels</li>
-<li>Styled Blocks</li>
-<li>Easy Media Insertion</li>
-<li>Font Awesome Icons Insertion</li>
-<li>Easy MathJax formatting</li>
-</ul>
 
-<p>I achieved my goals using a layout partial template that is called in place of <code>.Content</code>. I will describe each of these features below, and discuss my concerns with this approach, and provide the code.</p>
 
-<h2 id="be-markdown-flavored-use-generic-hugo-with-no-shortcodes">Be Markdown-flavored. Use generic Hugo with No Shortcodes</h2>
 
-<p><strong>Requirement:</strong> Use only standard Markdown or new syntax that is inspired by the ideals of Markdown.</p>
 
-<p><strong>Rational:</strong> As much as possible writers should use John Gruber&rsquo;s original <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>,  However while Markdown covers the basics of writing for the web, it does not cover the needs of all writers. Hugo via <a href="https://github.com/russross/blackfriday#extensions">Blackfriday</a> supports various extensions to Markdown such as tables and definition lists. Still there are many extensions that Blackfriday does not currently support. Additionally, one of the inspiring aspects of Markdown has been the ability of each writer or community to adapt it to their own needs.</p>
 
-<p>The Hugo communities approach to extending Markdown support has been to allow the use of a handful of <a href="https://gohugo.io/content/supported-formats/">eternal formats</a> or <a href="https://gohugo.io/extras/shortcodes/">shortcodes</a></p>
 
-<ul>
-<li>External formats require additional installation and configuration, and provide limited additional flexibility.</li>
-<li>Shortcodes while very powerful are a &ldquo;mark<strong>up</strong>&rdquo; syntax and are decidedly <strong>not</strong> in the spirit of Markdown.</li>
-<li>While shortcodes can contain Markdown, they unfortunately loose the context of the current page so that features such as <a href="https://discuss.gohugo.io/t/markdown-reference-links-in-shortcodes/5770">reference links break</a></li>
-</ul>
 
-<p>Finally, this should be done using a generic standard build of Hugo. It should work anywhere: your local machine, a server, a service such as <a href="http://netlify.com">netlify.com</a>. (Currently, I am using pygments for syntax highlighing, but I am concidering removal of this dependancy.)</p>
 
-<h2 id="increment-headings">Increment Headings</h2>
 
-<p><strong>Requirement:</strong> Increment all headings by one level. The markdown <code># My Heading</code> will be rendered as <code>&lt;h2&gt;My Heading&lt;/h2&gt;</code></p>
 
-<p><strong>Rational:</strong> Content headings should be treated as relative to their context. The page Front Mater &lsquo;Titles&rsquo; will become <code>&lt;H1&gt;</code> heading, and the content headings to be under it. For simplicity for writers and compatibility with editing tools, markdown content headings should start with <code>#</code> and be incremented by the renderer.</p>
 
-<h2 id="styled-blocks">Styled Blocks</h2>
 
-<p><strong>Requirement:</strong> add Markdown syntax to provided stylized <code>&lt;div&gt;</code> blocks. The content of these blocks will be rendered as markdown. For example:</p>
 
-<pre><code>::: alert red
-This is a **Red Alert!** Take cover.
-:::
-</code></pre>
 
-<p>results in:</p>
 
-<pre><code>&lt;div class=&quot;alert red&quot;&gt;
-This is a **Red Alert!** Take cover. 
-&lt;/div&gt;
-</code></pre>
 
-<p><strong>Rational:</strong> plain Markdown lacks the option for anything except very basic formatting. This provides for almost unlimited flexibility of adding content related container layout. The <code>:::</code> syntax is taken from <a href="https://github.com/markdown-it/markdown-it-container">markdown-it-container</a> and has been discussed as a potential <a href="https://talk.commonmark.org/t/content-block-inline-syntax/815">extension to CommonMark</a></p>
 
-<h2 id="easy-media-insertion">Easy Media Insertion</h2>
 
-<p><strong>Requirement:</strong> recognize common embeddable media content</p>
+<h2 id="fresh-pastries-made-daily-md-span-class-price-various-prices-md-span-end">fresh pastries made daily <span class='price' >various prices</MD_span_END></h2>
 
-<pre><code>&gt; https://vimeo.com/1234567
-</code></pre>
+<p>ask your barista for today&rsquo;s selection (mostly <i class='diet vegan'>v</i>) (<i class='diet gutenFree'>gf</i> options)</p>
 
-<p>results in:</p>
+<h2 id="house-made-granola-with-local-honey">house made granola with local honey</h2>
 
-<pre><code>&lt;div class='embed video-player'&gt;&lt;iframe src='https://player.vimeo.com/video/1234567' width='100%' height='385' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen&gt;&lt;/iframe&gt;&lt;/div&gt;
-</code></pre>
-
-<p><strong>Rational:</strong> make media insertion easy for writers with minimal extra syntax. In fact, we leverage the standard markdown blockquote so it works nicely in Markdown aware editors. Currently providing support for Vimeo and YouTube.</p>
-
-<h2 id="font-awesome-icons">Font Awesome icons</h2>
-
-<p>Allow the insertion of <a href="http://fontawesome.io">Font Awesome icons</a>. For example <code>:fa-camera-retro:</code> will result in:</p>
-
-<pre><code>&lt;i class=&quot;fa fa-camera-retro&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
-</code></pre>
-
-<p>You can add additional Font Awesome or other classes. <code>:fa-camera-retro fa-3x text-danger:</code></p>
-
-<pre><code>&lt;i class=&quot;fa fa-camera-retro fa-3x text-danger&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
-</code></pre>
-
-<p>Any required CSS or JS is automatically added to the page without need to add site-wide or in the front matter.</p>
-
-<h2 id="easy-mathjax-formatting">Easy MathJax formatting</h2>
-
-<p><strong>Requirement:</strong> support for <a href="https://www.mathjax.org">MathJax</a> that is friendly to writers</p>
-
-<p>Recognize math inline <code>\$ x^2 $\</code> and block</p>
-
-<blockquote>
-<p>$$  x^2  $$</p>
-</blockquote>
-
-<p>and apply the appropriate tags and javascript.</p>
-
-<p>Any required CSS or JS is automatically added to the page without need to add site-wide or in the front matter.</p>
-
-<h2 id="issues-with-this-approach">Issues with this approach</h2>
-
-<p>This is a hack to force Hugo to do things it is not setup to do.</p>
+<div class='priceList' >
 
 <ul>
-<li><p>Code Fences<br />
-I want to able to use Code Fences; however, my approach has some conflicts. Still working&hellip;</p></li>
-
-<li><p>No Shortcodes Allowed
-Shortcodes are not processed by .RawContent or markdownify. While we are intentionally avoiding the common uses of Hugo&rsquo;s shortcodes, this approach prevents you from using them in content for any reason. For my use cases, I don&rsquo;t see this as an issue. I however, I would prefer to not disable Shortcodes entirely.</p></li>
-
-<li><p>The regular expressions in Go are a little limited. It does not
-recognize start of line ^ and end of line $ so I am using \n to look for line
-breaks. There is no support for Negative lookahead, which makes it difficult
-to catch cases such as escape codes. Some of this maybe my lack of knowledge
-of the Go language.</p></li>
-
-<li><p>Forces the use of safeHTML<br />
-I am not entirely sure if this is introducing a safety issue here? Some requirement of trusting the content. Ideally Hugo will implement a <code>sanatizeHTML</code> function.
-Need to track: <a href="https://github.com/spf13/hugo/issues/1457">https://github.com/spf13/hugo/issues/1457</a></p></li>
-
-<li><p>Need to replace all instances of <code>.Content</code> in templates with my layout partial template.</p></li>
-
-<li><p>How much of a performance hit is this? Should I be using <code>.partialCached</code>? (Remember this is being applied to every page on the site.)</p></li>
+<li>milk — 5.25</li>
+<li>yogurt — 6.5</li>
+<li>hello — 2.3</li>
+<li>yogurt and fresh seasonal fruit — 8.5</li>
+<li>milk and yogurt options are <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i></li>
 </ul>
 
-<h2 id="how-to-use">How to use</h2>
+</div>
 
-<p>In your templates replace <code>.Content</code> with <code>.contentMarkdownCustom</code>. Create the partial template <code>contentMarkdownCustom.html</code> and add this code:</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">{{ $s := .RawContent }}
-{{ $s :=  delimit (slice &#34;\n&#34; $s &#34;\n&#34;) &#34;&#34; }}
+<h2 id="aardvark-toasts">aardvark toasts</h2>
 
-{{ $s :=  $s | replaceRE &#34;\n(#+) &#34; &#34;\n#$1 &#34; }}
+<p>all of our toasts are served on our house made aardvark bread, a seedy rustic loaf of legend. (<i class='diet gutenFree'>gf</i> option available)</p>
 
-{{ $s :=  $s | replaceRE &#34;\n::: *\n&#34; &#34;\n\n«MDBLOCK-END»\n\n&#34; }}
-{{ $s :=  $s | replaceRE &#34;\n::: ([a-z0-9 ]*)\n&#34; &#34;\n\n«MDBLOCK-class-$1»\n\n&#34; }}
+<h3 id="buttered-toast-md-span-class-price-3-md-span-end">buttered toast <span class='price' >3</MD_span_END></h3>
 
-{{ $s :=  $s | replaceRE &#34;\n&gt; https?://vimeo[.]com/([0-9]*) *\n&#34; &#34;\n\n<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;embed video-player&#39;</span><span class="p">&gt;&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;https://player.vimeo.com/video/$1&#39;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#39;100%&#39;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#39;385&#39;</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&#39;0&#39;</span> <span class="na">webkitAllowFullScreen</span> <span class="na">mozallowfullscreen</span> <span class="na">allowFullScreen</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>\n\n&#34; }}
-{{ $s :=  $s | replaceRE &#34;\n&gt; https://youtu.be/([a-zA-Z0-9]*)&#34; &#34;\n\n<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;embed video-player&#39;</span><span class="p">&gt;&lt;</span><span class="nt">iframe</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;youtube-player&#39;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#39;text/html&#39;</span> <span class="na">width</span><span class="o">=</span><span class="s">&#39;640&#39;</span> <span class="na">height</span><span class="o">=</span><span class="s">&#39;385&#39;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;http://www.youtube.com/embed/$1&#39;</span> <span class="na">allowfullscreen</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">&#39;0&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>\n\n&#34; }}
+<p>choose organic butter or vegan butter</p>
 
-{{ $s :=  $s | replaceRE &#34;\n([$][$].*[$][$])&#34; &#34;\n\n<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;mathFormat&#39;</span><span class="p">&gt;</span>$1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>\n\n&#34;}}
-{{ $s :=  $s | replaceRE &#34;\n[`]([$].*[$])[`]&#34; &#34;\n\n<span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;mathFormat&#39;</span><span class="p">&gt;</span>$1<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>\n\n&#34;}}
+<h3 id="buttered-cinnamon-toast-md-span-class-price-3-5-md-span-end">buttered cinnamon toast <span class='price' >3.5</MD_span_END></h3>
 
-{{ $s :=  $s | replaceRE &#34;([^`]):(fa-[a-z0-9 -]*):&#34; &#34;$1<span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;fa $2&#39;</span> <span class="na">aria-hidden</span><span class="o">=</span><span class="s">&#39;true&#39;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>&#34; }}
+<p>choice of butter, dusting of organic cinnamon sugar</p>
 
-{{ $s :=  $s | markdownify }}
-{{ $s :=  $s | replaceRE &#34;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>«MDBLOCK-END»<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#34; &#34;<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>&#34;  }}
-{{ $s :=  $s | replaceRE &#34;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>«MDBLOCK-class-([^»]*)»<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#34; &#34;<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;$1&#39;</span> <span class="p">&gt;</span>&#34; }}
-{{/* 
+<h3 id="tahini-and-local-honey-md-span-class-price-4-5-md-span-end">tahini and local honey <span class='price' >4.5</MD_span_END></h3>
 
-  Ideally we would use `sanatizeHTML` and note `safeHTML`. Hopefully `sanatizeHTML` will happen. 
-  Need to track: https://github.com/spf13/hugo/issues/1457
+<p>single-sourced ethiopian sesame tahini, local honey drizzle</p>
 
-*/}}
-{{ $s :=  $s | safeHTML }}
+<div class='boxed' >
 
-{{- $s -}}
+<h3 id="you-do-you-toast-md-span-class-price-6-5-md-span-end">you–do–you toast <span class='price' >6.5</MD_span_END></h3>
 
+<p>choice of avocado smash or our house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
 
+<p>choice of up to four toppings</p>
 
-{{ $hasMathFormat := findRE &#34;<span class="err">&lt;</span>(div|span) class=&#39;mathFormat&#39;&gt;&#34; $s }}
-{{ if ge (len $hasMathFormat) 1 }}
+<ul>
+<li>chia seeds</li>
+<li>house-made feta <i class='diet dairy'>d</i></li>
+<li>chickpeas</li>
+<li>house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</li>
+<li>fresh tomatoes</li>
+<li>sun-dried tomatoes</li>
+<li>fresh onion</li>
+<li>avocado smash <i class='diet vegan'>v</i></li>
+<li>pesto <i class='diet vegan'>v</i></li>
+<li>toasted sunflower seeds</li>
+<li>cilantro</li>
+</ul>
 
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span>
-    <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</div>
 
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/x-mathjax-config&#34;</span><span class="p">&gt;</span>
-  <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-    <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\(&#39;</span><span class="p">,</span><span class="s1">&#39;\\)&#39;</span><span class="p">]],</span>
-      <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span><span class="s1">&#39;$$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span><span class="s1">&#39;\]&#39;</span><span class="p">]],</span>
-      <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nx">processEnvironments</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">],</span>
-      <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span> <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&#34;AMS&#34;</span> <span class="p">},</span>
-           <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;AMSmath.js&#34;</span><span class="p">,</span> <span class="s2">&#34;AMSsymbols.js&#34;</span><span class="p">]</span> <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/x-mathjax-config&#34;</span><span class="p">&gt;</span>
-    <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Queue</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="c1">// Fix &lt;code&gt; tags after MathJax finishes running. This is a
-</span><span class="c1"></span>      <span class="c1">// hack to overcome a shortcoming of Markdown. Discussion at
-</span><span class="c1"></span>      <span class="c1">// https://github.com/mojombo/jekyll/issues/199
-</span><span class="c1"></span>      <span class="kd">var</span> <span class="nx">all</span> <span class="o">=</span> <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">getAllJax</span><span class="p">(),</span> <span class="nx">i</span><span class="p">;</span>
-      <span class="k">for</span><span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">all</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">all</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">SourceElement</span><span class="p">().</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">className</span> <span class="o">+=</span> <span class="s1">&#39; has-jax&#39;</span><span class="p">;</span>
-      <span class="p">}</span>
-  <span class="p">});</span>
-  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<h2 id="curated-toasts">Curated Toasts</h2>
 
-{{ end }}
+<h3 id="the-cheap-trick-md-span-class-price-7-5-md-span-end">the cheap trick <span class='price' >7.5</MD_span_END></h3>
 
+<p>avocado smash, chia seeds, pesto, fresh tomato, suns-dried tomatoes, dash of cheap trick (aka truffle salt), our house-made
+ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
 
-{{ $hasFontAwesome := findRE &#34;<span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&#39;fa</span> <span class="na">fa-</span><span class="err">&#34;</span> <span class="err">$</span><span class="na">s</span> <span class="err">}}</span>
+<div class='priceList' >
 
-<span class="err">{{</span> <span class="na">if</span> <span class="na">ge</span> <span class="err">(</span><span class="na">len</span> <span class="err">$</span><span class="na">hasFontAwesome</span><span class="err">)</span> <span class="na">1</span> <span class="err">}}</span>
-    <span class="err">&lt;</span><span class="na">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://use.fontawesome.com/53dd1f1274.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-{{ end }}</code></pre></div>
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h3 id="love-to-damascus-md-span-class-price-7-5-md-span-end">love to damascus <span class='price' >7.5</MD_span_END></h3>
+
+<p>while the origin of hummus is contested, the introduction of lemons (essential to the recipe) is well known to belong to
+damascus. — house made hummus, fresh tomatoes, capers, onion, preserved lemons, house-made feta (dairy) or vegan
+house-made ricotta, cilantro</p>
+
+<div class='priceList' >
+
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h3 id="charmed-i-m-sure-md-span-class-price-7-5-md-span-end">charmed, i&rsquo;m sure <span class='price' >7.5</MD_span_END></h3>
+
+<p>our house-made ricotta (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>), fresh strawberries, toasted almonds, choose local honey or rosemary-lavender syrup drizzle</p>
+
+<div class='priceList' >
+
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h3 id="oasis-md-span-class-price-7-5-md-span-end">oasis <span class='price' >7.5</MD_span_END></h3>
+
+<p>single-sourced ethiopian sesame tahini, local honey, fresh banana coins, toasted almonds, fresh mint</p>
+
+<div class='priceList' >
+
+<ul>
+<li>add a small salad – 4</li>
+</ul>
+
+</div>
+
+<h2 id="salads">Salads</h2>
+
+<h3 id="hey-jude-salad-md-span-class-price-10-md-span-end">hey jude salad <span class='price' >10</MD_span_END></h3>
+
+<p>fresh spicy arugula, avocado, chia seeds, fresh strawberries, red onion, roasted sunflower seeds, dash of cheap trick
+(truffle salt) side of rosemary lavender vinaigrette <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
+
+<div class='priceList' >
+
+<ul>
+<li>add house-made feta <i class='diet dairy'>d</i> or ricotta <i class='diet vegan'>v</i> — 2</li>
+</ul>
+
+</div>
+
+<h3 id="flower-child-salad-md-span-class-price-10-md-span-end">flower child salad <span class='price' >10</MD_span_END></h3>
+
+<p>bed of organic mixed greens, fresh tomato, marigolds, crisp cucumber, chickpeas, roasted sunflower seeds, preserved lemons.
+side of tahini <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
+
+<div class='priceList' >
+
+<ul>
+<li>add house-made feta <i class='diet dairy'>d</i> or ricotta <i class='diet vegan'>v</i> — 2</li>
+<li>add falafel <i class='diet vegan'>v</i> — 4</li>
+</ul>
+
+</div>
+
+<h2 id="soups">Soups</h2>
+
+<h3 id="curated-soup-md-span-class-price-8-md-span-end">curated soup <span class='price' >8</MD_span_END></h3>
+
+<p>our roasted tomato soup, sprinkled with fresh chopped herbs from the garden and a dollop of our house-made ricotta ( <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i> ) <i class='diet gutenFree'>gf</i></p>
+
+<div class='priceList' >
+
+<ul>
+<li>add a slice of aardvark bread with butter ( <i class='diet dairy'>d</i> or <i class='diet vegan'>v</i> ) — 1.5</li>
+</ul>
+
+</div>
+
+<h3 id="community-soup-md-span-class-price-pay-what-you-will-md-span-end">community soup <span class='price' >pay what you will</MD_span_END></h3>
+
+<p>sometimes the best things in life are simple. lightly sautéed onions, garlic, ripe roasted tomatoes, good broth, sprinkle of
+herbs de provence, and a good dash of copeka love <i class='diet vegan'>v</i> <i class='diet gutenFree'>gf</i></p>
+
+<h2 id="copeka-s-big-cheese-md-span-class-price-11am-2pm-monday-friday-md-span-end">Copeka&rsquo;s Big Cheese <span class='price' >11am–2pm Monday — Friday</MD_span_END></h2>
+
+<p>(In a little truck)
+      (Technically not a truck)</p>
+
+<p>Keep watch as we expand our days of operation and opening for evening events!</p>
+
+<h3 id="grilled-cheese-sandwiches">Grilled Cheese Sandwiches</h3>
+
+<p>for one extra buck, make your sandwich <i class='diet gutenFree'>gf</i> or <i class='diet vegan'>v</i> give us two bucks and get <i class='diet gutenFree'>gf</i> and <i class='diet vegan'>v</i></p>
+
+<h3 id="the-basic-md-span-class-price-5-5-md-span-end">the basic <span class='price' >5.5</MD_span_END></h3>
+
+<p>muenster, american cheese &amp; cheddar cheese</p>
+
+<h3 id="the-basic-greengo-md-span-class-price-7-25-md-span-end">the basic greengo <span class='price' >7.25</MD_span_END></h3>
+
+<p>the basic plus green chilies.</p>
+
+<h3 id="the-smash-md-span-class-price-7-50-md-span-end">the smash <span class='price' >7.50</MD_span_END></h3>
+
+<p>the basic plus green chilies, tomato, smashed BBQ chips</p>
+
+<h3 id="dem-beans-md-span-class-price-7-5-md-span-end">dem beans <span class='price' >7.5</MD_span_END></h3>
+
+<p>cheddar, pepper jack, american cheese, red onion and baked beans</p>
+
+<h3 id="get-figgy-with-it-md-span-class-price-8-5-md-span-end">get figgy with it <span class='price' >8.5</MD_span_END></h3>
+
+<p>brie, muenster, fig jam and arugula - yum!</p>
+
+<h3 id="cloud-girl-md-span-class-price-8-5-md-span-end">cloud girl <span class='price' >8.5</MD_span_END></h3>
+
+<p>brie, muenster, fruit and local honey dizzle</p>
+
+<h3 id="tomato-soup-md-span-class-price-4-md-span-end">tomato soup <span class='price' >4</MD_span_END></h3>
+
+<p>dunk your sandwich in our house made soup</p>
+
+<h3 id="bag-of-chips-md-span-class-price-1-5-md-span-end">bag-of-chips <span class='price' >1.5</MD_span_END></h3>
+
+<h3 id="copeka-cookies-md-span-class-price-2-5-md-span-end">copeka cookies <span class='price' >2.5</MD_span_END></h3>
+
+<p>copeka&rsquo;s classic cookie, ready to accompany your sandwich (<i class='diet dairy'>d</i> or <i class='diet vegan'>v</i>)</p>
+
+<h3 id="sodas-or-lacroix-waters-md-span-class-price-1-5-md-span-end">sodas or lacroix waters <span class='price' >1.5</MD_span_END></h3>
+
 
 
 

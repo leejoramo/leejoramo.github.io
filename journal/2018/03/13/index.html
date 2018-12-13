@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
     <meta name="twitter:title" property="og:title" itemprop="title name" content="      
       
-         404 Page not found 
+         Tuesday, March 13, 2018 
       ">
  <meta name="description" content="Copeka Coffee - in retro Grand Junction, Colorado">
  <meta name="twitter:description" property="og:description" itemprop="description" content="Copeka Coffee - in retro Grand Junction, Colorado">
@@ -22,10 +22,10 @@
     <title>
       
       
-         404 Page not found 
+         Tuesday, March 13, 2018 
       
     </title>
-    <link rel="canonical" href="">
+    <link rel="canonical" href="/journal/2018/03/13/">
 
     <style>
 	body {
@@ -957,8 +957,6 @@ a.tag {
     <link rel="shortcut icon" href="/favicon.ico">
 
     
-      <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Copeka Coffee" />
-    
 
 
 
@@ -1022,19 +1020,183 @@ a.tag {
 
 
         
-        
-        <li class="right"><a class="feed" href="/index.xml" title="RSS feed for Copeka Coffee">Feed</a></li>
          
 
     </ul>
 
    
   </div>
-  <section id=not-found>
-    <a href=/>404</a>
-  </section>
+
+    <div class="container">
+      <div class="main">
+        <div class="entry">
+
+<a class="small date left margin" href="/journal/2018/03/13/">March 2018</a>
+<h1 id="layout-typography"> Tuesday, March 13, 2018  <a class="small permalink" href="/journal/2018/03/13/">#</a></h1>
+<ul id="tags">
+    
+      <li><a href="/tags/sharepoint">SharePoint</a> </li>
+    
+      <li><a href="/tags/webpresence">WebPresence</a> </li>
+    
+      <li><a href="/tags/screencast">Screencast</a> </li>
+    
+  </ul>
+
+  
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="migrated-share-point-files-to-google">Migrated Share Point Files to Google</h2>
+
+<p>Migrated the following folders from Share Point to the Google Team Drive:</p>
+
+<ul>
+<li>Technology Operations Support</li>
+<li>Processes</li>
+<li>Operating Stats</li>
+</ul>
+
+<p>This should complete the file move. We still need to disable/restrict/delete the file access on Sharepoint.</p>
+
+<h2 id="created-how-to-section-for-tech-staff-on-web-presence">Created How-To Section for Tech Staff on Web Presence.</h2>
+
+<p><a href="https://staff.d51schools.org/my_teams/tech_team/how-to/">https://staff.d51schools.org/my_teams/tech_team/how-to/</a></p>
+
+<h2 id="screen-cast-for-incident-management">Screen cast for Incident Management</h2>
+
+<p>I created a short screencast to show how to create Incident Management Alerts on Web Presence.</p>
+
+<p><a href="https://staff.d51schools.org/my_teams/tech_team/how-to/incident_management_alerts_how_to_video/">https://staff.d51schools.org/my_teams/tech_team/how-to/incident_management_alerts_how_to_video/</a></p>
+
+<h2 id="web-presence-video">Web Presence Video</h2>
+
+<p>I chatted with Web Presence support about not being able to add MP4 HTML 5 <code>&lt;video&gt;</code> to pages. The GUI based editor only supports using Flash video for uploaded video and the insertion of external video such as YouTube and Vimeo.</p>
+
+<p>We can upload MP4 videos to the Web Presence Media Library, but it is placed in the page via Flash embed tags. We can get it to work by manually inserting the following HTML</p>
+
+<pre><code>    &lt;video controls=&quot;&quot; width=&quot;800&quot;&gt;
+    &lt;source src=&quot;/UserFiles/Servers/Server_5224225/Media/VideoFileName.mp4&quot;&gt;
+    Your browser does not support the video tag.
+    &lt;/video&gt;
+</code></pre>
+
+<h2 id="evaluated-screencast-software">Evaluated Screencast software</h2>
+
+<p>I have tried two screencasting software and found them lacking:</p>
+
+<ul>
+<li><p>Microsoft&rsquo;s Windows 10 has a built in screen cast feature. This is mostly for integration wtih X-Box, and does not provide many tools beyond just grabbing the screen. (No mouse clicks, Keyboard strokes, editing, resizing, etc.). Created the &ldquo;Vacation Request&rdquo; screencast with this.</p></li>
+
+<li><p>ActivePressenter: this is geared to the creation of interactive online classes. For this main task it looks very nice, but it is rather difficult to use for simplier screen captures. Created the Incident Management with this.</p></li>
+</ul>
+
+<p>I have used two macOS apps extensively, ScreenFlow and IShowU both of which are very nice at creating screencasts. Still looking for something similar on windows.</p>
+
+<h2 id="created-staff-absence-report-workflow">Created Staff Absence Report &amp; Workflow</h2>
+
+<p>I buitlt the Staff Absence Report and its associated Workflow</p>
+
+<h2 id="the-form">The Form</h2>
+
+<p><a href="https://staff.d51schools.org/form/One.aspx?objectId=8947515&amp;contextId=5224303&amp;action=fill">https://staff.d51schools.org/form/One.aspx?objectId=8947515&amp;contextId=5224303&amp;action=fill</a></p>
+
+<p>The form copies the old form Share Point. Larry pointed me to some of his work adding on other forms to automatically calculate the totals using Javascript. I improved upon his work so that the total is updated everytime a field value is changed. I will update Larry on this.</p>
+
+<h2 id="the-workflow">The Workflow</h2>
+
+<p><a href="https://staff.d51schools.org/workflow/One.aspx?objectId=8997219&amp;contextId=5921885&amp;parentId=5923330">https://staff.d51schools.org/workflow/One.aspx?objectId=8997219&amp;contextId=5921885&amp;parentId=5923330</a></p>
+
+<p>Larry had created a workflow for the Vacation Requests (which I guess we are not using due to that fact that we are using the Calendar to handle this). The Vacation workflow was exactly the same workflow I needed for the Absence report. Only a few changes in wording were needed. I found that there is NO way to copy a workflow in Web Presence (and I did chat with their tech support). Therefore I had to rebuild by hand the entire workflow.</p>
+
+<h2 id="still-need-to-test-and-review">Still need to test and review</h2>
+
+<p>I have build the form and workflow, but need to do testing and review that it is a full replacement for the Share Point version.</p>
+
+
+
+
+
+
+
+     
+  
+
+  
+  <div id=links>
+   <hr class="full" />
+         
+    
+    
+      <a class="left halfWidth nextEntry" href="/journal/2018/03/14/">
+        <h5>Next post</h5>
+        <span class="title">Wednesday, March 14, 2018</span>
+      </a>    
+
+
+    
+  </div>
+    
+</div>
+
   </div>
   
 </body>
 </html>
+
+
+
+
 

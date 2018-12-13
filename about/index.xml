@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Season6 on Copeka Coffee</title>
-    <link>/categories/season6/</link>
-    <description>Recent content in Season6 on Copeka Coffee</description>
+    <title>Abouts on Copeka Coffee</title>
+    <link>/about/</link>
+    <description>Recent content in Abouts on Copeka Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 05 Feb 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/season6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,6 +20,17 @@
       <description>Layout &amp;amp; typography ::: margin left
  book  :::
 Grand Junction – Text set in all caps gets converted to small-caps by default. This means that acronyms like BBC don’t stand out relative to the rest of the text. Acronyms even $ x^2 $ work with $ x f(x) = 2x^2 + 2/3 $ accents like ÀÊØ. A possessive acronym like CNN&amp;rsquo;s opinion works as well. What about the FCC!</description>
+    </item>
+    
+    <item>
+      <title>Menus</title>
+      <link>/about/menu/</link>
+      <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/menu/</guid>
+      <description>fresh pastries made daily $(various prices) ask your barista for today&amp;rsquo;s selection (mostly :v:) (:gf: options)
+house made granola with local honey $$ milk — 5.25 $$ yogurt — 6.5 $$ hello — 2.3 $$ yogurt and fresh seasonal fruit — 8.5 $$ milk and yogurt options are :d: or :v:
+aardvark toasts all of our toasts are served on our house made aardvark bread, a seedy rustic loaf of legend.</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Lee&#39;s Blog</title>
+    <title>Categories on Copeka Coffee</title>
     <link>/categories/</link>
-    <description>Recent content in Categories on Lee&#39;s Blog</description>
+    <description>Recent content in Categories on Copeka Coffee</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -11,9 +11,27 @@
     
     
     <item>
+      <title>Journal</title>
+      <link>/categories/journal/</link>
+      <pubDate>Fri, 23 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/journal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Menu</title>
+      <link>/categories/menu/</link>
+      <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/menu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Season6</title>
       <link>/categories/season6/</link>
-      <pubDate>Wed, 29 Mar 2017 13:01:00 +0000</pubDate>
+      <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
       
       <guid>/categories/season6/</guid>
       <description></description>

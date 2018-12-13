@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Menus on Copeka Coffee</title>
+    <link>/menus/</link>
+    <description>Recent content in Menus on Copeka Coffee</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 13 Dec 2018 06:28:25 -0700</lastBuildDate>
+    
+	<atom:link href="/menus/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Menu</title>
+      <link>/menus/menu/</link>
+      <pubDate>Thu, 13 Dec 2018 06:28:25 -0700</pubDate>
+      
+      <guid>/menus/menu/</guid>
+      <description>fresh pastries made daily $(various prices) ask your barista for today&amp;rsquo;s selection (mostly :v:) (:gf: options)
+house made granola with local honey $$ milk — 5.25 $$ yogurt — 6.5 $$ hello — 2.3 $$ yogurt and fresh seasonal fruit — 8.5 $$ milk and yogurt options are :d: or :v:
+aardvark toasts all of our toasts are served on our house made aardvark bread, a seedy rustic loaf of legend.</description>
+    </item>
+    
+  </channel>
+</rss>
