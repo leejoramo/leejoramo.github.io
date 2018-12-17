@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/events/abc/</loc>
+    <lastmod>2018-12-17T06:20:31-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/menus/menu/</loc>
     <lastmod>2018-12-13T06:28:25-07:00</lastmod>
   </url>
@@ -95,7 +100,7 @@
   
   <url>
     <loc>/events/</loc>
-    <lastmod>2018-12-07T16:25:46-07:00</lastmod>
+    <lastmod>2018-12-17T06:20:31-07:00</lastmod>
     <priority>0</priority>
   </url>
   
